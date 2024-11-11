@@ -45,6 +45,7 @@ func _ready():
 
 func _physics_process(delta):
 	var SPEED = StatHandler.speed
+	var SPRINT = StatHandler.sprint_mult
 	if not dead:
 		direction = mov.move(delta, single_stick, lock_mode)
 	else:
@@ -52,40 +53,38 @@ func _physics_process(delta):
 			direction = last_dir
 		mov.sprint_tog = false
 	
+	if mov.sprint_tog:
+		spr_value = move_toward(spr_value, SPRINT, 0.025)
+		if spr_value == SPRINT:
+			$ModelRig/Trail/Trail3D._enabled = true
+			$ModelRig/Trail/Trail3D2._enabled = true
+			$ModelRig/Trail/Trail3D3._enabled = true
+#			$ModelRig/Trail/Trail3D2/Trail3D2._enabled = true
+#			$ModelRig/Trail/Trail3D/Trail3D._enabled = true
+			$ModelRig/quad2fix2/DefTrail/Trail3D3._enabled = false
+			$ModelRig/TrustyOldOne/DefTrail/Trail3D._enabled = false
+			$ModelRig/TrustyOldOne/DefTrail/Trail3D2._enabled = false
+	else:
+		spr_value = move_toward(spr_value, 1, 0.05)
+		if spr_value == 1:
+			$ModelRig/Trail/Trail3D._enabled = false
+			$ModelRig/Trail/Trail3D2._enabled = false
+			$ModelRig/Trail/Trail3D3._enabled = false
+#			$ModelRig/Trail/Trail3D2/Trail3D2._enabled = false
+#			$ModelRig/Trail/Trail3D/Trail3D._enabled = false
+			$ModelRig/quad2fix2/DefTrail/Trail3D3._enabled = true
+			$ModelRig/TrustyOldOne/DefTrail/Trail3D._enabled = true
+			$ModelRig/TrustyOldOne/DefTrail/Trail3D2._enabled = true
+	
 	if direction:
 		# Acceleration
-		acc = clamp(acc+0.025, 0.1, 1)
-		var SPRINT = StatHandler.sprint_mult
-		if mov.sprint_tog:
-			spr_value = clamp(spr_value+0.025, 1, SPRINT)
-			if spr_value == SPRINT:
-				$ModelRig/Trail/Trail3D._enabled = true
-				$ModelRig/Trail/Trail3D2._enabled = true
-				$ModelRig/Trail/Trail3D3._enabled = true
-#				$ModelRig/Trail/Trail3D2/Trail3D2._enabled = true
-#				$ModelRig/Trail/Trail3D/Trail3D._enabled = true
-				$ModelRig/quad2fix2/DefTrail/Trail3D3._enabled = false
-				$ModelRig/TrustyOldOne/DefTrail/Trail3D._enabled = false
-				$ModelRig/TrustyOldOne/DefTrail/Trail3D2._enabled = false
-#			print(spr_value-1)
-		else:
-			spr_value = clamp(spr_value-0.05, 1, SPRINT)
-			if spr_value == 1:
-				$ModelRig/Trail/Trail3D._enabled = false
-				$ModelRig/Trail/Trail3D2._enabled = false
-				$ModelRig/Trail/Trail3D3._enabled = false
-#				$ModelRig/Trail/Trail3D2/Trail3D2._enabled = false
-#				$ModelRig/Trail/Trail3D/Trail3D._enabled = false
-				$ModelRig/quad2fix2/DefTrail/Trail3D3._enabled = true
-				$ModelRig/TrustyOldOne/DefTrail/Trail3D._enabled = true
-				$ModelRig/TrustyOldOne/DefTrail/Trail3D2._enabled = true
+		acc = move_toward(acc, 1, 0.025)
 		
-		
+		# unsure if this is still needed
 		vel_x = direction.x * SPEED * spr_value * acc
-		velocity.x = move_toward(velocity.x, vel_x, dirspd)
-		
 		vel_z = direction.z * SPEED * spr_value * acc
-		velocity.z = move_toward(velocity.z, vel_z, dirspd)
+		
+		velocity = velocity.move_toward(direction * SPEED * spr_value * acc, dirspd)
 		dirspd = move_toward(dirspd, 0.9, 0.01)
 		
 		last_dir=direction
@@ -93,14 +92,11 @@ func _physics_process(delta):
 		acc = 0.1
 		dirspd = 1
 		# Changes the friction value based on the multiplier of the superspeed
-		var curr_spd = clamp(abs(vel_x) + abs(vel_z), SPEED, SPEED * StatHandler.sprint_mult)
-		var fric = 0.15 * clamp(curr_spd / SPEED, 1, 10)
+		var fric = 0.15 * spr_value
 		if mov.dodging:
 			fric = 0.5 # Dodge Friction
 		# Friction
-		velocity.x = move_toward(velocity.x, 0, fric)
-		velocity.z = move_toward(velocity.z, 0, fric)
-		
+		velocity = velocity.move_toward(Vector3(), fric)
 	
 	move_and_slide()
 

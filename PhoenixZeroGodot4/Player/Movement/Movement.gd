@@ -129,7 +129,7 @@ func double_stick(delta):
 
 
 func single_stick(delta):
-	var turn = 0.030
+	var turn = 0.040
 	var char_rot = model.get_rotation()
 	var tilt = 0.6
 	
@@ -141,8 +141,7 @@ func single_stick(delta):
 	
 #	Changes directions
 	if !backturn:
-		move_direction.z += turn * sign(move_direction.x) * dir
-		move_direction.x -= turn * sign(move_direction.z) * dir
+		move_direction = move_direction.rotated(Vector3(0, -1, 0), turn * dir)
 		char_rot.z = lerp(char_rot.z, tilt*dir, 0.05) # Turning animation
 	
 #	Emergency turn
