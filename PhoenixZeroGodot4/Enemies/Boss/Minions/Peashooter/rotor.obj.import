@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dfjn3pkc77jte"
+path="res://.godot/imported/rotor.obj-de5cca252164d12d8dfbeaafc550da3d.mesh"
+
+[deps]
+
+files=["res://.godot/imported/rotor.obj-de5cca252164d12d8dfbeaafc550da3d.mesh"]
+
+source_file="res://Enemies/Boss/Minions/Peashooter/rotor.obj"
+dest_files=["res://.godot/imported/rotor.obj-de5cca252164d12d8dfbeaafc550da3d.mesh", "res://.godot/imported/rotor.obj-de5cca252164d12d8dfbeaafc550da3d.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

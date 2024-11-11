@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://Player/Skills/BuffMark/BuffMark.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://c1phoalhqns25" path="res://Player/Skills/BuffMark/BuffEffect0.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://cw3kx112d2m7t" path="res://Player/Skills/BuffMark/BuffEffect1.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://yllf52svvm16" path="res://Player/Skills/BuffMark/BuffEffect2.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://cqrbsfg1rl103" path="res://Player/Skills/BuffMark/BuffEffect3.png" id="5"]
+
+[sub_resource type="SpriteFrames" id="1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+script = null
+
+[node name="BuffMark" type="Node3D"]
+script = ExtResource("1")
+
+[node name="MarkSprite" type="AnimatedSprite3D" parent="."]
+billboard = 1
+sprite_frames = SubResource("1")
+frame_progress = 0.0162909
+
+[node name="MarkSprite" type="AnimatedSprite3D" parent="MarkSprite"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+billboard = 1
+sprite_frames = SubResource("1")
+frame_progress = 0.333095
+
+[node name="Icon" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18.7041, 0)

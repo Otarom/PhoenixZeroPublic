@@ -1,0 +1,59 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://Player/Skills/Skill.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://32lsrnmu5bt7" path="res://Player/Skills/Shield/shield.tscn" id="2"]
+[ext_resource type="Script" path="res://Player/Skills/Shield/Spawner.gd" id="3"]
+
+[node name="ShieldSkill" type="Node3D" node_paths=PackedStringArray("Spawner")]
+script = ExtResource("1")
+duration = 100
+amount = 1000.0
+skill_object = ExtResource("2")
+Spawner = NodePath("Spawner")
+
+[node name="Mount2" type="CSGSphere3D" parent="."]
+transform = Transform3D(0.212132, 0, -0.212132, 0, 0.3, 0, 0.212132, 0, 0.212132, -5, 0, 2)
+visible = false
+
+[node name="Marker3D" type="Marker3D" parent="Mount2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.27761)
+
+[node name="Mount3" type="CSGSphere3D" parent="."]
+transform = Transform3D(0.212132, 0, 0.212132, 0, 0.3, 0, -0.212132, 0, 0.212132, 5, 0, 2)
+visible = false
+
+[node name="Marker3D" type="Marker3D" parent="Mount3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.27761)
+
+[node name="Spawner" type="Node3D" parent="." node_paths=PackedStringArray("Skill")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+script = ExtResource("3")
+Skill = NodePath("..")
+
+[node name="Mount1" type="CSGSphere3D" parent="Spawner"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 8)
+visible = false
+
+[node name="Marker3D" type="Marker3D" parent="Spawner/Mount1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.27761)
+
+[node name="Mount2" type="CSGSphere3D" parent="Spawner"]
+transform = Transform3D(-0.3, 0, -2.62268e-08, 0, 0.3, 0, 2.62268e-08, 0, -0.3, 0, 0, -8)
+visible = false
+
+[node name="Marker3D" type="Marker3D" parent="Spawner/Mount2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.27761)
+
+[node name="Mount3" type="CSGSphere3D" parent="Spawner"]
+transform = Transform3D(-1.31134e-08, 0, 0.3, 0, 0.3, 0, -0.3, 0, -1.31134e-08, 8, 0, 0)
+visible = false
+
+[node name="Marker3D" type="Marker3D" parent="Spawner/Mount3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.27761)
+
+[node name="Mount4" type="CSGSphere3D" parent="Spawner"]
+transform = Transform3D(-1.31134e-08, 0, -0.3, 0, 0.3, 0, 0.3, 0, -1.31134e-08, -8, 0, 0)
+visible = false
+
+[node name="Marker3D" type="Marker3D" parent="Spawner/Mount4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.27761)

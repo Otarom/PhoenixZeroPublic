@@ -1,0 +1,946 @@
+[gd_scene load_steps=11 format=3]
+
+[ext_resource type="Script" path="res://Misc/UI/Menu/Options.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://db1uu7mej4su3" path="res://Misc/UI/Menu/PhoenixZero.png" id="2"]
+[ext_resource type="Theme" uid="uid://imaigccmpvqk" path="res://Misc/UI/Menu/BaseUITheme.tres" id="3"]
+[ext_resource type="Script" path="res://Misc/UI/Menu/Visual.gd" id="4"]
+[ext_resource type="Script" path="res://Misc/UI/Menu/Audio.gd" id="5"]
+[ext_resource type="Script" path="res://Misc/UI/Menu/Keybinds.gd" id="6"]
+[ext_resource type="Script" path="res://Misc/UI/Menu/KeybindsMenu.gd" id="7"]
+
+[sub_resource type="LabelSettings" id="1"]
+font_size = 30
+script = null
+
+[sub_resource type="LabelSettings" id="2"]
+font_size = 12
+script = null
+
+[sub_resource type="StyleBoxFlat" id="3"]
+bg_color = Color(0.0627451, 0.0627451, 0.0627451, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+script = null
+
+[node name="Options" type="CanvasLayer"]
+script = ExtResource("1")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="PhoenixZero" type="TextureRect" parent="ColorRect"]
+modulate = Color(1, 1, 1, 0.298039)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.4, 0.4)
+pivot_offset = Vector2(750, 750)
+texture = ExtResource("2")
+
+[node name="Options" type="Panel" parent="."]
+clip_contents = true
+anchors_preset = -1
+anchor_left = 0.043
+anchor_top = 0.059
+anchor_right = 0.965
+anchor_bottom = 0.934
+offset_left = 0.463997
+offset_top = -0.232002
+offset_right = 0.319946
+offset_bottom = -0.231995
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3")
+
+[node name="Title" type="Label" parent="Options"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -531.0
+offset_top = 15.0
+offset_right = 531.0
+offset_bottom = 55.0
+grow_horizontal = 2
+text = "Options"
+label_settings = SubResource("1")
+horizontal_alignment = 1
+
+[node name="Visual" type="Panel" parent="Options"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.019
+anchor_top = 0.122
+anchor_right = 0.3
+anchor_bottom = 0.917
+offset_left = -0.178003
+offset_top = -0.174004
+offset_right = 0.400024
+offset_bottom = 0.0609741
+script = ExtResource("4")
+
+[node name="Title" type="Label" parent="Options/Visual"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -42.5
+offset_top = 10.0
+offset_right = 42.5
+offset_bottom = 34.0
+grow_horizontal = 2
+text = "Visual"
+horizontal_alignment = 1
+
+[node name="Window Mode" type="Control" parent="Options/Visual"]
+layout_mode = 1
+anchor_left = 0.037
+anchor_top = 0.084
+anchor_right = 0.947
+anchor_bottom = 0.186
+offset_left = -0.0629997
+offset_top = 0.115997
+offset_right = -1.15302
+offset_bottom = 0.113998
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="name" type="Label" parent="Options/Visual/Window Mode"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 21.0
+text = "Window Mode"
+label_settings = SubResource("2")
+
+[node name="WindowSelect" type="OptionButton" parent="Options/Visual/Window Mode"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -24.0
+offset_right = 154.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 12
+item_count = 3
+selected = 2
+popup/item_0/text = "Fullscreen"
+popup/item_0/id = 0
+popup/item_1/text = "Borderless"
+popup/item_1/id = 1
+popup/item_2/text = "Windowed"
+popup/item_2/id = 2
+
+[node name="Resolution" type="Control" parent="Options/Visual"]
+layout_mode = 1
+anchor_left = 0.037
+anchor_top = 0.204
+anchor_right = 0.967
+anchor_bottom = 0.306
+offset_left = -0.0629997
+offset_top = -0.00400543
+offset_right = -0.133026
+offset_bottom = -0.00601196
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="name" type="Label" parent="Options/Visual/Resolution"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 21.0
+text = "Windowed Resolution
+"
+label_settings = SubResource("2")
+
+[node name="ResSelect" type="OptionButton" parent="Options/Visual/Resolution"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -24.0
+offset_right = 154.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 12
+item_count = 4
+selected = 0
+popup/item_0/text = "1152x648"
+popup/item_0/id = 0
+popup/item_1/text = "1280x720"
+popup/item_1/id = 1
+popup/item_2/text = "1366x768"
+popup/item_2/id = 2
+popup/item_3/text = "1920x1080"
+popup/item_3/id = 3
+
+[node name="MaxFPS" type="Control" parent="Options/Visual"]
+layout_mode = 1
+anchor_left = 0.388
+anchor_top = 0.339
+anchor_right = 0.943
+anchor_bottom = 0.388
+offset_left = -0.012001
+offset_top = 0.110992
+offset_right = 0.0429993
+offset_bottom = 0.0119934
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="name" type="Label" parent="Options/Visual/MaxFPS"]
+layout_mode = 0
+offset_right = 79.0
+offset_bottom = 21.0
+text = "Max FPS
+"
+label_settings = SubResource("2")
+
+[node name="FPSSelect" type="OptionButton" parent="Options/Visual/MaxFPS"]
+layout_mode = 1
+offset_left = 89.0
+offset_top = -4.0
+offset_right = 165.0
+offset_bottom = 20.0
+theme_override_font_sizes/font_size = 12
+item_count = 5
+selected = 0
+popup/item_0/text = "Off"
+popup/item_0/id = 0
+popup/item_1/text = "30"
+popup/item_1/id = 1
+popup/item_2/text = "60"
+popup/item_2/id = 2
+popup/item_3/text = "90"
+popup/item_3/id = 3
+popup/item_4/text = "120"
+popup/item_4/id = 4
+
+[node name="VSync" type="Control" parent="Options/Visual"]
+layout_mode = 1
+anchor_left = 0.037
+anchor_top = 0.328
+anchor_right = 0.375
+anchor_bottom = 0.386
+offset_left = -0.0629997
+offset_top = 0.071991
+offset_right = -0.125008
+offset_bottom = -0.0859985
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="name" type="Label" parent="Options/Visual/VSync"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 4.0
+offset_right = 61.0
+offset_bottom = 25.0
+text = "Vsync
+"
+label_settings = SubResource("2")
+
+[node name="VSyncCheck" type="CheckButton" parent="Options/Visual/VSync"]
+layout_mode = 0
+offset_left = 60.0
+offset_right = 104.0
+offset_bottom = 24.0
+
+[node name="Clouds" type="Control" parent="Options/Visual"]
+layout_mode = 1
+anchor_left = 0.037
+anchor_top = 0.397
+anchor_right = 0.565
+anchor_bottom = 0.499
+offset_left = -0.0629997
+offset_top = -0.0470123
+offset_right = 0.0650024
+offset_bottom = -0.0490112
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="name" type="Label" parent="Options/Visual/Clouds"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 21.0
+text = "Clouds"
+label_settings = SubResource("2")
+
+[node name="CloudSelect" type="OptionButton" parent="Options/Visual/Clouds"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -24.0
+offset_right = 154.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 12
+item_count = 5
+selected = 4
+popup/item_0/text = "Very High"
+popup/item_0/id = 0
+popup/item_1/text = "High"
+popup/item_1/id = 1
+popup/item_2/text = "Medium"
+popup/item_2/id = 2
+popup/item_3/text = "Low"
+popup/item_3/id = 3
+popup/item_4/text = "Off"
+popup/item_4/id = 4
+
+[node name="Bg" type="Control" parent="Options/Visual"]
+layout_mode = 1
+anchor_left = 0.037
+anchor_top = 0.519
+anchor_right = 0.565
+anchor_bottom = 0.621
+offset_left = -0.0629997
+offset_top = -0.0690308
+offset_right = 0.0650024
+offset_bottom = -0.0710144
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="name" type="Label" parent="Options/Visual/Bg"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 21.0
+text = "Background
+"
+label_settings = SubResource("2")
+
+[node name="BgSelect" type="OptionButton" parent="Options/Visual/Bg"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -24.0
+offset_right = 154.0
+grow_vertical = 0
+item_count = 3
+selected = 2
+popup/item_0/text = "Basic"
+popup/item_0/id = 0
+popup/item_1/text = "Fog"
+popup/item_1/id = 1
+popup/item_2/text = "Detailed"
+popup/item_2/id = 2
+
+[node name="Wall" type="Control" parent="Options/Visual"]
+layout_mode = 1
+anchor_left = 0.037
+anchor_top = 0.519
+anchor_right = 0.565
+anchor_bottom = 0.621
+offset_left = 162.937
+offset_top = -0.0690308
+offset_right = 163.065
+offset_bottom = -0.0710144
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="name" type="Label" parent="Options/Visual/Wall"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 21.0
+text = "Walls
+"
+label_settings = SubResource("2")
+
+[node name="WallSelect" type="OptionButton" parent="Options/Visual/Wall"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -24.0
+offset_right = 105.0
+grow_vertical = 0
+item_count = 2
+selected = 1
+popup/item_0/text = "Basic"
+popup/item_0/id = 0
+popup/item_1/text = "Detailed"
+popup/item_1/id = 1
+
+[node name="Explosions" type="Control" parent="Options/Visual"]
+layout_mode = 1
+anchor_left = 0.037
+anchor_top = 0.641
+anchor_right = 0.565
+anchor_bottom = 0.743
+offset_left = -0.0629997
+offset_top = -0.0910034
+offset_right = 0.0650024
+offset_bottom = -0.0930176
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="name" type="Label" parent="Options/Visual/Explosions"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 21.0
+text = "Explosions
+
+"
+label_settings = SubResource("2")
+
+[node name="ExplosionSelect" type="OptionButton" parent="Options/Visual/Explosions"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -24.0
+offset_right = 154.0
+grow_vertical = 0
+disabled = true
+item_count = 3
+selected = 2
+popup/item_0/text = "Off"
+popup/item_0/id = 0
+popup/item_1/text = "Basic"
+popup/item_1/id = 1
+popup/item_2/text = "Detailed"
+popup/item_2/id = 2
+
+[node name="CamInvert" type="Control" parent="Options/Visual"]
+layout_mode = 1
+anchor_left = 0.037
+anchor_top = 0.754
+anchor_right = 0.9
+anchor_bottom = 0.812
+offset_left = -0.0629997
+offset_top = 4.94598
+offset_right = -0.100006
+offset_bottom = 4.78799
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="name" type="Label" parent="Options/Visual/CamInvert"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 4.0
+offset_right = 61.0
+offset_bottom = 25.0
+text = "Invert Camera drag"
+label_settings = SubResource("2")
+
+[node name="CamInvertCheck" type="CheckButton" parent="Options/Visual/CamInvert"]
+layout_mode = 0
+offset_left = 205.0
+offset_right = 249.0
+offset_bottom = 24.0
+
+[node name="CamRot" type="Control" parent="Options/Visual"]
+layout_mode = 1
+anchor_left = 0.043
+anchor_top = 0.836
+anchor_right = 0.977
+anchor_bottom = 0.938
+offset_left = 0.142939
+offset_top = 4.96399
+offset_right = -0.122894
+offset_bottom = 4.96198
+grow_horizontal = 2
+
+[node name="name" type="Label" parent="Options/Visual/CamRot"]
+layout_mode = 0
+offset_right = 278.0
+offset_bottom = 21.0
+text = "Camera rot speed"
+label_settings = SubResource("2")
+
+[node name="val" type="Label" parent="Options/Visual/CamRot"]
+layout_mode = 0
+offset_left = 249.0
+offset_right = 273.0
+offset_bottom = 19.0
+text = "2"
+label_settings = SubResource("2")
+horizontal_alignment = 1
+
+[node name="CamRotSlider" type="HSlider" parent="Options/Visual/CamRot"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -135.5
+offset_top = 26.0
+offset_right = 136.5
+offset_bottom = 42.0
+grow_horizontal = 2
+min_value = 1.0
+max_value = 3.0
+step = 0.1
+value = 2.0
+
+[node name="Audio" type="Panel" parent="Options"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.702
+anchor_top = 0.122
+anchor_right = 0.983
+anchor_bottom = 0.917
+offset_left = -2.52393
+offset_top = -0.174004
+offset_right = -1.94592
+offset_bottom = 0.0609741
+script = ExtResource("5")
+
+[node name="Title" type="Label" parent="Options/Audio"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -42.5
+offset_top = 10.0
+offset_right = 42.5
+offset_bottom = 34.0
+grow_horizontal = 2
+text = "Audio
+"
+horizontal_alignment = 1
+
+[node name="Master" type="Control" parent="Options/Audio"]
+layout_mode = 1
+anchor_left = 0.033
+anchor_top = 0.089
+anchor_right = 0.967
+anchor_bottom = 0.191
+offset_left = 0.132943
+offset_top = -0.139
+offset_right = -0.132965
+offset_bottom = -0.141006
+grow_horizontal = 2
+
+[node name="name" type="Label" parent="Options/Audio/Master"]
+layout_mode = 0
+offset_right = 278.0
+offset_bottom = 21.0
+text = "Master
+"
+label_settings = SubResource("2")
+horizontal_alignment = 1
+
+[node name="MasterSlider" type="HSlider" parent="Options/Audio/Master"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -135.5
+offset_top = 26.0
+offset_right = 136.5
+offset_bottom = 42.0
+grow_horizontal = 2
+min_value = -45.0
+max_value = 6.0
+
+[node name="Music" type="Control" parent="Options/Audio"]
+layout_mode = 1
+anchor_left = 0.033
+anchor_top = 0.222
+anchor_right = 0.967
+anchor_bottom = 0.324
+offset_left = 0.132943
+offset_top = -0.122009
+offset_right = -0.132965
+offset_bottom = -0.123993
+grow_horizontal = 2
+
+[node name="name" type="Label" parent="Options/Audio/Music"]
+layout_mode = 0
+offset_right = 278.0
+offset_bottom = 21.0
+text = "Music
+"
+label_settings = SubResource("2")
+horizontal_alignment = 1
+
+[node name="MusicSlider" type="HSlider" parent="Options/Audio/Music"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -135.5
+offset_top = 26.0
+offset_right = 136.5
+offset_bottom = 42.0
+grow_horizontal = 2
+min_value = -45.0
+max_value = 6.0
+
+[node name="PlayerSFX" type="Control" parent="Options/Audio"]
+layout_mode = 1
+anchor_left = 0.033
+anchor_top = 0.357
+anchor_right = 0.967
+anchor_bottom = 0.459
+offset_left = 0.132943
+offset_top = -0.00700378
+offset_right = -0.132965
+offset_bottom = -0.00900269
+grow_horizontal = 2
+
+[node name="name" type="Label" parent="Options/Audio/PlayerSFX"]
+layout_mode = 0
+offset_right = 278.0
+offset_bottom = 21.0
+text = "Player SFX"
+label_settings = SubResource("2")
+horizontal_alignment = 1
+
+[node name="PlayerSFXSlider" type="HSlider" parent="Options/Audio/PlayerSFX"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -135.5
+offset_top = 26.0
+offset_right = 136.5
+offset_bottom = 42.0
+grow_horizontal = 2
+min_value = -45.0
+max_value = 6.0
+
+[node name="EnemSFX" type="Control" parent="Options/Audio"]
+layout_mode = 1
+anchor_left = 0.033
+anchor_top = 0.5
+anchor_right = 0.967
+anchor_bottom = 0.601
+offset_left = 0.132943
+offset_top = -0.5
+offset_right = -0.132965
+offset_bottom = -0.0509949
+grow_horizontal = 2
+
+[node name="name" type="Label" parent="Options/Audio/EnemSFX"]
+layout_mode = 0
+offset_right = 278.0
+offset_bottom = 21.0
+text = "Enemy SFX"
+label_settings = SubResource("2")
+horizontal_alignment = 1
+
+[node name="EnemSFXSlider" type="HSlider" parent="Options/Audio/EnemSFX"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -135.5
+offset_top = 26.0
+offset_right = 136.5
+offset_bottom = 42.0
+grow_horizontal = 2
+min_value = -45.0
+max_value = 6.0
+
+[node name="ExplSFX" type="Control" parent="Options/Audio"]
+layout_mode = 1
+anchor_left = 0.033
+anchor_top = 0.641
+anchor_right = 0.967
+anchor_bottom = 0.743
+offset_left = 0.132943
+offset_top = -0.0910034
+offset_right = -0.132965
+offset_bottom = -0.0930176
+grow_horizontal = 2
+
+[node name="name" type="Label" parent="Options/Audio/ExplSFX"]
+layout_mode = 0
+offset_right = 278.0
+offset_bottom = 21.0
+text = "Explosion SFX"
+label_settings = SubResource("2")
+horizontal_alignment = 1
+
+[node name="ExplSFXSlider" type="HSlider" parent="Options/Audio/ExplSFX"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -135.5
+offset_top = 26.0
+offset_right = 136.5
+offset_bottom = 42.0
+grow_horizontal = 2
+min_value = -45.0
+max_value = 6.0
+
+[node name="TestAudio" type="AudioStreamPlayer" parent="Options/Audio"]
+
+[node name="Keybinds" type="Panel" parent="Options"]
+custom_minimum_size = Vector2(387, 451)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.318
+anchor_top = 0.122
+anchor_right = 0.682
+anchor_bottom = 0.917
+offset_left = -0.216034
+offset_top = -0.174004
+offset_right = 0.216003
+offset_bottom = 0.0609741
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("6")
+
+[node name="Title" type="Label" parent="Options/Keybinds"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -42.5
+offset_top = 10.0
+offset_right = 42.5
+offset_bottom = 34.0
+grow_horizontal = 2
+text = "Keybingings
+"
+horizontal_alignment = 1
+
+[node name="KeyName" type="Label" parent="Options/Keybinds"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.043
+anchor_top = 0.091
+anchor_right = 0.431
+anchor_bottom = 0.137
+offset_left = 0.143
+offset_top = -0.0410042
+offset_right = 0.130997
+offset_bottom = 0.212997
+text = "input name"
+label_settings = SubResource("2")
+
+[node name="Key" type="Label" parent="Options/Keybinds"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.473
+anchor_top = 0.091
+anchor_right = 0.654
+anchor_bottom = 0.137
+offset_left = 0.125015
+offset_top = -0.0410042
+offset_right = -0.0820312
+offset_bottom = 0.212997
+text = "Key
+"
+label_settings = SubResource("2")
+horizontal_alignment = 1
+
+[node name="Alt" type="Label" parent="Options/Keybinds"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.698
+anchor_top = 0.091
+anchor_right = 0.872
+anchor_bottom = 0.137
+offset_left = -0.118011
+offset_top = -0.0410042
+offset_right = -0.144012
+offset_bottom = 0.212997
+text = "Alt.
+"
+label_settings = SubResource("2")
+horizontal_alignment = 1
+
+[node name="Keybinds" type="ScrollContainer" parent="Options/Keybinds"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.037
+anchor_top = 0.14
+anchor_right = 0.961
+anchor_bottom = 0.911
+offset_left = -0.319
+offset_top = -0.139999
+offset_right = 0.0929871
+offset_bottom = 0.138977
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="List" type="VBoxContainer" parent="Options/Keybinds/Keybinds"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 35
+
+[node name="Revert" type="Button" parent="Options/Keybinds"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.302
+anchor_top = 0.933
+anchor_right = 0.698
+anchor_bottom = 0.98
+offset_left = 44.126
+offset_top = 0.21698
+offset_right = -44.126
+offset_bottom = 0.019989
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 10
+text = "revert to default"
+flat = true
+
+[node name="Back" type="Button" parent="Options"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.024
+anchor_top = 0.924
+anchor_right = 0.145
+anchor_bottom = 0.993
+offset_left = 0.512003
+offset_top = 0.09198
+offset_right = 0.0100098
+offset_bottom = -0.0310059
+grow_vertical = 0
+theme_override_font_sizes/font_size = 25
+text = "< Back
+"
+flat = true
+
+[node name="KeybindsMenu" type="Panel" parent="Options"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 406.0
+offset_top = 224.0
+offset_right = -416.0
+offset_bottom = -193.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(120, 75)
+theme_override_styles/panel = SubResource("3")
+script = ExtResource("7")
+
+[node name="ColorRect" type="ColorRect" parent="Options/KeybindsMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -1.931
+anchor_top = -1.767
+anchor_right = 2.931
+anchor_bottom = 2.587
+offset_left = -0.560211
+offset_top = -1.94998
+offset_right = 0.560303
+offset_bottom = 3.94998
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.0980392)
+
+[node name="Title" type="Label" parent="Options/KeybindsMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.262
+anchor_top = 0.047
+anchor_right = 0.738
+anchor_bottom = 0.187
+offset_left = 0.119965
+offset_top = -0.0500002
+offset_right = -0.11998
+offset_bottom = -0.0500011
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 12
+text = "Change key"
+horizontal_alignment = 1
+
+[node name="Accept" type="Button" parent="Options/KeybindsMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.038
+anchor_top = 0.8
+anchor_right = 0.308
+anchor_bottom = 0.94
+offset_left = -0.119995
+offset_right = 0.08004
+grow_vertical = 0
+theme_override_font_sizes/font_size = 10
+text = "accept"
+flat = true
+
+[node name="Cancel" type="Button" parent="Options/KeybindsMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.367
+anchor_top = 0.8
+anchor_right = 0.633
+anchor_bottom = 0.94
+offset_left = -0.0800171
+offset_right = 0.0800171
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 10
+text = "cancel"
+flat = true
+
+[node name="Remove" type="Button" parent="Options/KeybindsMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.683
+anchor_top = 0.8
+anchor_right = 0.971
+anchor_bottom = 0.94
+offset_left = 0.0799561
+offset_right = -0.0400085
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 10
+text = "remove"
+flat = true
+
+[node name="Key" type="Button" parent="Options/KeybindsMenu"]
+custom_minimum_size = Vector2(200, 80)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.083
+anchor_top = 0.233
+anchor_right = 0.917
+anchor_bottom = 0.767
+offset_left = 0.0799484
+offset_top = 0.0499992
+offset_right = -0.0799561
+offset_bottom = -0.0500031
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 12
+text = "..."
+text_overrun_behavior = 2
+
+[connection signal="item_selected" from="Options/Visual/Window Mode/WindowSelect" to="Options/Visual" method="_on_window_select_item_selected" flags=18]
+[connection signal="item_selected" from="Options/Visual/Resolution/ResSelect" to="Options/Visual" method="_on_res_select_item_selected" flags=18]
+[connection signal="item_selected" from="Options/Visual/MaxFPS/FPSSelect" to="Options/Visual" method="_on_fps_select_item_selected" flags=18]
+[connection signal="toggled" from="Options/Visual/VSync/VSyncCheck" to="Options/Visual" method="_on_v_sync_check_toggled" flags=18]
+[connection signal="item_selected" from="Options/Visual/Clouds/CloudSelect" to="Options/Visual" method="_on_cloud_select_item_selected" flags=18]
+[connection signal="item_selected" from="Options/Visual/Bg/BgSelect" to="Options/Visual" method="_on_bg_select_item_selected" flags=18]
+[connection signal="item_selected" from="Options/Visual/Wall/WallSelect" to="Options/Visual" method="_on_wall_select_item_selected" flags=18]
+[connection signal="toggled" from="Options/Visual/CamInvert/CamInvertCheck" to="Options/Visual" method="_on_cam_invert_check_toggled" flags=18]
+[connection signal="value_changed" from="Options/Visual/CamRot/CamRotSlider" to="Options/Visual" method="_on_cam_rot_slider_value_changed" flags=18]
+[connection signal="drag_ended" from="Options/Audio/Master/MasterSlider" to="Options/Audio" method="_on_master_slider_drag_ended" flags=18]
+[connection signal="value_changed" from="Options/Audio/Master/MasterSlider" to="Options/Audio" method="_on_master_slider_value_changed" flags=18]
+[connection signal="drag_ended" from="Options/Audio/Music/MusicSlider" to="Options/Audio" method="_on_music_slider_drag_ended" flags=18]
+[connection signal="value_changed" from="Options/Audio/Music/MusicSlider" to="Options/Audio" method="_on_music_slider_value_changed" flags=18]
+[connection signal="drag_ended" from="Options/Audio/PlayerSFX/PlayerSFXSlider" to="Options/Audio" method="_on_player_sfx_slider_drag_ended" flags=18]
+[connection signal="value_changed" from="Options/Audio/PlayerSFX/PlayerSFXSlider" to="Options/Audio" method="_on_player_sfx_slider_value_changed" flags=18]
+[connection signal="drag_ended" from="Options/Audio/EnemSFX/EnemSFXSlider" to="Options/Audio" method="_on_enem_sfx_slider_drag_ended" flags=18]
+[connection signal="value_changed" from="Options/Audio/EnemSFX/EnemSFXSlider" to="Options/Audio" method="_on_enem_sfx_slider_value_changed" flags=18]
+[connection signal="drag_ended" from="Options/Audio/ExplSFX/ExplSFXSlider" to="Options/Audio" method="_on_expl_sfx_slider_drag_ended" flags=18]
+[connection signal="value_changed" from="Options/Audio/ExplSFX/ExplSFXSlider" to="Options/Audio" method="_on_expl_sfx_slider_value_changed" flags=18]
+[connection signal="pressed" from="Options/Keybinds/Revert" to="Options/Keybinds" method="_on_revert_pressed" flags=18]
+[connection signal="pressed" from="Options/Back" to="." method="_on_back_pressed" flags=18]
+[connection signal="pressed" from="Options/KeybindsMenu/Accept" to="Options/KeybindsMenu" method="_on_accept_pressed" flags=18]
+[connection signal="pressed" from="Options/KeybindsMenu/Cancel" to="Options/KeybindsMenu" method="_on_cancel_pressed" flags=18]
+[connection signal="pressed" from="Options/KeybindsMenu/Remove" to="Options/KeybindsMenu" method="_on_remove_pressed" flags=18]
+[connection signal="pressed" from="Options/KeybindsMenu/Key" to="Options/KeybindsMenu" method="_on_key_pressed" flags=18]

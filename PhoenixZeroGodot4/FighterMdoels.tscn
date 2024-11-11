@@ -1,0 +1,301 @@
+[gd_scene load_steps=24 format=3]
+
+[ext_resource type="ArrayMesh" uid="uid://cglxnj87u32go" path="res://Enemies/Boss/Minions/Fighter/canhao (3).obj" id="1"]
+[ext_resource type="ArrayMesh" uid="uid://chkv43kn04hcb" path="res://Enemies/Boss/Minions/Fighter/canhao (4).obj" id="2"]
+[ext_resource type="ArrayMesh" uid="uid://csgequxhcdsia" path="res://Enemies/Boss/Minions/Fighter/canhao (5).obj" id="3"]
+[ext_resource type="ArrayMesh" uid="uid://cubsoofhrt5a0" path="res://Enemies/Boss/Minions/Fighter/Model2.obj" id="4"]
+[ext_resource type="PackedScene" uid="uid://ds28cjss1id1j" path="res://Enemies/Boss/Minions/Fighter/FighterModel2.tscn" id="5"]
+[ext_resource type="ArrayMesh" uid="uid://dsx4pipgn6esx" path="res://Enemies/Boss/Minions/Fighter/canhaocomasagrande.obj" id="6"]
+
+[sub_resource type="StandardMaterial3D" id="1"]
+albedo_color = Color(0.843137, 0.0862745, 0.0745098, 1)
+script = null
+
+[sub_resource type="StandardMaterial3D" id="2"]
+albedo_color = Color(0.360784, 0.4, 0.537255, 1)
+script = null
+
+[sub_resource type="StandardMaterial3D" id="3"]
+albedo_color = Color(0.0470588, 0.25098, 0.368627, 1)
+script = null
+
+[sub_resource type="CapsuleMesh" id="4"]
+material = SubResource("3")
+script = null
+
+[sub_resource type="StandardMaterial3D" id="5"]
+script = null
+
+[sub_resource type="SphereMesh" id="6"]
+material = SubResource("5")
+height = 0.5
+is_hemisphere = true
+script = null
+
+[sub_resource type="SphereMesh" id="7"]
+material = SubResource("3")
+height = 0.5
+is_hemisphere = true
+script = null
+
+[sub_resource type="StandardMaterial3D" id="8"]
+albedo_color = Color(0.360784, 0.4, 0.537255, 1)
+script = null
+
+[sub_resource type="CapsuleMesh" id="9"]
+material = SubResource("3")
+radius = 0.31
+script = null
+
+[sub_resource type="SphereMesh" id="10"]
+material = SubResource("5")
+radius = 0.32
+height = 0.5
+is_hemisphere = true
+script = null
+
+[sub_resource type="SphereMesh" id="11"]
+material = SubResource("3")
+radius = 0.3
+is_hemisphere = true
+script = null
+
+[sub_resource type="StandardMaterial3D" id="12"]
+albedo_color = Color(0.427451, 0.00784314, 0.254902, 1)
+script = null
+
+[sub_resource type="StandardMaterial3D" id="13"]
+albedo_color = Color(0.219608, 0.219608, 0.333333, 1)
+script = null
+
+[sub_resource type="CylinderMesh" id="14"]
+top_radius = 0.29
+bottom_radius = 0.15
+height = 0.12
+script = null
+
+[sub_resource type="CylinderMesh" id="15"]
+top_radius = 0.15
+bottom_radius = 0.15
+height = 0.12
+script = null
+
+[sub_resource type="CylinderMesh" id="16"]
+top_radius = 0.29
+bottom_radius = 0.29
+height = 1.0
+script = null
+
+[sub_resource type="PrismMesh" id="17"]
+left_to_right = -0.5
+size = Vector3(8, 8, 0.3)
+script = null
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.87304, 0, 0)
+
+[node name="Canhao(3)" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -0.0551867, 0, 0.146095)
+mesh = ExtResource("1")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("1")
+surface_material_override/1 = SubResource("2")
+
+[node name="Canhao(4)" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 0.129105, 0, 0.146095)
+mesh = ExtResource("2")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("1")
+surface_material_override/1 = SubResource("2")
+
+[node name="CockpitPlaceholder2" type="Node3D" parent="Node3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.060482, -0.473093, 1.1117)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/CockpitPlaceholder2"]
+transform = Transform3D(0.455036, 0, 0, 0, -1.34751e-08, -0.506047, 0, 0.308274, -2.212e-08, 1.59144e-05, 0.0706806, -0.261673)
+mesh = SubResource("4")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Node3D/CockpitPlaceholder2"]
+transform = Transform3D(0.46426, 0, 0, 0, -2.81773e-08, 0.5, 0, -0.644621, -2.18557e-08, 0, 0.0787716, -0.389068)
+material_override = SubResource("1")
+mesh = SubResource("6")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Node3D/CockpitPlaceholder2"]
+transform = Transform3D(0.454793, 0, 0, 0, -3.13423e-08, -0.485629, 0, 0.717029, -2.12275e-08, 0, 0.0787716, -0.117057)
+mesh = SubResource("7")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Node3D/CockpitPlaceholder2"]
+transform = Transform3D(0.454793, 0, 0, 0, -5.88701e-08, -0.449814, 0, 1.34679, -1.9662e-08, 0, 0.0787716, -0.0734881)
+mesh = SubResource("7")
+skeleton = NodePath("../../..")
+
+[node name="Node3D2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0719, 0, 0)
+
+[node name="Canhao(3)2" type="MeshInstance3D" parent="Node3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55, 0, -0.121)
+mesh = ExtResource("1")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("1")
+surface_material_override/1 = SubResource("8")
+
+[node name="Canhao(3)3" type="MeshInstance3D" parent="Node3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.55, 0, -0.121)
+mesh = ExtResource("1")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("1")
+surface_material_override/1 = SubResource("8")
+
+[node name="CockpitPlaceholder" type="Node3D" parent="Node3D2"]
+transform = Transform3D(1.8, 0, 0, 0, 2, 0, 0, 0, 1.5, 0, -0.110865, -0.0412794)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D2/CockpitPlaceholder"]
+transform = Transform3D(0.455036, 0, 0, 0, -1.34751e-08, -0.506047, 0, 0.308274, -2.212e-08, 1.59144e-05, 0.0706806, -0.261673)
+mesh = SubResource("9")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Node3D2/CockpitPlaceholder"]
+transform = Transform3D(0.46426, 0, 0, 0, -2.81773e-08, 0.5, 0, -0.644621, -2.18557e-08, 0, 0.0787716, -0.435335)
+material_override = SubResource("1")
+mesh = SubResource("10")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Node3D2/CockpitPlaceholder"]
+transform = Transform3D(0.454793, 0, 0, 0, -3.13423e-08, -0.485629, 0, 0.717029, -2.12275e-08, 0, 0.0787716, -0.117057)
+mesh = SubResource("11")
+skeleton = NodePath("../../..")
+
+[node name="Node3D3" type="Node3D" parent="."]
+transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, 0, 0, 0)
+visible = false
+
+[node name="Canhao(5)" type="MeshInstance3D" parent="Node3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0422487, 0, 0.270268)
+mesh = ExtResource("3")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("12")
+surface_material_override/1 = SubResource("13")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Node3D3/Canhao(5)"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.286318, -2.46902)
+material_override = SubResource("13")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="Node3D3/Canhao(5)/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("14")
+
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="Node3D3/Canhao(5)/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+operation = 2
+mesh = SubResource("15")
+
+[node name="CSGCombiner3D2" type="CSGCombiner3D" parent="Node3D3/Canhao(5)"]
+transform = Transform3D(-1.1, 0, -1.66095e-07, 0, 1.1, 0, 1.66095e-07, 0, -1.1, 0, -0.286318, 0.491106)
+material_override = SubResource("13")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="Node3D3/Canhao(5)/CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("14")
+
+[node name="CSGMesh3D3" type="CSGMesh3D" parent="Node3D3/Canhao(5)/CSGCombiner3D2"]
+transform = Transform3D(1, 0, -8.47033e-22, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.560409)
+mesh = SubResource("16")
+
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="Node3D3/Canhao(5)/CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+operation = 2
+mesh = SubResource("15")
+
+[node name="CockpitPlaceholder3" type="Node3D" parent="Node3D3/Canhao(5)"]
+transform = Transform3D(-6.55671e-08, 0, 1, 0, 1, 0, -1.5, 0, -4.37114e-08, 0.0536721, -0.105607, 0.00652313)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D3/Canhao(5)/CockpitPlaceholder3"]
+transform = Transform3D(0.455036, 0, 0, 0, -1.34751e-08, -0.506047, 0, 0.308274, -2.212e-08, 1.57356e-05, 0.0706806, -0.23601)
+mesh = SubResource("4")
+skeleton = NodePath("../../../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Node3D3/Canhao(5)/CockpitPlaceholder3"]
+transform = Transform3D(0.46426, 0, 0, 0, -2.81773e-08, 0.5, 0, -0.644621, -2.18557e-08, 0, 0.0787716, -0.389068)
+material_override = SubResource("12")
+mesh = SubResource("6")
+skeleton = NodePath("../../../..")
+
+[node name="CockpitPlaceholder4" type="Node3D" parent="Node3D3/Canhao(5)"]
+transform = Transform3D(-6.55671e-08, 0, -1, 0, 1, 0, 1.5, 0, -4.37114e-08, -0.0921252, -0.105607, 0.00652313)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D3/Canhao(5)/CockpitPlaceholder4"]
+transform = Transform3D(0.455036, 0, 0, 0, -1.34751e-08, -0.506047, 0, 0.308274, -2.212e-08, 1.57356e-05, 0.0706806, -0.22758)
+mesh = SubResource("4")
+skeleton = NodePath("../../../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Node3D3/Canhao(5)/CockpitPlaceholder4"]
+transform = Transform3D(0.46426, 0, 0, 0, -2.81773e-08, 0.5, 0, -0.644621, -2.18557e-08, 0, 0.0787716, -0.389068)
+material_override = SubResource("12")
+mesh = SubResource("6")
+skeleton = NodePath("../../../..")
+
+[node name="WingRight" type="CSGMesh3D" parent="Node3D3"]
+transform = Transform3D(-1.74846e-08, 0.4, 1.74846e-08, 0, -1.74846e-08, 0.4, 0.4, 1.74846e-08, 7.64274e-16, 2.34026, -0.288488, 0.973481)
+visible = false
+mesh = SubResource("17")
+material = SubResource("12")
+
+[node name="WingRight2" type="CSGMesh3D" parent="Node3D3"]
+transform = Transform3D(-1.74846e-08, -0.4, 1.74846e-08, 0, -1.74846e-08, -0.4, 0.4, -1.74846e-08, 7.64274e-16, -2.18311, -0.288, 0.973665)
+visible = false
+mesh = SubResource("17")
+material = SubResource("12")
+
+[node name="Model8" type="MeshInstance3D" parent="Node3D3"]
+transform = Transform3D(0.919568, 0, -0.392931, 0, 0.3, 0, 0.392931, 0, 0.919568, 1.04041, -0.279886, -1.10162)
+mesh = ExtResource("4")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("12")
+
+[node name="Model9" type="MeshInstance3D" parent="Node3D3"]
+transform = Transform3D(0.919821, 0, 0.392337, 0, 0.3, 0, -0.392337, 0, 0.919821, -1.14583, -0.279886, -1.10162)
+mesh = ExtResource("4")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("12")
+
+[node name="FastFighter" parent="." instance=ExtResource("5")]
+transform = Transform3D(0.7, 0, 0, 0, 0.49, 0, 0, 0, 0.7, -8.43369, -0.386869, 0.394001)
+
+[node name="Canhaocomasagrande" type="MeshInstance3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+mesh = ExtResource("6")
+surface_material_override/0 = SubResource("12")
+surface_material_override/1 = SubResource("13")
+
+[node name="CockpitPlaceholder3" type="Node3D" parent="Canhaocomasagrande"]
+transform = Transform3D(-7.86805e-08, 0, 1, 0, 1.05, 0, -1.8, 0, -4.37114e-08, 0.0839235, -0.214258, -0.0540494)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Canhaocomasagrande/CockpitPlaceholder3"]
+transform = Transform3D(0.455036, 0, 0, 0, -1.34751e-08, -0.506047, 0, 0.308274, -2.212e-08, 1.57356e-05, 0.0706806, -0.23601)
+mesh = SubResource("4")
+skeleton = NodePath("../../../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Canhaocomasagrande/CockpitPlaceholder3"]
+transform = Transform3D(0.46426, 0, 0, 0, -2.81773e-08, 0.5, 0, -0.644621, -2.18557e-08, 0, 0.0787716, -0.389068)
+material_override = SubResource("12")
+mesh = SubResource("6")
+skeleton = NodePath("../../../..")
+
+[node name="CockpitPlaceholder4" type="Node3D" parent="Canhaocomasagrande"]
+transform = Transform3D(-7.86805e-08, 0, -1, 0, 1.05, 0, 1.8, 0, -4.37114e-08, -0.0618738, -0.214258, -0.0540494)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Canhaocomasagrande/CockpitPlaceholder4"]
+transform = Transform3D(0.455036, 0, 0, 0, -1.34751e-08, -0.506047, 0, 0.308274, -2.212e-08, 1.57356e-05, 0.0706806, -0.22758)
+mesh = SubResource("4")
+skeleton = NodePath("../../../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Canhaocomasagrande/CockpitPlaceholder4"]
+transform = Transform3D(0.46426, 0, 0, 0, -2.81773e-08, 0.5, 0, -0.644621, -2.18557e-08, 0, 0.0787716, -0.389068)
+material_override = SubResource("12")
+mesh = SubResource("6")
+skeleton = NodePath("../../../..")

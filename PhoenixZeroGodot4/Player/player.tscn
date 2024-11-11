@@ -1,0 +1,706 @@
+[gd_scene load_steps=62 format=3 uid="uid://d2tco8kt1e783"]
+
+[ext_resource type="Script" path="res://Player/player.gd" id="1"]
+[ext_resource type="Script" path="res://Player/Debug.gd" id="2"]
+[ext_resource type="PackedScene" path="res://Player/UI/player_ui.tscn" id="3"]
+[ext_resource type="Script" path="res://Components/HealthComponent.gd" id="4"]
+[ext_resource type="Script" path="res://Components/BuffHandler.gd" id="5"]
+[ext_resource type="PackedScene" path="res://Player/Skills/BuffMark/BuffMark.tscn" id="6"]
+[ext_resource type="Script" path="res://Player/Movement/Movement.gd" id="7"]
+[ext_resource type="Script" path="res://Player/WeaponHolder.gd" id="8"]
+[ext_resource type="Script" path="res://Player/SkillHolder.gd" id="9"]
+[ext_resource type="Script" path="res://Player/Control.gd" id="10"]
+[ext_resource type="Script" path="res://Components/BaseStats.gd" id="11"]
+[ext_resource type="Script" path="res://Components/StatHandler.gd" id="12"]
+[ext_resource type="Script" path="res://Player/Sound.gd" id="13"]
+[ext_resource type="AudioStream" uid="uid://celoljcdbi6p4" path="res://Player/SFX/ShotgunShoot1.wav" id="14"]
+[ext_resource type="AudioStream" uid="uid://trccpcwopd1a" path="res://Player/SFX/MachinegunShot1.wav" id="15"]
+[ext_resource type="AudioStream" uid="uid://bol8h5c0h5fpc" path="res://Player/SFX/NoAmmo.wav" id="16"]
+[ext_resource type="AudioStream" uid="uid://bdrwndc1oyxgo" path="res://Player/SFX/LowHealthAlarm.wav" id="17"]
+[ext_resource type="AudioStream" uid="uid://chbqxheir6817" path="res://Player/SFX/ReloadReady.wav" id="18"]
+[ext_resource type="AudioStream" uid="uid://c1cw7f3e3m807" path="res://Player/SFX/Engine1.wav" id="19"]
+[ext_resource type="AudioStream" uid="uid://cqiab2o0emouc" path="res://Player/SFX/Recharge.wav" id="20"]
+[ext_resource type="AudioStream" uid="uid://cxoeann7a07mt" path="res://Player/SFX/PlayerDeathSFX.wav" id="21"]
+[ext_resource type="AudioStream" uid="uid://caste3m2enxku" path="res://Player/SFX/PlayerHit.wav" id="22"]
+[ext_resource type="Material" uid="uid://bdws5r3lr1v2t" path="res://Player/Planes/PlayerInvMaterial.tres" id="23"]
+[ext_resource type="Script" path="res://Player/Trail/TrailEffect.gd" id="24"]
+[ext_resource type="PackedScene" uid="uid://dievobh6mquws" path="res://Player/Planes/Models/Quad/quadModel.tscn" id="25"]
+[ext_resource type="PackedScene" path="res://Player/Planes/Models/TrustyOldOne/trusty_old_one.tscn" id="26"]
+[ext_resource type="PackedScene" uid="uid://bhspu8aqk6nir" path="res://Player/Planes/Models/PaperPlane/paper_plane.tscn" id="27"]
+[ext_resource type="Script" path="res://Player/Camera/Camera.gd" id="28"]
+[ext_resource type="Texture2D" uid="uid://donktmukw257f" path="res://Player/Movement/Aim(Unlocked).png" id="29"]
+[ext_resource type="Texture2D" uid="uid://bo7b8lr5dai4f" path="res://Player/Aim.png" id="29_tjnlf"]
+[ext_resource type="PackedScene" path="res://World/Clouds/clouds.tscn" id="30"]
+[ext_resource type="Texture2D" uid="uid://bvi3x4ikuiq24" path="res://Player/Movement/Aim(Locked).png" id="31"]
+[ext_resource type="Material" uid="uid://by7rrkcapx4tt" path="res://Misc/VFX/Fire/fire_material2.tres" id="32"]
+[ext_resource type="Shader" uid="uid://b3kc5oww0aoir" path="res://Misc/VFX/3D_Explosion/explosion_shader.tres" id="33"]
+
+[sub_resource type="SphereShape3D" id="1"]
+radius = 0.548541
+
+[sub_resource type="StandardMaterial3D" id="2"]
+transparency = 1
+albedo_color = Color(0.415686, 0.415686, 0.415686, 0.380392)
+
+[sub_resource type="StandardMaterial3D" id="3"]
+transparency = 1
+albedo_color = Color(0.313726, 0.67451, 0.980392, 0.243137)
+
+[sub_resource type="StandardMaterial3D" id="4"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0)
+
+[sub_resource type="StandardMaterial3D" id="5"]
+transparency = 1
+blend_mode = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+uv1_scale = Vector3(2, 1, 1)
+uv1_offset = Vector3(4, 0, 0)
+
+[sub_resource type="BoxMesh" id="6"]
+
+[sub_resource type="Animation" id="7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -1.5708, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Trail3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.5708, -2.13163e-14, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Trail3D2:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.5708, 0, 0)]
+}
+
+[sub_resource type="Animation" id="8"]
+resource_name = "Rotate"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -1.5708, 0), Vector3(6.28319, -1.5708, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("Trail3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1.5708, -2.13163e-14, 0), Vector3(7.85398, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/path = NodePath("Trail3D2:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1.5708, 0, 0), Vector3(7.85398, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="9"]
+_data = {
+"RESET": SubResource("7"),
+"Rotate": SubResource("8")
+}
+
+[sub_resource type="StandardMaterial3D" id="10"]
+albedo_color = Color(0.243137, 0.309804, 0.690196, 1)
+
+[sub_resource type="PrismMesh" id="11"]
+material = SubResource("10")
+
+[sub_resource type="SphereMesh" id="12"]
+
+[sub_resource type="StandardMaterial3D" id="13"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="Animation" id="14"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.5, 0.5, 0.5)]
+}
+
+[sub_resource type="Animation" id="15"]
+resource_name = "Spin"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.28319, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.5, 0.5, 0.5), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="16"]
+_data = {
+"RESET": SubResource("14"),
+"Spin": SubResource("15")
+}
+
+[sub_resource type="CylinderShape3D" id="17"]
+radius = 2.455
+
+[sub_resource type="Animation" id="18"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="19"]
+resource_name = "Spin"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.28319, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="20"]
+_data = {
+"RESET": SubResource("18"),
+"Spin": SubResource("19")
+}
+
+[sub_resource type="Gradient" id="23"]
+offsets = PackedFloat32Array(0, 0.148325, 0.569378, 0.985646)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0.662218, 0, 0, 0, 0.196078, 0, 0, 0, 0.196078)
+
+[sub_resource type="GradientTexture1D" id="24"]
+gradient = SubResource("23")
+
+[sub_resource type="Curve" id="21"]
+min_value = 0.1
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.3879), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="22"]
+curve = SubResource("21")
+
+[sub_resource type="ParticleProcessMaterial" id="25"]
+emission_shape = 1
+emission_sphere_radius = 0.5
+gravity = Vector3(0, 2, 0)
+scale_min = 0.01
+scale_max = 0.5
+scale_curve = SubResource("22")
+color = Color(0.470588, 0.470588, 0.470588, 1)
+color_ramp = SubResource("24")
+
+[sub_resource type="ShaderMaterial" id="26"]
+render_priority = -2
+next_pass = ExtResource("32")
+shader = ExtResource("33")
+shader_parameter/displace = 2.0
+shader_parameter/albedo = Color(0.172549, 0.172549, 0.172549, 1)
+shader_parameter/emission_color = Color(0.580392, 0.0352941, 0.0352941, 1)
+shader_parameter/emission_str = 2.0
+
+[sub_resource type="SphereMesh" id="27"]
+material = SubResource("26")
+radius = 0.01
+height = 0.01
+radial_segments = 16
+rings = 16
+
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("StatHandler", "BuffHandler", "HealthComponent", "control")]
+script = ExtResource("1")
+skill_type = 2
+StatHandler = NodePath("PlayerStats")
+BuffHandler = NodePath("BuffHandler")
+HealthComponent = NodePath("HealthComponent")
+control = NodePath("Control")
+
+[node name="Debug" type="Node" parent="."]
+script = ExtResource("2")
+
+[node name="PlayerUI" parent="." node_paths=PackedStringArray("Player", "HealthComponent", "StatHandler", "SkillHolder", "WeaponHolder") instance=ExtResource("3")]
+Player = NodePath("..")
+HealthComponent = NodePath("../HealthComponent")
+StatHandler = NodePath("../PlayerStats")
+SkillHolder = NodePath("../SkillHolder")
+WeaponHolder = NodePath("../WeaponHolder")
+
+[node name="HealthComponent" type="Node3D" parent="." node_paths=PackedStringArray("StatHandler")]
+script = ExtResource("4")
+StatHandler = NodePath("../PlayerStats")
+
+[node name="BuffHandler" type="Node3D" parent="."]
+script = ExtResource("5")
+BuffMark = ExtResource("6")
+
+[node name="Movement" type="Node" parent="." node_paths=PackedStringArray("StatHandler")]
+script = ExtResource("7")
+StatHandler = NodePath("../PlayerStats")
+
+[node name="WeaponHolder" type="Node3D" parent="." node_paths=PackedStringArray("StatHandler", "Player", "aimRig", "lockMark")]
+script = ExtResource("8")
+StatHandler = NodePath("../PlayerStats")
+Player = NodePath("..")
+aimRig = NodePath("../AimRig")
+lockMark = NodePath("../LockMark")
+
+[node name="SkillHolder" type="Node3D" parent="." node_paths=PackedStringArray("Player", "StatHandler", "AimRig")]
+script = ExtResource("9")
+Player = NodePath("..")
+StatHandler = NodePath("../PlayerStats")
+AimRig = NodePath("../AimRig")
+
+[node name="Control" type="Node" parent="." node_paths=PackedStringArray("Player", "WeaponHolder", "SkillHolder", "StatHandler", "HealthComponent", "Inventory", "Sound", "model_rig")]
+script = ExtResource("10")
+Player = NodePath("..")
+WeaponHolder = NodePath("../WeaponHolder")
+SkillHolder = NodePath("../SkillHolder")
+StatHandler = NodePath("../PlayerStats")
+HealthComponent = NodePath("../HealthComponent")
+Inventory = NodePath("../Inventory")
+Sound = NodePath("../Sound")
+model_rig = NodePath("../ModelRig")
+
+[node name="BaseStats" type="Node" parent="."]
+script = ExtResource("11")
+speed = 7
+max_health = 1000.0
+
+[node name="PlayerStats" type="Node" parent="." node_paths=PackedStringArray("BaseStats", "MainNode")]
+script = ExtResource("12")
+BaseStats = NodePath("../BaseStats")
+MainNode = NodePath("..")
+armour = 30
+damage = 0
+health_regen = 1.0
+energy_regen = 0.05
+
+[node name="Sound" type="Node" parent="."]
+script = ExtResource("13")
+
+[node name="WeaponTest" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource("14")
+volume_db = -10.0
+pitch_scale = 0.8
+bus = &"PlayerSFX"
+
+[node name="Weapon" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource("15")
+volume_db = -18.0
+pitch_scale = 1.2
+bus = &"PlayerSFX"
+
+[node name="NoAmmo" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource("16")
+volume_db = -16.0
+pitch_scale = 1.1
+bus = &"PlayerSFX"
+
+[node name="LowHealth" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource("17")
+volume_db = -25.0
+pitch_scale = 2.0
+bus = &"PlayerSFX"
+
+[node name="Reload" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource("18")
+volume_db = -22.0
+pitch_scale = 1.1
+bus = &"PlayerSFX"
+
+[node name="Movement" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource("19")
+volume_db = -15.0
+pitch_scale = 0.8
+bus = &"PlayerSFX"
+
+[node name="Recharge" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource("20")
+volume_db = -15.0
+bus = &"PlayerSFX"
+
+[node name="Death" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource("21")
+volume_db = -10.0
+bus = &"ExplSFX"
+
+[node name="Hit" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource("22")
+volume_db = -10.0
+pitch_scale = 1.2
+bus = &"PlayerSFX"
+
+[node name="Inventory" type="Node3D" parent="."]
+
+[node name="PlayerCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("1")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+visible = false
+material_override = SubResource("2")
+size = Vector3(3, 3, 3)
+
+[node name="Forcefield" type="Node3D" parent="."]
+visible = false
+
+[node name="ForcefieldTop" type="CSGSphere3D" parent="Forcefield"]
+material_override = SubResource("3")
+material_overlay = ExtResource("23")
+radius = 1.75
+radial_segments = 25
+rings = 25
+
+[node name="ForcefieldBottom" type="CSGSphere3D" parent="Forcefield"]
+material_override = SubResource("4")
+material_overlay = ExtResource("23")
+flip_faces = true
+radius = 1.75
+radial_segments = 25
+rings = 25
+
+[node name="ModelRig" type="Marker3D" parent="."]
+
+[node name="Trail" type="Marker3D" parent="ModelRig"]
+transform = Transform3D(-8.74228e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.74228e-09, 0, 0, -1)
+
+[node name="Trail3D" type="MeshInstance3D" parent="ModelRig/Trail"]
+transform = Transform3D(1, -1.42109e-14, 4.06576e-20, 0, -3.61999e-06, -1, 1.42109e-14, 1, -3.61999e-06, 0, 0, -3.40067e-08)
+material_override = SubResource("5")
+mesh = SubResource("6")
+skeleton = NodePath("")
+script = ExtResource("24")
+_fromWidth = 3.0
+_motionDelta = 0.3
+_lifespan = 0.4
+type = 4
+_startColor = Color(0.898039, 0.52549, 0.207843, 1)
+_endColor = Color(0.952941, 0.478431, 0.478431, 0.0627451)
+
+[node name="Trail3D2" type="MeshInstance3D" parent="ModelRig/Trail"]
+transform = Transform3D(1, -1.42109e-14, 4.06576e-20, 0, -3.61999e-06, -1, 1.42109e-14, 1, -3.61999e-06, 0, 0, -3.40067e-08)
+material_override = SubResource("5")
+mesh = SubResource("6")
+skeleton = NodePath("")
+script = ExtResource("24")
+_fromWidth = 1.0
+_lifespan = 0.2
+_startColor = Color(0.960784, 0.745098, 0.411765, 1)
+_endColor = Color(0.968627, 0.47451, 0.384314, 0.0627451)
+
+[node name="Trail3D3" type="MeshInstance3D" parent="ModelRig/Trail"]
+transform = Transform3D(1, -1.42109e-14, 4.06576e-20, 0, -3.61999e-06, -1, 1.42109e-14, 1, -3.61999e-06, 0, 0, -3.40067e-08)
+material_override = SubResource("5")
+mesh = SubResource("6")
+skeleton = NodePath("")
+script = ExtResource("24")
+_fromWidth = 2.0
+_lifespan = 0.4
+_startColor = Color(0.819608, 0.556863, 0.294118, 0.415686)
+_endColor = Color(0.945098, 0.439216, 0.337255, 0.0627451)
+
+[node name="TrailOld" type="Marker3D" parent="ModelRig"]
+transform = Transform3D(-7.23998e-07, 0, -0.2, 0, 0.2, 0, 0.2, 0, -7.23998e-07, -1.42109e-14, -0.0294563, 0.935469)
+visible = false
+
+[node name="Trail3D2" type="MeshInstance3D" parent="ModelRig/TrailOld"]
+transform = Transform3D(1, 0, 0, 0, -3.61999e-06, -1, 0, 1, -3.61999e-06, -5.6, 0, 1.2)
+material_override = SubResource("5")
+mesh = SubResource("6")
+script = ExtResource("24")
+_fromWidth = 1.5
+_lifespan = 0.8
+_startColor = Color(0.235294, 0.517647, 0.733333, 0.392157)
+_endColor = Color(0.168627, 0.631373, 0.709804, 0.0627451)
+
+[node name="Trail3D2" type="MeshInstance3D" parent="ModelRig/TrailOld/Trail3D2"]
+material_override = SubResource("5")
+mesh = SubResource("6")
+script = ExtResource("24")
+_lifespan = 0.6
+_startColor = Color(0.0784314, 0.54902, 0.854902, 1)
+_endColor = Color(0.168627, 0.631373, 0.709804, 0.0627451)
+
+[node name="Trail3D" type="MeshInstance3D" parent="ModelRig/TrailOld"]
+transform = Transform3D(1, -2.13163e-14, 7.71648e-20, 0, -3.61999e-06, -1, 2.13163e-14, 1, -3.61999e-06, -5.6, 0, -1.2)
+material_override = SubResource("5")
+mesh = SubResource("6")
+script = ExtResource("24")
+_fromWidth = 1.5
+_lifespan = 0.8
+_startColor = Color(0.305882, 0.741176, 0.396078, 0.392157)
+_endColor = Color(0.396078, 0.858824, 0.576471, 0.0627451)
+
+[node name="Trail3D" type="MeshInstance3D" parent="ModelRig/TrailOld/Trail3D"]
+material_override = SubResource("5")
+mesh = SubResource("6")
+skeleton = NodePath("../..")
+script = ExtResource("24")
+_lifespan = 0.6
+_startColor = Color(0, 0.74902, 0.227451, 1)
+_endColor = Color(0.396078, 0.858824, 0.576471, 0.0627451)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ModelRig/TrailOld"]
+autoplay = "Rotate"
+speed_scale = 2.0
+libraries = {
+"": SubResource("9")
+}
+
+[node name="quad2fix2" parent="ModelRig" instance=ExtResource("25")]
+
+[node name="DefTrail" type="Marker3D" parent="ModelRig/quad2fix2"]
+
+[node name="Trail3D3" type="MeshInstance3D" parent="ModelRig/quad2fix2/DefTrail"]
+transform = Transform3D(1, -2.84217e-14, 4.06576e-20, 0, -3.61999e-06, -1, 2.84217e-14, 1, -3.61999e-06, -4.94239, 0.649372, -2.87451e-08)
+material_override = SubResource("5")
+mesh = SubResource("6")
+skeleton = NodePath("")
+script = ExtResource("24")
+_fromWidth = 0.3
+_lifespan = 0.3
+_startColor = Color(0.2, 0.74902, 0.784314, 1)
+_endColor = Color(0.647059, 0.972549, 0.980392, 0)
+
+[node name="DebugModel" type="MeshInstance3D" parent="ModelRig"]
+transform = Transform3D(1.61805, 0, 0, 0, -1.12076e-07, -0.262, 0, 2.564, -1.14524e-08, 0, 0, 0.210586)
+visible = false
+mesh = SubResource("11")
+skeleton = NodePath("../..")
+
+[node name="TrustyOldOne" parent="ModelRig" instance=ExtResource("26")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.241092)
+visible = false
+
+[node name="DefTrail" type="Marker3D" parent="ModelRig/TrustyOldOne"]
+
+[node name="Trail3D" type="MeshInstance3D" parent="ModelRig/TrustyOldOne/DefTrail"]
+transform = Transform3D(-8.74228e-09, -0.2, 0, 0.2, -8.74228e-09, 0, 0, 0, 0.2, 1.44406, -0.16059, -0.0381815)
+material_override = SubResource("5")
+mesh = SubResource("12")
+skeleton = NodePath("../..")
+script = ExtResource("24")
+_fromWidth = 0.2
+_lifespan = 0.3
+_startColor = Color(0.2, 0.74902, 0.784314, 1)
+_endColor = Color(0.647059, 0.972549, 0.980392, 0)
+
+[node name="Trail3D2" type="MeshInstance3D" parent="ModelRig/TrustyOldOne/DefTrail"]
+transform = Transform3D(-8.74228e-09, -0.2, 0, 0.2, -8.74228e-09, 0, 0, 0, 0.2, -1.444, -0.161, -0.038)
+material_override = SubResource("5")
+mesh = SubResource("12")
+skeleton = NodePath("../..")
+script = ExtResource("24")
+_fromWidth = 0.2
+_lifespan = 0.3
+_startColor = Color(0.2, 0.74902, 0.784314, 1)
+_endColor = Color(0.647059, 0.972549, 0.980392, 0)
+
+[node name="PaperPlane" parent="ModelRig" instance=ExtResource("27")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, -0.243498, -0.114309)
+visible = false
+
+[node name="DefTrail" type="Marker3D" parent="ModelRig/PaperPlane"]
+
+[node name="Trail3D" type="MeshInstance3D" parent="ModelRig/PaperPlane/DefTrail"]
+transform = Transform3D(-8.74228e-09, -0.2, 0, 0.2, -8.74228e-09, 0, 0, 0, 0.2, 1.397, 0.5, -1.629)
+material_override = SubResource("5")
+mesh = SubResource("12")
+skeleton = NodePath("../..")
+script = ExtResource("24")
+_fromWidth = 0.2
+_lifespan = 0.3
+_startColor = Color(0.2, 0.74902, 0.784314, 1)
+_endColor = Color(0.647059, 0.972549, 0.980392, 0)
+
+[node name="Trail3D2" type="MeshInstance3D" parent="ModelRig/PaperPlane/DefTrail"]
+transform = Transform3D(-8.74228e-09, -0.2, 0, 0.2, -8.74228e-09, 0, 0, 0, 0.2, -1.397, 0.5, -1.629)
+material_override = SubResource("5")
+mesh = SubResource("12")
+skeleton = NodePath("../..")
+script = ExtResource("24")
+_fromWidth = 0.2
+_lifespan = 0.3
+_startColor = Color(0.2, 0.74902, 0.784314, 1)
+_endColor = Color(0.647059, 0.972549, 0.980392, 0)
+
+[node name="CameraRig" type="Marker3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+script = ExtResource("28")
+
+[node name="PlayerCamera" type="Camera3D" parent="CameraRig"]
+transform = Transform3D(-0.707107, -0.612372, 0.353553, 0, 0.5, 0.866025, -0.707107, 0.612372, -0.353553, 16, 40, -16)
+current = true
+far = 200.0
+
+[node name="AimRig" type="Marker3D" parent="."]
+
+[node name="Aim_Circle" type="Sprite3D" parent="AimRig"]
+
+[node name="Aim" type="Sprite3D" parent="AimRig"]
+transform = Transform3D(-0.5, 0, -4.37114e-08, 0, 0.5, 0, 4.37114e-08, 0, -0.5, 3.00789e-07, 0, 3.44063)
+offset = Vector2(0, 700)
+modulate = Color(0.145098, 0.792157, 0.462745, 0.564706)
+axis = 1
+texture = ExtResource("29_tjnlf")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="AimRig"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.19645)
+visible = false
+radius = 0.1
+material = SubResource("13")
+
+[node name="Lock" type="Area3D" parent="AimRig"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 30)
+visible = false
+collision_layer = 0
+collision_mask = 2
+
+[node name="Sprite" type="Sprite3D" parent="AimRig/Lock"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+modulate = Color(0, 0.839216, 0.423529, 1)
+pixel_size = 0.005
+axis = 1
+texture = ExtResource("29")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AimRig/Lock/Sprite"]
+autoplay = "Spin"
+libraries = {
+"": SubResource("16")
+}
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AimRig/Lock"]
+shape = SubResource("17")
+
+[node name="Clouds" parent="." instance=ExtResource("30")]
+
+[node name="LockMark" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 30)
+visible = false
+modulate = Color(1, 0, 0.270588, 1)
+pixel_size = 0.005
+axis = 1
+texture = ExtResource("31")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="LockMark"]
+autoplay = "Spin"
+speed_scale = 0.3
+libraries = {
+"": SubResource("20")
+}
+
+[node name="Fire" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.215466, 0)
+emitting = false
+lifetime = 2.0
+randomness = 0.3
+visibility_aabb = AABB(-0.794667, -0.790471, -0.904466, 1.58933, 1.58094, 1.80893)
+process_material = SubResource("25")
+draw_pass_1 = SubResource("27")
+
+[connection signal="on_bleed" from="HealthComponent" to="Control" method="_on_health_component_on_bleed" flags=18]
+[connection signal="on_damage_received" from="HealthComponent" to="PlayerUI" method="_on_health_component_on_damage_received" flags=18]
+[connection signal="on_damage_received" from="HealthComponent" to="Control" method="_on_health_component_on_damage_received" flags=18]
+[connection signal="on_death" from="HealthComponent" to="Control" method="_on_health_component_on_death" flags=18]
+[connection signal="on_heal" from="HealthComponent" to="Control" method="_on_health_component_on_heal" flags=18]
+[connection signal="on_hit" from="HealthComponent" to="Control" method="_on_health_component_on_hit" flags=18]
+[connection signal="damage_buff_start" from="BuffHandler" to="Control" method="_on_buff_handler_damage_buff_start" flags=18]
+[connection signal="on_refresh_weapon" from="WeaponHolder" to="PlayerUI" method="_on_weapon_holder_on_refresh_weapon" flags=18]
+[connection signal="on_shoot" from="WeaponHolder" to="PlayerUI" method="_on_weapon_holder_on_shoot" flags=18]
+[connection signal="on_skill_used" from="SkillHolder" to="PlayerUI" method="_on_skill_holder_on_skill_used" flags=18]
+[connection signal="on_skill_used" from="SkillHolder" to="Control" method="_on_skill_holder_on_skill_used" flags=18]
+[connection signal="on_refresh" from="PlayerStats" to="Control" method="_on_player_stats_on_refresh" flags=18]
+[connection signal="body_entered" from="AimRig/Lock" to="Movement" method="_on_lock_body_entered" flags=18]
+[connection signal="body_exited" from="AimRig/Lock" to="Movement" method="_on_lock_body_exited" flags=18]

@@ -1,0 +1,197 @@
+[gd_scene load_steps=23 format=3]
+
+[ext_resource type="Script" path="res://Enemies/Boss/Minions/Peashooter/enemy_peashooter.gd" id="1"]
+[ext_resource type="Script" path="res://Enemies/EnemyUI.gd" id="2"]
+[ext_resource type="PackedScene" uid="uid://tygxsbp2ogxb" path="res://Enemies/enemy_health_bar.tscn" id="3"]
+[ext_resource type="Script" path="res://Enemies/StateMachine.gd" id="4"]
+[ext_resource type="Script" path="res://Enemies/Boss/Minions/Peashooter/Attack1.gd" id="5"]
+[ext_resource type="Script" path="res://Enemies/Boss/Minions/Peashooter/Attack2.gd" id="6"]
+[ext_resource type="Script" path="res://Components/HealthComponent.gd" id="7"]
+[ext_resource type="Script" path="res://Components/StatHandler.gd" id="8"]
+[ext_resource type="Script" path="res://Components/BaseStats.gd" id="9"]
+[ext_resource type="PackedScene" uid="uid://bq1yablbq4tnt" path="res://Enemies/Boss/Minions/Peashooter/turret_model.tscn" id="10"]
+[ext_resource type="Script" path="res://Enemies/Boss/Minions/Peashooter/Weapons1.gd" id="11"]
+[ext_resource type="PackedScene" uid="uid://w72iipfeqjo2" path="res://Enemies/Projectiles/BulletLong1/enemy_bullet_long_1.tscn" id="12"]
+[ext_resource type="Script" path="res://Enemies/Boss/Minions/Peashooter/Weapons2.gd" id="13"]
+[ext_resource type="PackedScene" uid="uid://dtke0j56t375n" path="res://Enemies/Projectiles/BulletRound1/enemy_bullet_round_1.tscn" id="14"]
+[ext_resource type="Script" path="res://Enemies/Boss/Sound.gd" id="15"]
+[ext_resource type="AudioStream" uid="uid://bkrh4xouq63ul" path="res://Enemies/SFX/EnemHitSound2.wav" id="16"]
+[ext_resource type="AudioStream" uid="uid://c3rv5csc8c6pt" path="res://Enemies/SFX/EnemExplosion.wav" id="17"]
+
+[sub_resource type="ViewportTexture" id="1"]
+viewport_path = NodePath("HealthbarView/SubViewport")
+script = null
+
+[sub_resource type="CapsuleShape3D" id="2"]
+radius = 0.6
+height = 3.0
+script = null
+
+[sub_resource type="CapsuleMesh" id="3"]
+script = null
+
+[sub_resource type="StandardMaterial3D" id="4"]
+albedo_color = Color(0.2, 0.164706, 0.388235, 1)
+script = null
+
+[sub_resource type="StandardMaterial3D" id="5"]
+albedo_color = Color(1, 0.129412, 0.278431, 1)
+script = null
+
+[node name="enemy_peashooter" type="CharacterBody3D" node_paths=PackedStringArray("StatHandler", "HealthComponent", "StateMachine") groups=[
+"Enemies",
+]]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1")
+StatHandler = NodePath("StatHandler")
+HealthComponent = NodePath("HealthComponent")
+StateMachine = NodePath("StateMachine")
+
+[node name="EnemyUI" type="Control" parent="." node_paths=PackedStringArray("MainNode", "HealthComponent")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2")
+MainNode = NodePath("..")
+HealthComponent = NodePath("../HealthComponent")
+font_size = 12
+
+[node name="HealthbarView" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+billboard = 1
+texture = SubResource("1")
+
+[node name="SubViewport" type="SubViewport" parent="HealthbarView"]
+disable_3d = true
+transparent_bg = true
+
+[node name="EnemyHealthBar" parent="HealthbarView/SubViewport" node_paths=PackedStringArray("MainNode", "HealthComponent", "StatHandler") instance=ExtResource("3")]
+MainNode = NodePath("../../..")
+HealthComponent = NodePath("../../../HealthComponent")
+StatHandler = NodePath("../../../StatHandler")
+ShowValue = false
+
+[node name="StateMachine" type="Node3D" parent="." node_paths=PackedStringArray("initial_state", "model", "MainNode")]
+script = ExtResource("4")
+initial_state = NodePath("Attack1")
+model = NodePath("../ModelRig/TurretModel")
+MainNode = NodePath("..")
+
+[node name="Attack1" type="Node3D" parent="StateMachine" node_paths=PackedStringArray("gun1")]
+script = ExtResource("5")
+gun1 = NodePath("../../Weapons1")
+
+[node name="Attack2" type="Node3D" parent="StateMachine" node_paths=PackedStringArray("gun1", "HealthComponent")]
+script = ExtResource("6")
+gun1 = NodePath("../../Weapons2")
+HealthComponent = NodePath("../../HealthComponent")
+
+[node name="HealthComponent" type="Node3D" parent="." node_paths=PackedStringArray("StatHandler")]
+script = ExtResource("7")
+StatHandler = NodePath("../StatHandler")
+
+[node name="StatHandler" type="Node" parent="." node_paths=PackedStringArray("BaseStats", "MainNode")]
+script = ExtResource("8")
+BaseStats = NodePath("../BaseStats")
+MainNode = NodePath("..")
+
+[node name="BaseStats" type="Node" parent="."]
+script = ExtResource("9")
+max_health = 3000.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("2")
+
+[node name="ModelRig" type="Marker3D" parent="."]
+
+[node name="placeholder" type="Node3D" parent="ModelRig"]
+visible = false
+
+[node name="body" type="CSGMesh3D" parent="ModelRig/placeholder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.331105, 0)
+mesh = SubResource("3")
+material = SubResource("4")
+
+[node name="body2" type="CSGMesh3D" parent="ModelRig/placeholder"]
+transform = Transform3D(1.0274, 0, 0, 0, 0.802045, 0, 0, 0, 1.02428, 0, 0.568935, 0)
+mesh = SubResource("3")
+material = SubResource("5")
+
+[node name="TurretModel" parent="ModelRig" instance=ExtResource("10")]
+transform = Transform3D(0.6, 0, 0, 0, 0.59436, -0.0820727, 0, 0.0820727, 0.59436, 0, 0, 0)
+
+[node name="Weapons1" type="Marker3D" parent="."]
+script = ExtResource("11")
+Bullet = ExtResource("12")
+damage = 100.0
+range = 100.0
+speed = 18.0
+shots = 20
+cooldown = 0.4
+
+[node name="Mount2" type="CSGSphere3D" parent="Weapons1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.67826)
+visible = false
+radius = 0.1
+
+[node name="Marker3D" type="Marker3D" parent="Weapons1/Mount2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="Weapons2" type="Marker3D" parent="."]
+transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 0, 0, 0)
+visible = false
+script = ExtResource("13")
+Bullet = ExtResource("14")
+damage = 200.0
+range = 100.0
+speed = 6.0
+shots = 4
+
+[node name="Mount1" type="CSGSphere3D" parent="Weapons2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+radius = 0.1
+
+[node name="Marker3D" type="Marker3D" parent="Weapons2/Mount1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="Mount2" type="CSGSphere3D" parent="Weapons2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1, 0, 0)
+radius = 0.1
+
+[node name="Marker3D" type="Marker3D" parent="Weapons2/Mount2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="Mount3" type="CSGSphere3D" parent="Weapons2"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -1)
+radius = 0.1
+
+[node name="Marker3D" type="Marker3D" parent="Weapons2/Mount3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="Mount4" type="CSGSphere3D" parent="Weapons2"]
+transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, -1.01483, 0.00892913, 0.00153351)
+radius = 0.1
+
+[node name="Marker3D" type="Marker3D" parent="Weapons2/Mount4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="Sound" type="Node" parent="." node_paths=PackedStringArray("HealthComponent")]
+script = ExtResource("15")
+HealthComponent = NodePath("../HealthComponent")
+
+[node name="HitSound" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource("16")
+volume_db = -10.0
+bus = &"EnemSFX"
+
+[node name="Death" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource("17")
+volume_db = -6.0
+pitch_scale = 1.2
+
+[connection signal="on_death" from="HealthComponent" to="." method="_on_health_component_on_death" flags=18]
+[connection signal="on_hit" from="HealthComponent" to="." method="_on_health_component_on_hit" flags=18]
+[connection signal="on_hit" from="HealthComponent" to="Sound" method="_on_health_component_on_hit" flags=18]
+[connection signal="on_invulnerability_change" from="HealthComponent" to="." method="_on_health_component_on_invulnerability_change" flags=18]

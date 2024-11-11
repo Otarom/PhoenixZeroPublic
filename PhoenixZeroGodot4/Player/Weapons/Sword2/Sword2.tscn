@@ -1,0 +1,424 @@
+[gd_scene load_steps=24 format=3 uid="uid://bk0k0igkme7ac"]
+
+[ext_resource type="Script" path="res://Player/Weapons/Weapon.gd" id="1"]
+[ext_resource type="Script" path="res://Player/Weapons/Sword2/Spawner.gd" id="2"]
+[ext_resource type="ArrayMesh" uid="uid://cmhd8xp1sqees" path="res://Player/Weapons/Sword2/SlashBlockyWithUV.obj" id="3"]
+[ext_resource type="Shader" uid="uid://b6lmub6soqxcu" path="res://Player/Weapons/Sword2/SlashShader.tres" id="4"]
+[ext_resource type="AudioStream" uid="uid://c71cj3wrfihy7" path="res://Player/Weapons/Sword2/Saber.wav" id="5"]
+
+[sub_resource type="BoxShape3D" id="1"]
+size = Vector3(2.72811, 2, 2.50449)
+
+[sub_resource type="BoxShape3D" id="2"]
+size = Vector3(2.97261, 2, 1.05772)
+
+[sub_resource type="BoxShape3D" id="3"]
+size = Vector3(2.39613, 2, 1.05772)
+
+[sub_resource type="BoxShape3D" id="4"]
+size = Vector3(1.84103, 2, 0.75954)
+
+[sub_resource type="BoxShape3D" id="5"]
+size = Vector3(3.00874, 2, 1.05772)
+
+[sub_resource type="BoxShape3D" id="6"]
+size = Vector3(2.398, 2, 3.53266)
+
+[sub_resource type="BoxShape3D" id="7"]
+size = Vector3(0.3, 2, 0.3)
+
+[sub_resource type="ShaderMaterial" id="8"]
+render_priority = 0
+shader = ExtResource("4")
+shader_parameter/ColorParameter = Color(0.137255, 0.686275, 0.898039, 1)
+shader_parameter/Grad_Slider = 0.0
+shader_parameter/Grad_Slider2 = 0.0
+
+[sub_resource type="ShaderMaterial" id="9"]
+render_priority = 0
+shader = ExtResource("4")
+shader_parameter/ColorParameter = Color(0.137255, 0.686275, 0.898039, 1)
+shader_parameter/Grad_Slider = 0.0
+shader_parameter/Grad_Slider2 = 0.723529
+
+[sub_resource type="ShaderMaterial" id="10"]
+render_priority = 0
+shader = ExtResource("4")
+shader_parameter/ColorParameter = Color(0.137255, 0.686275, 0.898039, 1)
+shader_parameter/Grad_Slider = 0.0
+shader_parameter/Grad_Slider2 = 0.9
+
+[sub_resource type="ShaderMaterial" id="11"]
+render_priority = 0
+shader = ExtResource("4")
+shader_parameter/ColorParameter = Color(0.137255, 0.686275, 0.898039, 1)
+shader_parameter/Grad_Slider = 0.0
+shader_parameter/Grad_Slider2 = 0.9
+
+[sub_resource type="Animation" id="12"]
+resource_name = "CombinedSlash"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SlashC1:surface_material_override/0:shader_parameter/Grad_Slider")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.6, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SlashC2:surface_material_override/0:shader_parameter/Grad_Slider")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.6, 1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SlashC1:surface_material_override/0:shader_parameter/Grad_Slider2")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.11, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.35, 0.7, 0.9]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SlashC2:surface_material_override/0:shader_parameter/Grad_Slider2")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.11, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.35, 0.7, 0.9]
+}
+
+[sub_resource type="Animation" id="13"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Slash:surface_material_override/0:shader_parameter/Grad_Slider")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Slash2:surface_material_override/0:shader_parameter/Grad_Slider")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SlashC1:surface_material_override/0:shader_parameter/Grad_Slider")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SlashC2:surface_material_override/0:shader_parameter/Grad_Slider")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Slash:surface_material_override/0:shader_parameter/Grad_Slider2")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Slash2:surface_material_override/0:shader_parameter/Grad_Slider2")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [null]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SlashC1:surface_material_override/0:shader_parameter/Grad_Slider2")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [null]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("SlashC2:surface_material_override/0:shader_parameter/Grad_Slider2")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [null]
+}
+
+[sub_resource type="Animation" id="14"]
+resource_name = "Slash"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Slash:surface_material_override/0:shader_parameter/Grad_Slider")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.2, 0.5, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Slash:surface_material_override/0:shader_parameter/Grad_Slider2")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.06, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.35, 0.7, 0.9]
+}
+
+[sub_resource type="Animation" id="15"]
+resource_name = "Slash2"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Slash2:surface_material_override/0:shader_parameter/Grad_Slider")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.2, 0.5, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Slash2:surface_material_override/0:shader_parameter/Grad_Slider2")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.06, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.35, 0.7, 0.9]
+}
+
+[sub_resource type="AnimationLibrary" id="16"]
+_data = {
+"CombinedSlash": SubResource("12"),
+"RESET": SubResource("13"),
+"Slash": SubResource("14"),
+"Slash2": SubResource("15")
+}
+
+[sub_resource type="Animation" id="17"]
+resource_name = "new_animation"
+length = 1.5
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationHandler")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("Slash", "Slash2", "CombinedSlash"),
+"times": PackedFloat32Array(0, 0.4, 0.8)
+}
+
+[sub_resource type="AnimationLibrary" id="18"]
+_data = {
+"new_animation": SubResource("17")
+}
+
+[node name="Sword2" type="Node3D" node_paths=PackedStringArray("Sound", "Spawner")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+script = ExtResource("1")
+max_ammo = 3
+damage = 350
+bullet_speed = 0
+range = 0
+reload_speed = 0.5
+cooldown = 0.5
+Sound = NodePath("Sound")
+Spawner = NodePath("Spawner")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, 4)
+collision_mask = 0
+
+[node name="Spawner" type="Node3D" parent="." node_paths=PackedStringArray("Weapon")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.32486)
+script = ExtResource("2")
+Weapon = NodePath("..")
+
+[node name="NormalHitboxes" type="Area3D" parent="Spawner"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="Hit1" type="CollisionShape3D" parent="Spawner/NormalHitboxes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.3933)
+shape = SubResource("1")
+
+[node name="Hit4" type="CollisionShape3D" parent="Spawner/NormalHitboxes"]
+transform = Transform3D(0.974523, 0, -0.224288, 0, 1, 0, 0.224288, 0, 0.974523, 2.16965, 0, 2.70757)
+shape = SubResource("2")
+
+[node name="Hit5" type="CollisionShape3D" parent="Spawner/NormalHitboxes"]
+transform = Transform3D(0.915494, 0, -0.402331, 0, 1, 0, 0.402331, 0, 0.915494, 1.50408, 0, 3.33831)
+shape = SubResource("3")
+
+[node name="Hit6" type="CollisionShape3D" parent="Spawner/NormalHitboxes"]
+transform = Transform3D(0.62606, 0, -0.779775, 0, 1, 0, 0.779775, 0, 0.62606, 1.24311, 0, 3.76493)
+shape = SubResource("4")
+
+[node name="Hit7" type="CollisionShape3D" parent="Spawner/NormalHitboxes"]
+transform = Transform3D(0.772789, 0, -0.634663, 0, 1, 0, 0.634663, 0, 0.772789, -2.23768, 0, 3.24571)
+shape = SubResource("5")
+
+[node name="Hit8" type="CollisionShape3D" parent="Spawner/NormalHitboxes"]
+transform = Transform3D(-0.974535, 0.00111373, 0.224233, 8.74217e-08, -0.999988, 0.00496718, 0.224236, 0.00484071, 0.974523, -2.30363, -0.0332167, 2.70757)
+shape = SubResource("2")
+
+[node name="Hit9" type="CollisionShape3D" parent="Spawner/NormalHitboxes"]
+transform = Transform3D(-0.91553, 0.00358404, 0.402233, 8.74193e-08, -0.99996, 0.00891022, 0.402249, 0.00815761, 0.915494, -1.63822, -0.0184766, 3.33831)
+shape = SubResource("3")
+
+[node name="Hit10" type="CollisionShape3D" parent="Spawner/NormalHitboxes"]
+transform = Transform3D(-0.626153, 0.0134648, 0.779584, 8.74097e-08, -0.999851, 0.0172693, 0.7797, 0.0108133, 0.62606, -1.37732, -0.0126971, 3.76493)
+shape = SubResource("4")
+
+[node name="Hit11" type="CollisionShape3D" parent="Spawner/NormalHitboxes"]
+transform = Transform3D(-0.772865, 0.00891916, 0.634507, 8.74141e-08, -0.999901, 0.0140556, 0.63457, 0.0108631, 0.772789, 2.10262, 0.0643903, 3.24571)
+shape = SubResource("5")
+
+[node name="Hit2" type="CollisionShape3D" parent="Spawner/NormalHitboxes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.423, 0, 2.42146)
+shape = SubResource("6")
+disabled = true
+
+[node name="Hit3" type="CollisionShape3D" parent="Spawner/NormalHitboxes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.423, 0, 2.42146)
+shape = SubResource("6")
+disabled = true
+
+[node name="ExtraHit" type="Area3D" parent="Spawner"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="Hit" type="CollisionShape3D" parent="Spawner/ExtraHit"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 4.68969)
+shape = SubResource("7")
+disabled = true
+
+[node name="Slash" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.93185, 0, -0.517638, 0, 2, 0, 0.517638, 0, 1.93185, 0.5, 0, 1.39214)
+mesh = ExtResource("3")
+surface_material_override/0 = SubResource("8")
+
+[node name="Slash2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1.93185, -2.91701e-07, 0.517638, 3.01992e-07, -2, -5.2108e-15, 0.517638, 7.81612e-08, 1.93185, -0.5, 0, 1.39214)
+mesh = ExtResource("3")
+surface_material_override/0 = SubResource("9")
+
+[node name="SlashC1" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.20173, 0, -1.5987, 0, 2, 0, 1.5987, 0, 1.20173, -0.5, 0, 1.67514)
+mesh = ExtResource("3")
+surface_material_override/0 = SubResource("10")
+
+[node name="SlashC2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1.20084, 1.04981e-07, 1.59937, -1.74845e-07, -2, 0, 1.59937, -1.39821e-07, 1.20084, 0.5, 0, 1.67514)
+mesh = ExtResource("3")
+surface_material_override/0 = SubResource("11")
+
+[node name="AnimationHandler" type="AnimationPlayer" parent="."]
+speed_scale = 0.8
+libraries = {
+"": SubResource("16")
+}
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("18")
+}
+
+[node name="Slash4" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1.73205, 1.51421e-07, 0.999999, -1.74845e-07, -2, 0, 0.999999, -8.74228e-08, 1.73205, 0.3, 0, 3)
+visible = false
+mesh = ExtResource("3")
+surface_material_override/0 = SubResource("8")
+
+[node name="Slash5" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.73205, 0, -0.999999, 0, 2, 0, 0.999999, 0, 1.73205, -0.3, 0, 3)
+visible = false
+mesh = ExtResource("3")
+surface_material_override/0 = SubResource("8")
+
+[node name="Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5")
+volume_db = -20.0
+pitch_scale = 1.3
+bus = &"PlayerSFX"
+
+[connection signal="body_entered" from="Spawner/NormalHitboxes" to="Spawner" method="_on_normal_hitboxes_body_entered" flags=18]
+[connection signal="body_exited" from="Spawner/NormalHitboxes" to="Spawner" method="_on_normal_hitboxes_body_exited" flags=18]
+[connection signal="body_entered" from="Spawner/ExtraHit" to="Spawner" method="_on_extra_hit_body_entered" flags=18]
+[connection signal="body_exited" from="Spawner/ExtraHit" to="Spawner" method="_on_extra_hit_body_exited" flags=18]

@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="Material" uid="uid://br22d0ra0ar1h" path="res://Misc/VFX/Fire/fire_material2.tres" id="1"]
+[ext_resource type="Shader" uid="uid://bdlu1f3edybn4" path="res://Misc/VFX/3D_Explosion/explosion_shader.tres" id="2"]
+
+[sub_resource type="Curve" id="1"]
+min_value = 0.1
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.3879), 0.0, 0.0, 0, 0]
+point_count = 2
+script = null
+
+[sub_resource type="CurveTexture" id="2"]
+curve = SubResource("1")
+script = null
+
+[sub_resource type="ParticleProcessMaterial" id="3"]
+emission_shape = 1
+emission_sphere_radius = 1.0
+gravity = Vector3(0, 2, 0)
+scale_min = 0.01
+scale_curve = SubResource("2")
+script = null
+
+[sub_resource type="ShaderMaterial" id="4"]
+render_priority = -1
+next_pass = ExtResource("1")
+shader = ExtResource("2")
+shader_parameter/displace = 2.0
+shader_parameter/albedo = Color(0.172549, 0.172549, 0.172549, 1)
+shader_parameter/emission_color = Color(0.580392, 0.0352941, 0.0352941, 1)
+shader_parameter/emission_str = 2.0
+script = null
+
+[sub_resource type="SphereMesh" id="5"]
+material = SubResource("4")
+radius = 0.05
+height = 0.05
+radial_segments = 16
+rings = 16
+script = null
+
+[node name="3DFire" type="Node3D"]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+lifetime = 2.0
+randomness = 0.3
+process_material = SubResource("3")
+draw_pass_1 = SubResource("5")

@@ -1,0 +1,18 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://omu3njxg0k0m"
+path="res://.godot/imported/BlueJay.png-31b602e95719927a93452bce8dc5ab98.ctex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://Misc/UI/Portraits/BlueJay.png"
+dest_files=PackedStringArray("res://.godot/imported/BlueJay.png-31b602e95719927a93452bce8dc5ab98.ctex")
+
+[params]
+
+dummy_value_ignore_me=0

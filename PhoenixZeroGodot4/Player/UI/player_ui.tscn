@@ -1,0 +1,60 @@
+[gd_scene load_steps=6 format=3 uid="uid://osm3gnplyki4"]
+
+[ext_resource type="Script" path="res://Player/UI/player_ui.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://kvs1unrer134" path="res://Player/UI/DmgScreen.png" id="2"]
+[ext_resource type="PackedScene" path="res://Player/UI/CenterInfo/center_info.tscn" id="3"]
+[ext_resource type="PackedScene" path="res://Player/UI/TopInfo/top_info.tscn" id="4"]
+[ext_resource type="Script" path="res://Player/UI/DebugFPS.gd" id="5"]
+
+[node name="PlayerUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1")
+
+[node name="DmgScreen" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = -1.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2")
+
+[node name="CenterInfo" parent="." node_paths=PackedStringArray("MainNode") instance=ExtResource("3")]
+layout_mode = 1
+offset_top = 11.0
+offset_bottom = 11.0
+scale = Vector2(0.5, 0.5)
+MainNode = NodePath("..")
+delay = 1
+
+[node name="TopInfo" parent="." node_paths=PackedStringArray("MainNode") instance=ExtResource("4")]
+offset_left = 13.0
+offset_top = 14.0
+offset_right = 288.0
+offset_bottom = 112.0
+MainNode = NodePath("..")
+delay = 1
+
+[node name="DebugFPS" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -85.0
+offset_top = 10.0
+offset_right = -2.0
+offset_bottom = 51.0
+grow_horizontal = 0
+text = "FPS"
+fit_content = true
+scroll_active = false
+script = ExtResource("5")

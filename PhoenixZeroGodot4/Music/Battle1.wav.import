@@ -1,0 +1,16 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b1ojuasi16k1h"
+path="res://.godot/imported/Battle1.wav-7faedef104913bcf3a134cd78b805fb8.sample"
+
+[deps]
+
+source_file="res://Music/Battle1.wav"
+dest_files=PackedStringArray("res://.godot/imported/Battle1.wav-7faedef104913bcf3a134cd78b805fb8.sample")
+
+[params]
+
+dummy_value_ignore_me=0
+compress/mode=0

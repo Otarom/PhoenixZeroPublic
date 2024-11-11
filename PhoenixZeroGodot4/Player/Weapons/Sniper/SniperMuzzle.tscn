@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://83kyco7c6pbe"]
+
+[ext_resource type="Script" path="res://Player/Weapons/Sniper/SniperMuzzleFlash.gd" id="1_6tdog"]
+[ext_resource type="Texture2D" uid="uid://bu7fjpr4lqes2" path="res://Player/Weapons/Machinegun/MachinegunMuzzleFlash.png" id="2"]
+
+[node name="MuzleFlash" type="Node3D"]
+script = ExtResource("1_6tdog")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+flip_v = true
+modulate = Color(0.415686, 0.623529, 1, 1)
+axis = 1
+texture = ExtResource("2")

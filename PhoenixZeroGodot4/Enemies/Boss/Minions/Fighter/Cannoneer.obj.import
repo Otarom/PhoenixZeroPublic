@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bcnj0vtwhca5h"
+path="res://.godot/imported/Cannoneer.obj-3983565c2f8e8b16c86e4f08026f330b.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Cannoneer.obj-3983565c2f8e8b16c86e4f08026f330b.mesh"]
+
+source_file="res://Enemies/Boss/Minions/Fighter/Cannoneer.obj"
+dest_files=["res://.godot/imported/Cannoneer.obj-3983565c2f8e8b16c86e4f08026f330b.mesh", "res://.godot/imported/Cannoneer.obj-3983565c2f8e8b16c86e4f08026f330b.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

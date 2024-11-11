@@ -1,0 +1,190 @@
+[gd_scene load_steps=14 format=3]
+
+[ext_resource type="PackedScene" uid="uid://cpplhfe8g3i70" path="res://Player/Planes/Models/Quad/quad2fix2.glb" id="1"]
+[ext_resource type="Texture2D" uid="uid://bjtf0lhenqkd7" path="res://Player/Planes/Models/Quad/Rotor/HeliRotor1.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://boy531esbp4dy" path="res://Player/Planes/Models/Quad/Rotor/HeliRotor2.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://eil87mpxg6kg" path="res://Player/Planes/Models/Quad/Rotor/HeliRotor3.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://bpxky2xl2ilpx" path="res://Player/Planes/Models/Quad/Rotor/HeliRotor4.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://7fc1sodku28c" path="res://Player/Planes/Models/Quad/Rotor/HeliRotor5.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://db537pglwbsqr" path="res://Player/Planes/Models/Quad/Rotor/HeliRotor6.png" id="7"]
+
+[sub_resource type="StandardMaterial3D" id="1"]
+albedo_color = Color(0.831373, 0.172549, 0.219608, 1)
+script = null
+
+[sub_resource type="StandardMaterial3D" id="2"]
+albedo_color = Color(0.105882, 0.137255, 0.345098, 1)
+script = null
+
+[sub_resource type="StandardMaterial3D" id="3"]
+albedo_color = Color(0.105882, 0.137255, 0.345098, 1)
+script = null
+
+[sub_resource type="PrismMesh" id="4"]
+script = null
+
+[sub_resource type="SpriteFrames" id="5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 30.0
+}]
+script = null
+
+[sub_resource type="SpriteFrames" id="6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 30.0
+}]
+script = null
+
+[node name="EnemQuad" instance=ExtResource("1")]
+transform = Transform3D(-8.74228e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.74228e-09, 0, 0, 0)
+
+[node name="Cylinder" parent="." index="0"]
+material_override = SubResource("1")
+
+[node name="Cylinder_001" parent="." index="1"]
+material_override = SubResource("1")
+
+[node name="Cube" parent="." index="2"]
+material_override = SubResource("1")
+
+[node name="Cockpit" type="Node3D" parent="." index="4"]
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Cockpit" index="0"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -4.23516e-22, 0, 1, -0.0123164, 0.59716, 5.38385e-10)
+material_override = SubResource("2")
+radius = 0.942946
+height = 1.73825
+sides = 10
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Cockpit" index="1"]
+transform = Transform3D(1.19249e-08, 1, 0, -1, 1.19249e-08, 0, 1.11173e-21, 0, 1, 2.95636, 0.55774, -1.29226e-07)
+material_override = SubResource("2")
+radius = 0.999097
+height = 2.1275
+sides = 10
+cone = true
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Cockpit" index="2"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -4.23516e-22, 0, 1, 1.04539, 0.198212, -4.56954e-08)
+material_override = SubResource("2")
+radius = 1.344
+height = 1.73825
+sides = 10
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="Cockpit" index="3"]
+transform = Transform3D(-4.37114e-08, 1.88031, -3.64847e-08, 0, -8.21908e-08, -0.834672, -1, -8.21907e-08, 1.59479e-15, 2.95274, 0.774085, -1.29068e-07)
+material_override = SubResource("3")
+mesh = SubResource("4")
+
+[node name="Turbines" type="Node3D" parent="." index="5"]
+
+[node name="Node3D" type="Node3D" parent="Turbines" index="0"]
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Turbines/Node3D" index="0"]
+transform = Transform3D(0.581731, 0, -3.37508e-14, 0, 1, 0, 1.42109e-14, 0, 0.61445, 2.10563, 0, 3.66449)
+axis = 1
+shaded = true
+sprite_frames = SubResource("5")
+autoplay = "default"
+frame_progress = 0.573552
+
+[node name="AnimatedSprite3D2" type="AnimatedSprite3D" parent="Turbines/Node3D" index="1"]
+transform = Transform3D(0.581731, 0, -3.55271e-14, 0, 1, 0, 1.42109e-14, 0, 0.61445, 2.10563, 0, 3.66449)
+axis = 1
+shaded = true
+sprite_frames = SubResource("6")
+autoplay = "default"
+
+[node name="Node3D2" type="Node3D" parent="Turbines" index="1"]
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Turbines/Node3D2" index="0"]
+transform = Transform3D(0.581731, 0, -7.4607e-14, 0, 1, 0, 1.42109e-14, 0, 0.61445, 2.05468, 2.5034e-05, -3.53363)
+axis = 1
+shaded = true
+sprite_frames = SubResource("5")
+autoplay = "default"
+frame_progress = 0.573552
+
+[node name="AnimatedSprite3D2" type="AnimatedSprite3D" parent="Turbines/Node3D2" index="1"]
+transform = Transform3D(0.581731, 0, -7.99361e-14, 0, 1, 0, 1.42109e-14, 0, 0.61445, 2.05468, 2.5034e-05, -3.53363)
+axis = 1
+shaded = true
+sprite_frames = SubResource("6")
+autoplay = "default"
+
+[node name="Node3D3" type="Node3D" parent="Turbines" index="2"]
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Turbines/Node3D3" index="0"]
+transform = Transform3D(0.5, 0, -1.08201e-14, 0, 0.897, 0, 1.08201e-14, 0, 0.5, -3.81991, -0.323029, -2.72312)
+axis = 1
+shaded = true
+sprite_frames = SubResource("5")
+autoplay = "default"
+frame_progress = 0.925688
+
+[node name="AnimatedSprite3D2" type="AnimatedSprite3D" parent="Turbines/Node3D3" index="1"]
+transform = Transform3D(0.5, 0, -1.08201e-14, 0, 0.897, 0, 1.08201e-14, 0, 0.5, -3.81991, -0.323029, -2.72312)
+axis = 1
+shaded = true
+sprite_frames = SubResource("6")
+autoplay = "default"
+
+[node name="Node3D4" type="Node3D" parent="Turbines" index="3"]
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Turbines/Node3D4" index="0"]
+transform = Transform3D(0.5, 0, -1.42109e-14, 0, 1, 0, 1.42109e-14, 0, 0.5, -3.81991, -0.323029, 2.76111)
+axis = 1
+shaded = true
+sprite_frames = SubResource("5")
+autoplay = "default"
+frame_progress = 0.692597
+
+[node name="AnimatedSprite3D2" type="AnimatedSprite3D" parent="Turbines/Node3D4" index="1"]
+transform = Transform3D(0.5, 0, -1.42109e-14, 0, 1, 0, 1.42109e-14, 0, 0.5, -3.81991, -0.323029, 2.76111)
+axis = 1
+shaded = true
+sprite_frames = SubResource("6")
+autoplay = "default"
+frame_progress = 0.620924

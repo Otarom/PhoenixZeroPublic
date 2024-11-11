@@ -1,0 +1,18 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://ba0rpyd4jxe42"
+path="res://.godot/imported/TestBorder2.png-84dbaea81b6c13586ab9ad9bb052fb6c.ctex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://Player/UI/TopInfo/TestBorder2.png"
+dest_files=PackedStringArray("res://.godot/imported/TestBorder2.png-84dbaea81b6c13586ab9ad9bb052fb6c.ctex")
+
+[params]
+
+dummy_value_ignore_me=0

@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhspu8aqk6nir"]
+
+[ext_resource type="ArrayMesh" uid="uid://cr8fewqlwb7tw" path="res://Player/Planes/Models/PaperPlane/AviaoPapel.obj" id="1_8ikns"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1dvdo"]
+
+[node name="PaperPlane" type="Node3D"]
+
+[node name="AviaoPapel" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.984808, -0.173648, 0, 0.173648, 0.984808, 0, -0.349421, 0.265082)
+mesh = ExtResource("1_8ikns")
+surface_material_override/0 = SubResource("StandardMaterial3D_1dvdo")

@@ -1,0 +1,9 @@
+[gd_resource type="ParticleProcessMaterial" format=3]
+
+[resource]
+emission_shape = 3
+emission_box_extents = Vector3(80, 2, 80)
+gravity = Vector3(0, 0, 0)
+turbulence_noise_strength = 0.2
+turbulence_noise_scale = 2.0
+script = null

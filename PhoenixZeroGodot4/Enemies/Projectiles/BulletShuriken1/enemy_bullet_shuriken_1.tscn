@@ -1,0 +1,76 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://Enemies/Projectiles/BulletShuriken1/enemy_bullet_shuriken_1.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://be7sfx6idvsxh" path="res://Enemies/Projectiles/BulletShuriken1/Shuriken1.png" id="2"]
+
+[sub_resource type="SphereShape3D" id="1"]
+radius = 0.45
+script = null
+
+[sub_resource type="Animation" id="2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+script = null
+
+[sub_resource type="Animation" id="3"]
+resource_name = "rotate"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.5708, 0)]
+}
+script = null
+
+[sub_resource type="AnimationLibrary" id="4"]
+_data = {
+"RESET": SubResource("2"),
+"rotate": SubResource("3")
+}
+script = null
+
+[node name="EnemyBulletShuriken1" type="CharacterBody3D"]
+collision_layer = 0
+collision_mask = 5
+script = ExtResource("1")
+
+[node name="Sprite" type="Sprite3D" parent="."]
+pixel_size = 0.0013
+axis = 1
+double_sided = false
+texture = ExtResource("2")
+
+[node name="Collision" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collision"]
+transform = Transform3D(1.3, 0, 0, 0, -5.68248e-08, -1.3, 0, 1.3, -5.68248e-08, 0, 0, 0)
+shape = SubResource("1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "rotate"
+libraries = {
+"": SubResource("4")
+}
+
+[connection signal="body_entered" from="Collision" to="." method="_on_collision_body_entered" flags=18]

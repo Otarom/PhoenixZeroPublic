@@ -1,0 +1,69 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Shader" uid="uid://bdlu1f3edybn4" path="res://Misc/VFX/3D_Explosion/explosion_shader.tres" id="1"]
+
+[sub_resource type="StandardMaterial3D" id="1"]
+transparency = 1
+albedo_color = Color(0.760784, 0.341176, 0, 0.439216)
+script = null
+
+[sub_resource type="ShaderMaterial" id="2"]
+render_priority = -100
+next_pass = null
+shader = ExtResource("1")
+shader_parameter/displace = 0.25
+shader_parameter/albedo = Color(0.694118, 0.419608, 0.0980392, 1)
+shader_parameter/emission_color = Color(0.796078, 0.537255, 0.192157, 1)
+shader_parameter/emission_str = 0.0
+script = null
+
+[sub_resource type="StandardMaterial3D" id="3"]
+render_priority = 1
+next_pass = SubResource("2")
+transparency = 1
+blend_mode = 1
+albedo_color = Color(0.937255, 0.933333, 0, 1)
+emission_energy_multiplier = 3.18
+script = null
+
+[sub_resource type="StandardMaterial3D" id="4"]
+albedo_color = Color(0.392157, 0.384314, 0.431373, 1)
+script = null
+
+[node name="EnergyCell" type="Node3D"]
+
+[node name="Glass" type="CSGCylinder3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+radius = 0.4
+sides = 10
+material = SubResource("1")
+
+[node name="Tube" type="CSGCylinder3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+radius = 0.2
+sides = 10
+material = SubResource("3")
+
+[node name="Cap2" type="CSGCylinder3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -1, 0, 0)
+radius = 0.45
+height = 0.4
+sides = 10
+material = SubResource("4")
+
+[node name="Detail" type="CSGCylinder3D" parent="Cap2"]
+radius = 0.47
+height = 0.2
+sides = 10
+
+[node name="Cap1" type="CSGCylinder3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 1, 0, 0)
+radius = 0.45
+height = 0.4
+sides = 10
+material = SubResource("4")
+
+[node name="Detail" type="CSGCylinder3D" parent="Cap1"]
+radius = 0.47
+height = 0.2
+sides = 10

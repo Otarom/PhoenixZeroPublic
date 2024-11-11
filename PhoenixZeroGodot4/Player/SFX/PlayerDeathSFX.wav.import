@@ -1,0 +1,16 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cxoeann7a07mt"
+path="res://.godot/imported/PlayerDeathSFX.wav-2746b56921b1b1ad529f3d14b253da35.sample"
+
+[deps]
+
+source_file="res://Player/SFX/PlayerDeathSFX.wav"
+dest_files=PackedStringArray("res://.godot/imported/PlayerDeathSFX.wav-2746b56921b1b1ad529f3d14b253da35.sample")
+
+[params]
+
+dummy_value_ignore_me=0
+compress/mode=0

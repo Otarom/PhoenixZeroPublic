@@ -1,0 +1,250 @@
+[gd_scene load_steps=23 format=3]
+
+[ext_resource type="Script" path="res://Enemies/Boss/Minions/InvShip/inv_ship.gd" id="1"]
+[ext_resource type="Script" path="res://Enemies/EnemyUI.gd" id="2"]
+[ext_resource type="PackedScene" uid="uid://tygxsbp2ogxb" path="res://Enemies/enemy_health_bar.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://c3wc4sxidpgom" path="res://Enemies/Boss/Minions/InvShip/InvShipModel.tscn" id="4"]
+[ext_resource type="Script" path="res://Components/HealthComponent.gd" id="5"]
+[ext_resource type="Script" path="res://Components/StatHandler.gd" id="6"]
+[ext_resource type="Script" path="res://Components/BaseStats.gd" id="7"]
+[ext_resource type="Script" path="res://Enemies/Boss/Sound.gd" id="8"]
+[ext_resource type="AudioStream" uid="uid://bkrh4xouq63ul" path="res://Enemies/SFX/EnemHitSound2.wav" id="9"]
+[ext_resource type="AudioStream" uid="uid://c3rv5csc8c6pt" path="res://Enemies/SFX/EnemExplosion.wav" id="10"]
+[ext_resource type="Texture2D" uid="uid://bvi3x4ikuiq24" path="res://Player/Movement/Aim(Locked).png" id="11"]
+
+[sub_resource type="ViewportTexture" id="1"]
+viewport_path = NodePath("HealthbarView/SubViewport")
+script = null
+
+[sub_resource type="StandardMaterial3D" id="2"]
+albedo_color = Color(0.72549, 0.14902, 0.396078, 1)
+script = null
+
+[sub_resource type="PrismMesh" id="3"]
+material = SubResource("2")
+left_to_right = 1.0
+size = Vector3(0.1, 0.1, 0.6)
+script = null
+
+[sub_resource type="StandardMaterial3D" id="4"]
+albedo_color = Color(0.247059, 0.184314, 0.305882, 1)
+script = null
+
+[sub_resource type="PrismMesh" id="5"]
+material = SubResource("4")
+left_to_right = 1.0
+size = Vector3(0.2, 0.34, 0.6)
+script = null
+
+[sub_resource type="StandardMaterial3D" id="6"]
+albedo_color = Color(0.247059, 0.184314, 0.305882, 1)
+script = null
+
+[sub_resource type="PrismMesh" id="7"]
+material = SubResource("2")
+left_to_right = 0.0
+size = Vector3(0.3, 0.55, 0.6)
+script = null
+
+[sub_resource type="CapsuleShape3D" id="8"]
+radius = 0.593215
+height = 2.43223
+script = null
+
+[sub_resource type="Animation" id="9"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+script = null
+
+[sub_resource type="Animation" id="10"]
+resource_name = "Spin"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.28319, 0)]
+}
+script = null
+
+[sub_resource type="AnimationLibrary" id="11"]
+_data = {
+"RESET": SubResource("9"),
+"Spin": SubResource("10")
+}
+script = null
+
+[node name="InvShip" type="CharacterBody3D" node_paths=PackedStringArray("HealthComponent", "StatHandler", "model") groups=[
+"Enemies",
+"Lockable",
+]]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1")
+HealthComponent = NodePath("HealthComponent")
+StatHandler = NodePath("StatHandler")
+model = NodePath("ModelRig/InvShipModel")
+
+[node name="EnemyUI" type="Control" parent="." node_paths=PackedStringArray("MainNode", "HealthComponent")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2")
+MainNode = NodePath("..")
+HealthComponent = NodePath("../HealthComponent")
+font_size = 12
+
+[node name="HealthbarView" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+billboard = 1
+texture = SubResource("1")
+
+[node name="SubViewport" type="SubViewport" parent="HealthbarView"]
+disable_3d = true
+transparent_bg = true
+
+[node name="EnemyHealthBar" parent="HealthbarView/SubViewport" node_paths=PackedStringArray("MainNode", "HealthComponent", "StatHandler") instance=ExtResource("3")]
+MainNode = NodePath("../../..")
+HealthComponent = NodePath("../../../HealthComponent")
+StatHandler = NodePath("../../../StatHandler")
+ShowValue = false
+
+[node name="CharacterBody3D" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 0, 0, 0)
+visible = false
+material = SubResource("2")
+
+[node name="ModelRig" type="Marker3D" parent="."]
+
+[node name="InvShipModel" parent="ModelRig" instance=ExtResource("4")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.268708, 0, -0.255528)
+
+[node name="Model" type="Node3D" parent="ModelRig"]
+visible = false
+
+[node name="RoundRight" type="CSGCylinder3D" parent="ModelRig/Model"]
+transform = Transform3D(1.91069e-15, 5.32667e-08, 1, 1, -5.32667e-08, 0, 4.37114e-08, 1.2186, -4.37114e-08, 0.3, -0.2, 0)
+radius = 0.3
+material = SubResource("2")
+
+[node name="RoundLeft" type="CSGCylinder3D" parent="ModelRig/Model"]
+transform = Transform3D(1.91069e-15, 5.32667e-08, 1, 1, -5.32667e-08, 0, 4.37114e-08, 1.2186, -4.37114e-08, -0.3, -0.2, 0)
+radius = 0.3
+material = SubResource("2")
+
+[node name="Top" type="CSGBox3D" parent="ModelRig/Model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.2186, 0, -0.0138636, 0)
+size = Vector3(1.2, 0.33, 2)
+material = SubResource("2")
+
+[node name="Bottom" type="CSGBox3D" parent="ModelRig/Model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.2186, 0, -0.3, 0)
+size = Vector3(0.6, 0.4, 2)
+material = SubResource("2")
+
+[node name="Cabin" type="Node3D" parent="ModelRig/Model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.641, -0.334276)
+
+[node name="CabinTop2" type="CSGMesh3D" parent="ModelRig/Model/Cabin"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -8.94666e-05, 0.398482)
+use_collision = true
+mesh = SubResource("3")
+
+[node name="CabinTop" type="CSGBox3D" parent="ModelRig/Model/Cabin"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0469335)
+size = Vector3(0.6, 0.1, 0.6)
+material = SubResource("2")
+
+[node name="CabinBottom" type="CSGBox3D" parent="ModelRig/Model/Cabin"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.438, 0.197769)
+size = Vector3(0.6, 0.1, 0.9)
+material = SubResource("2")
+
+[node name="CabinMiddle2" type="CSGMesh3D" parent="ModelRig/Model/Cabin"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -0.221382, 0.548735)
+use_collision = true
+mesh = SubResource("5")
+
+[node name="CabinMiddle" type="CSGBox3D" parent="ModelRig/Model/Cabin"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.219885, 0.0971136)
+size = Vector3(0.6, 0.34, 0.7)
+material = SubResource("6")
+
+[node name="CabinBack2" type="CSGBox3D" parent="ModelRig/Model/Cabin"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.249644, -0.301225)
+size = Vector3(0.6, 0.6, 0.1)
+material = SubResource("2")
+
+[node name="CabinBack" type="CSGMesh3D" parent="ModelRig/Model/Cabin"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -0.222658, -0.50184)
+use_collision = true
+mesh = SubResource("7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.2, 0, 0, 0, -5.24537e-08, -1.2, 0, 1.2, -5.24537e-08, 0, 0, 0)
+shape = SubResource("8")
+
+[node name="HealthComponent" type="Node3D" parent="." node_paths=PackedStringArray("StatHandler")]
+script = ExtResource("5")
+StatHandler = NodePath("../StatHandler")
+
+[node name="StatHandler" type="Node" parent="." node_paths=PackedStringArray("BaseStats", "MainNode")]
+script = ExtResource("6")
+BaseStats = NodePath("../BaseStats")
+MainNode = NodePath("..")
+
+[node name="BaseStats" type="Node" parent="."]
+script = ExtResource("7")
+max_health = 5000.0
+
+[node name="Sound" type="Node" parent="." node_paths=PackedStringArray("HealthComponent")]
+script = ExtResource("8")
+HealthComponent = NodePath("../HealthComponent")
+
+[node name="HitSound" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource("9")
+volume_db = -10.0
+bus = &"EnemSFX"
+
+[node name="Death" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource("10")
+volume_db = -6.0
+pitch_scale = 1.2
+
+[node name="LockMark" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.520162, 0)
+visible = false
+modulate = Color(1, 0, 0.270588, 1)
+pixel_size = 0.004
+axis = 1
+texture = ExtResource("11")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="LockMark"]
+autoplay = "Spin"
+speed_scale = 0.5
+libraries = {
+"": SubResource("11")
+}
+
+[connection signal="on_death" from="HealthComponent" to="." method="_on_health_component_on_death" flags=18]
+[connection signal="on_hit" from="HealthComponent" to="." method="_on_health_component_on_hit" flags=18]
+[connection signal="on_hit" from="HealthComponent" to="Sound" method="_on_health_component_on_hit" flags=18]

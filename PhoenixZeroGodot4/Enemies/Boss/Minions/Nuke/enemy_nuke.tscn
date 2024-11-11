@@ -1,0 +1,247 @@
+[gd_scene load_steps=18 format=3]
+
+[ext_resource type="Script" path="res://Enemies/Boss/Minions/Nuke/enemy_nuke.gd" id="1"]
+[ext_resource type="Script" path="res://Enemies/Boss/Minions/Nuke/Weapon1.gd" id="2"]
+[ext_resource type="PackedScene" uid="uid://cbt0jq6s51rux" path="res://Enemies/Projectiles/Explosion1/enemy_explosion_1.tscn" id="3"]
+[ext_resource type="Texture2D" uid="uid://tfewrlxffyr1" path="res://Enemies/Boss/Minions/Nuke/WarningZone/zoneWarning1.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://btnr7cs25ky1k" path="res://Enemies/Boss/Minions/Nuke/WarningZone/zoneWarning2.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://b5djelh0x83r2" path="res://Enemies/Boss/Minions/Nuke/WarningZone/zoneWarning3.png" id="6"]
+
+[sub_resource type="StandardMaterial3D" id="1"]
+albedo_color = Color(0.780392, 0.196078, 0.227451, 1)
+script = null
+
+[sub_resource type="StandardMaterial3D" id="2"]
+albedo_color = Color(0.537255, 0.180392, 0.258824, 1)
+metallic = 0.37
+script = null
+
+[sub_resource type="StandardMaterial3D" id="3"]
+albedo_color = Color(0.780392, 0.196078, 0.227451, 1)
+script = null
+
+[sub_resource type="StandardMaterial3D" id="4"]
+albedo_color = Color(0.780392, 0.196078, 0.227451, 1)
+script = null
+
+[sub_resource type="CylinderMesh" id="5"]
+material = SubResource("4")
+bottom_radius = 0.2
+height = 0.8
+radial_segments = 8
+script = null
+
+[sub_resource type="StandardMaterial3D" id="6"]
+albedo_color = Color(0.517647, 0.105882, 0.133333, 1)
+script = null
+
+[sub_resource type="PrismMesh" id="7"]
+material = SubResource("6")
+left_to_right = 1.0
+size = Vector3(0.5, 0.5, 0.1)
+script = null
+
+[sub_resource type="Animation" id="8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ModelRig/BombModel:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+script = null
+
+[sub_resource type="Animation" id="9"]
+resource_name = "wobble"
+length = 1.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ModelRig/BombModel:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.8, 1.3, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -0.261799), Vector3(0, 0, 0), Vector3(0, 0, 0.261799), Vector3(0, 0, 0)]
+}
+script = null
+
+[sub_resource type="AnimationLibrary" id="10"]
+_data = {
+"RESET": SubResource("8"),
+"wobble": SubResource("9")
+}
+script = null
+
+[sub_resource type="SpriteFrames" id="11"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+script = null
+
+[node name="enemy_nuke" type="CharacterBody3D" node_paths=PackedStringArray("model")]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1")
+model = NodePath("ModelRig/BombModel")
+
+[node name="ModelRig" type="Marker3D" parent="."]
+
+[node name="BombModel" type="Node3D" parent="ModelRig"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+
+[node name="Head" type="CSGSphere3D" parent="ModelRig/BombModel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.552548)
+radius = 0.48
+radial_segments = 8
+rings = 8
+material = SubResource("1")
+
+[node name="Ring1" type="CSGTorus3D" parent="ModelRig/BombModel"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.515736)
+inner_radius = 0.4
+outer_radius = 0.55
+material = SubResource("2")
+
+[node name="Ring2" type="CSGTorus3D" parent="ModelRig/BombModel"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.349308)
+inner_radius = 0.4
+outer_radius = 0.55
+material = SubResource("2")
+
+[node name="Body" type="CSGCylinder3D" parent="ModelRig/BombModel"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.0576162)
+height = 0.84249
+material = SubResource("3")
+
+[node name="Tail" type="CSGMesh3D" parent="ModelRig/BombModel"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.762545)
+mesh = SubResource("5")
+
+[node name="TopWing" type="CSGMesh3D" parent="ModelRig/BombModel/Tail"]
+transform = Transform3D(-4.37114e-08, 0, 1, -0.93892, -0.344135, -4.10415e-08, 0.344135, -0.93892, 1.50426e-08, 0, -0.136759, -0.493912)
+mesh = SubResource("7")
+
+[node name="BottomWing" type="CSGMesh3D" parent="ModelRig/BombModel/Tail"]
+transform = Transform3D(-4.0981e-09, 1.11986e-08, -1, -0.939094, -0.34366, 0, -0.34366, 0.939094, 1.19249e-08, 0, -0.137, 0.494)
+mesh = SubResource("7")
+
+[node name="LeftWing" type="CSGMesh3D" parent="ModelRig/BombModel/Tail"]
+transform = Transform3D(0.34366, -0.939094, -8.74228e-08, -0.939094, -0.34366, 0, -3.00437e-08, 8.20982e-08, -1, -0.545972, -0.134651, 0.025)
+mesh = SubResource("7")
+
+[node name="RightWing" type="CSGMesh3D" parent="ModelRig/BombModel/Tail"]
+transform = Transform3D(-0.34366, 0.939094, 1.74846e-07, -0.939094, -0.34366, 0, 6.00874e-08, -1.64196e-07, 1, 0.546, -0.135, 0.025)
+mesh = SubResource("7")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "wobble"
+libraries = {
+"": SubResource("10")
+}
+
+[node name="Weapon1" type="Marker3D" parent="."]
+script = ExtResource("2")
+Bullet = ExtResource("3")
+damage = 9999.0
+
+[node name="Mount1" type="CSGSphere3D" parent="Weapon1"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+
+[node name="Marker3D" type="Marker3D" parent="Weapon1/Mount1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="Mount2" type="CSGSphere3D" parent="Weapon1"]
+transform = Transform3D(0.0866025, 0, 0.05, 0, 0.1, 0, -0.05, 0, 0.0866025, 0, 0, 0)
+
+[node name="Marker3D" type="Marker3D" parent="Weapon1/Mount2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="Mount3" type="CSGSphere3D" parent="Weapon1"]
+transform = Transform3D(0.05, 0, 0.0866025, 0, 0.1, 0, -0.0866025, 0, 0.05, 0, 0, 0)
+
+[node name="Marker3D" type="Marker3D" parent="Weapon1/Mount3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="Mount4" type="CSGSphere3D" parent="Weapon1"]
+transform = Transform3D(-4.37114e-09, 0, 0.0999999, 0, 0.1, 0, -0.0999999, 0, -4.37114e-09, 0, 0, 0)
+
+[node name="Marker3D" type="Marker3D" parent="Weapon1/Mount4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="Mount5" type="CSGSphere3D" parent="Weapon1"]
+transform = Transform3D(-0.05, 0, 0.0866025, 0, 0.1, 0, -0.0866025, 0, -0.05, 0, 0, 0)
+
+[node name="Marker3D" type="Marker3D" parent="Weapon1/Mount5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="Mount6" type="CSGSphere3D" parent="Weapon1"]
+transform = Transform3D(-0.0866025, 0, 0.05, 0, 0.1, 0, -0.05, 0, -0.0866025, 0, 0, 0)
+
+[node name="Marker3D" type="Marker3D" parent="Weapon1/Mount6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="Mount7" type="CSGSphere3D" parent="Weapon1"]
+transform = Transform3D(-0.0999999, 0, -8.74227e-09, 0, 0.1, 0, 8.74227e-09, 0, -0.0999999, 0, 0, 0)
+
+[node name="Marker3D" type="Marker3D" parent="Weapon1/Mount7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="Mount8" type="CSGSphere3D" parent="Weapon1"]
+transform = Transform3D(-0.0866025, 0, -0.05, 0, 0.1, 0, 0.05, 0, -0.0866025, 0, 0, 0)
+
+[node name="Marker3D" type="Marker3D" parent="Weapon1/Mount8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="Mount9" type="CSGSphere3D" parent="Weapon1"]
+transform = Transform3D(-0.05, 0, -0.0866025, 0, 0.1, 0, 0.0866025, 0, -0.05, 0, 0, 0)
+
+[node name="Marker3D" type="Marker3D" parent="Weapon1/Mount9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="Mount10" type="CSGSphere3D" parent="Weapon1"]
+transform = Transform3D(-4.37114e-09, 0, -0.0999999, 0, 0.1, 0, 0.0999999, 0, -4.37114e-09, 0, 0, 0)
+
+[node name="Marker3D" type="Marker3D" parent="Weapon1/Mount10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="Mount11" type="CSGSphere3D" parent="Weapon1"]
+transform = Transform3D(0.05, 0, -0.0866025, 0, 0.1, 0, 0.0866025, 0, 0.05, 0, 0, 0)
+
+[node name="Marker3D" type="Marker3D" parent="Weapon1/Mount11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="Mount12" type="CSGSphere3D" parent="Weapon1"]
+transform = Transform3D(0.0866025, 0, -0.05, 0, 0.1, 0, 0.05, 0, 0.0866025, 0, 0, 0)
+
+[node name="Marker3D" type="Marker3D" parent="Weapon1/Mount12"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.71538, 0)
+pixel_size = 0.08
+axis = 1
+sprite_frames = SubResource("11")
+autoplay = "default"
+frame_progress = 0.303785

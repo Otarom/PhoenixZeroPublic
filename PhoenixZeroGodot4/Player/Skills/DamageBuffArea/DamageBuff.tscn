@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://bx08rw07wqtn0"]
+
+[ext_resource type="Texture2D" uid="uid://cs1gdx2ajw2s1" path="res://Player/Skills/DamageBuffArea/BuffArea.png" id="1_vf4v3"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_476sa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_vf4v3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="DamageBuff" type="Node3D"]
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+axis = 1
+sprite_frames = SubResource("SpriteFrames_476sa")

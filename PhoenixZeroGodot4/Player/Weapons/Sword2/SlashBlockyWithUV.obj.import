@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cmhd8xp1sqees"
+path="res://.godot/imported/SlashBlockyWithUV.obj-2be50cfcb89596f7e5f649d0e135ba8b.mesh"
+
+[deps]
+
+files=["res://.godot/imported/SlashBlockyWithUV.obj-2be50cfcb89596f7e5f649d0e135ba8b.mesh"]
+
+source_file="res://Player/Weapons/Sword2/SlashBlockyWithUV.obj"
+dest_files=["res://.godot/imported/SlashBlockyWithUV.obj-2be50cfcb89596f7e5f649d0e135ba8b.mesh", "res://.godot/imported/SlashBlockyWithUV.obj-2be50cfcb89596f7e5f649d0e135ba8b.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

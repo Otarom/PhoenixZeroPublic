@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://xpewn86001nj"
+path="res://.godot/imported/papai_e_filinho_juntinhos.obj-5912b436029bd129b0cc63789504127a.mesh"
+
+[deps]
+
+files=["res://.godot/imported/papai_e_filinho_juntinhos.obj-5912b436029bd129b0cc63789504127a.mesh"]
+
+source_file="res://Enemies/Boss/Minions/InvShip/papai_e_filinho_juntinhos.obj"
+dest_files=["res://.godot/imported/papai_e_filinho_juntinhos.obj-5912b436029bd129b0cc63789504127a.mesh", "res://.godot/imported/papai_e_filinho_juntinhos.obj-5912b436029bd129b0cc63789504127a.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

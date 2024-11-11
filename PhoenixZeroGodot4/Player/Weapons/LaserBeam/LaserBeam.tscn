@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://Player/Weapons/Weapon.gd" id="1"]
+[ext_resource type="Script" path="res://Player/Weapons/LaserBeam/Spawner.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://c41uhfip12igp" path="res://Player/Weapons/LaserBeam/Laser.png" id="3"]
+
+[sub_resource type="BoxShape3D" id="1"]
+size = Vector3(1, 1, 2.5)
+script = null
+
+[node name="LaserBeam" type="Node3D" node_paths=PackedStringArray("Spawner")]
+script = ExtResource("1")
+max_ammo = 500
+damage = 100
+bullet_speed = 1
+range = 20
+reload_speed = 1000.0
+cooldown = 0.1
+Spawner = NodePath("Spawner")
+
+[node name="Spawner" type="Marker3D" parent="." node_paths=PackedStringArray("Weapon")]
+script = ExtResource("2")
+Weapon = NodePath("..")
+
+[node name="Laser" type="Sprite3D" parent="Spawner"]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+modulate = Color(0, 0.647059, 0.74902, 1)
+pixel_size = 0.005
+axis = 1
+texture = ExtResource("3")
+
+[node name="Area3D" type="Area3D" parent="Spawner"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="Dmg" type="CollisionShape3D" parent="Spawner/Area3D"]
+shape = SubResource("1")
+
+[connection signal="body_entered" from="Spawner/Area3D" to="Spawner" method="_on_area_3d_body_entered" flags=18]
+[connection signal="body_exited" from="Spawner/Area3D" to="Spawner" method="_on_area_3d_body_exited" flags=18]

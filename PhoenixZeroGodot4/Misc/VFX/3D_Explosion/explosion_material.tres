@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3]
+
+[ext_resource type="Shader" uid="uid://bdlu1f3edybn4" path="res://Misc/VFX/3D_Explosion/explosion_shader.tres" id="1"]
+
+[resource]
+render_priority = 0
+next_pass = null
+shader = ExtResource("1")
+shader_parameter/displace = 2.0
+shader_parameter/albedo = Color(0.172549, 0.172549, 0.172549, 1)
+shader_parameter/emission_color = Color(0.929412, 0.298039, 0, 1)
+shader_parameter/emission_str = 2.0
+script = null

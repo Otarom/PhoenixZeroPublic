@@ -1,0 +1,140 @@
+[gd_resource type="Resource" script_class="UserSettings" load_steps=17 format=3]
+
+[ext_resource type="Script" path="res://Resources/user_settings.gd" id="1"]
+
+[sub_resource type="InputEventMouseButton" id="1"]
+device = -1
+button_index = 2
+script = null
+
+[sub_resource type="InputEventKey" id="2"]
+device = -1
+physical_keycode = 73
+unicode = 105
+script = null
+
+[sub_resource type="InputEventKey" id="3"]
+device = -1
+physical_keycode = 81
+unicode = 113
+script = null
+
+[sub_resource type="InputEventKey" id="4"]
+device = -1
+physical_keycode = 90
+unicode = 122
+script = null
+
+[sub_resource type="InputEventKey" id="5"]
+device = -1
+physical_keycode = 79
+unicode = 111
+script = null
+
+[sub_resource type="InputEventKey" id="6"]
+device = -1
+physical_keycode = 88
+unicode = 120
+script = null
+
+[sub_resource type="InputEventKey" id="7"]
+physical_keycode = 69
+script = null
+
+[sub_resource type="InputEventKey" id="8"]
+device = -1
+physical_keycode = 4194326
+script = null
+
+[sub_resource type="InputEventKey" id="9"]
+device = -1
+physical_keycode = 83
+unicode = 115
+script = null
+
+[sub_resource type="InputEventKey" id="10"]
+device = -1
+physical_keycode = 65
+unicode = 97
+script = null
+
+[sub_resource type="InputEventKey" id="11"]
+device = -1
+physical_keycode = 68
+unicode = 100
+script = null
+
+[sub_resource type="InputEventMouseButton" id="12"]
+device = -1
+button_index = 1
+script = null
+
+[sub_resource type="InputEventKey" id="13"]
+device = -1
+physical_keycode = 32
+unicode = 32
+script = null
+
+[sub_resource type="InputEventKey" id="14"]
+device = -1
+physical_keycode = 4194325
+script = null
+
+[sub_resource type="InputEventKey" id="15"]
+device = -1
+physical_keycode = 87
+unicode = 119
+script = null
+
+[resource]
+script = ExtResource("1")
+version = 0
+clouds = false
+cloud_level = 0
+bgquality = 2
+wallquality = 1
+fullscreen = false
+screen_mode = 2
+resolution = 0
+vsync = true
+cam_invert = false
+camrotspd = 2.0
+max_fps = 0
+master = 0
+music = 0
+playersfx = 0
+enemsfx = 0
+explsfx = 0
+keybindings = {
+"": [],
+"cam_drag": [SubResource("1")],
+"cam_drag_alt": [],
+"cam_in": [SubResource("2")],
+"cam_in_alt": [],
+"cam_left": [SubResource("3")],
+"cam_left_alt": [],
+"cam_lock": [SubResource("4")],
+"cam_lock_alt": [],
+"cam_out": [SubResource("5")],
+"cam_out_alt": [],
+"cam_reset": [SubResource("6")],
+"cam_reset_alt": [],
+"cam_right": [SubResource("7")],
+"cam_right_alt": [],
+"player_dodge": [SubResource("8")],
+"player_dodge_alt": [],
+"player_down": [SubResource("9")],
+"player_down_alt": [],
+"player_left": [SubResource("10")],
+"player_left_alt": [],
+"player_right": [SubResource("11")],
+"player_right_alt": [],
+"player_shoot": [SubResource("12")],
+"player_shoot_alt": [],
+"player_skill": [SubResource("13")],
+"player_skill_alt": [],
+"player_sprint": [SubResource("14")],
+"player_sprint_alt": [],
+"player_up": [SubResource("15")],
+"player_up_alt": []
+}

@@ -1,0 +1,16 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bdrwndc1oyxgo"
+path="res://.godot/imported/LowHealthAlarm.wav-67741072f648318d5710fdc02c834b30.sample"
+
+[deps]
+
+source_file="res://Player/SFX/LowHealthAlarm.wav"
+dest_files=PackedStringArray("res://.godot/imported/LowHealthAlarm.wav-67741072f648318d5710fdc02c834b30.sample")
+
+[params]
+
+dummy_value_ignore_me=0
+compress/mode=0

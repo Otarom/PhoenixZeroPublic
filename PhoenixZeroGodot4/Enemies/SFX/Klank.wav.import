@@ -1,0 +1,16 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dcjl1ydlscoxr"
+path="res://.godot/imported/Klank.wav-26f1007c8eb3a7efd46c1175ef5648fc.sample"
+
+[deps]
+
+source_file="res://Enemies/SFX/Klank.wav"
+dest_files=PackedStringArray("res://.godot/imported/Klank.wav-26f1007c8eb3a7efd46c1175ef5648fc.sample")
+
+[params]
+
+dummy_value_ignore_me=0
+compress/mode=0

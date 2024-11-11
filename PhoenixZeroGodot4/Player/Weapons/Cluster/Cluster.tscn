@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://5vp1u8h1ifeg"]
+
+[ext_resource type="Script" path="res://Player/Weapons/Weapon.gd" id="1"]
+[ext_resource type="PackedScene" path="res://Player/Weapons/Cluster/ClusterBulletBig.tscn" id="2"]
+[ext_resource type="Script" path="res://Player/Weapons/Cluster/Spawner.gd" id="3"]
+[ext_resource type="AudioStream" uid="uid://celoljcdbi6p4" path="res://Player/SFX/ShotgunShoot1.wav" id="4_oavp0"]
+
+[node name="Cluster" type="Node3D" node_paths=PackedStringArray("Sound", "Spawner")]
+script = ExtResource("1")
+max_ammo = 1
+damage = 750
+bullet_speed = 4
+reload_speed = 2.0
+cooldown = 0.0
+Sound = NodePath("Sound")
+Bullet = ExtResource("2")
+Spawner = NodePath("Spawner")
+
+[node name="Spawner" type="Marker3D" parent="." node_paths=PackedStringArray("Weapon")]
+script = ExtResource("3")
+Weapon = NodePath("..")
+
+[node name="Mount1" type="CSGSphere3D" parent="Spawner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+visible = false
+radius = 0.1
+
+[node name="Direction" type="Marker3D" parent="Spawner/Mount1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.2)
+
+[node name="Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_oavp0")
+volume_db = -11.229
+pitch_scale = 0.77
+bus = &"PlayerSFX"

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://7vpjohxncpdi"
+path="res://.godot/imported/PipeWallBlock1.obj-dfa39bcf13e379014d74539027e11e52.mesh"
+
+[deps]
+
+files=["res://.godot/imported/PipeWallBlock1.obj-dfa39bcf13e379014d74539027e11e52.mesh"]
+
+source_file="res://World/Models/PipeWallBlock1.obj"
+dest_files=["res://.godot/imported/PipeWallBlock1.obj-dfa39bcf13e379014d74539027e11e52.mesh", "res://.godot/imported/PipeWallBlock1.obj-dfa39bcf13e379014d74539027e11e52.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

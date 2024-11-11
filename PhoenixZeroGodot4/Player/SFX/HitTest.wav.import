@@ -1,0 +1,16 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://5reee5ewpf40"
+path="res://.godot/imported/HitTest.wav-88c6b319e145c16f07da513c8991d568.sample"
+
+[deps]
+
+source_file="res://Player/SFX/HitTest.wav"
+dest_files=PackedStringArray("res://.godot/imported/HitTest.wav-88c6b319e145c16f07da513c8991d568.sample")
+
+[params]
+
+dummy_value_ignore_me=0
+compress/mode=0

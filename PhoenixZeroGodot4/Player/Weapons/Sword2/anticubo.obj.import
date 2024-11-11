@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://citldd0fa7134"
+path="res://.godot/imported/anticubo.obj-44645f8253701c651d55c2246f83f042.mesh"
+
+[deps]
+
+files=["res://.godot/imported/anticubo.obj-44645f8253701c651d55c2246f83f042.mesh"]
+
+source_file="res://Player/Weapons/Sword2/anticubo.obj"
+dest_files=["res://.godot/imported/anticubo.obj-44645f8253701c651d55c2246f83f042.mesh", "res://.godot/imported/anticubo.obj-44645f8253701c651d55c2246f83f042.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

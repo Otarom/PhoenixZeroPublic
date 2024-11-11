@@ -1,0 +1,778 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Texture2D" uid="uid://dhe38jwb1sfi2" path="res://World/Models/texture.png" id="1"]
+[ext_resource type="ArrayMesh" uid="uid://b3ofpsex75y0u" path="res://World/Models/LongPipe1.obj" id="2"]
+[ext_resource type="ArrayMesh" uid="uid://dhcy28c250qyl" path="res://World/Models/CurvePipe1.obj" id="3"]
+
+[sub_resource type="StandardMaterial3D" id="1"]
+albedo_color = Color(0.521569, 0.643137, 0.87451, 1)
+albedo_texture = ExtResource("1")
+metallic = 0.5
+metallic_specular = 0.7
+script = null
+
+[node name="WallBlock" type="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.3026, 0)
+material_override = SubResource("1")
+calculate_tangents = false
+
+[node name="Top" type="CSGCombiner3D" parent="."]
+
+[node name="CurveLong1" type="CSGCombiner3D" parent="Top"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.785799, 0, -0.424193)
+calculate_tangents = false
+
+[node name="LongPipe1" type="CSGMesh3D" parent="Top/CurveLong1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.25418, 1.55598, -1.5105)
+material_override = SubResource("1")
+mesh = ExtResource("2")
+
+[node name="CurvePipe2" type="CSGMesh3D" parent="Top/CurveLong1"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.25418, 7.39933, -1.5105)
+material_override = SubResource("1")
+mesh = ExtResource("3")
+
+[node name="LongPipe2" type="CSGMesh3D" parent="Top/CurveLong1"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.92253, 1.55598, 2.5948)
+material_override = SubResource("1")
+mesh = ExtResource("2")
+
+[node name="CurvePipe3" type="CSGMesh3D" parent="Top/CurveLong1"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.92253, 7.39933, 2.5948)
+material_override = SubResource("1")
+mesh = ExtResource("3")
+
+[node name="CurvePipe4" type="CSGMesh3D" parent="Top/CurveLong1"]
+transform = Transform3D(1.91069e-15, -4.37114e-08, -1, -1, -4.37114e-08, 0, -4.37114e-08, 1, -4.37114e-08, -2.252, 9.61958, 0.37672)
+material_override = SubResource("1")
+mesh = ExtResource("3")
+
+[node name="Curve3" type="CSGCombiner3D" parent="Top"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.69534, 1.55598, -1.35782)
+calculate_tangents = false
+
+[node name="LongPipe1" type="CSGMesh3D" parent="Top/Curve3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.33817)
+material_override = SubResource("1")
+mesh = ExtResource("2")
+
+[node name="CurvePipe2" type="CSGMesh3D" parent="Top/Curve3"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 5.84335, 1.33817)
+material_override = SubResource("1")
+mesh = ExtResource("3")
+
+[node name="LongPipe2" type="CSGMesh3D" parent="Top/Curve3"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.80994, 0, 4.1053)
+material_override = SubResource("1")
+mesh = ExtResource("2")
+
+[node name="CurvePipe3" type="CSGMesh3D" parent="Top/Curve3"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.80994, 5.84335, 4.1053)
+material_override = SubResource("1")
+mesh = ExtResource("3")
+
+[node name="CurvePipe4" type="CSGMesh3D" parent="Top/Curve3"]
+transform = Transform3D(1.91069e-15, -4.37114e-08, -1, -1, -4.37114e-08, 0, -4.37114e-08, 1, -4.37114e-08, 0.00217628, 8.0636, 1.88722)
+material_override = SubResource("1")
+mesh = ExtResource("3")
+
+[node name="Curve4" type="CSGCombiner3D" parent="Top"]
+transform = Transform3D(-3.49691e-08, 0, -0.8, 0, 0.8, 0, 0.8, 0, -3.49691e-08, 1.77761, -0.31583, -1.18197)
+calculate_tangents = false
+
+[node name="LongPipe1" type="CSGMesh3D" parent="Top/Curve4"]
+transform = Transform3D(1, 0, -3.55271e-15, 0, 1, 0, 3.55271e-15, 0, 1, 1.19209e-07, 0, 1.33817)
+material_override = SubResource("1")
+mesh = ExtResource("2")
+
+[node name="CurvePipe2" type="CSGMesh3D" parent="Top/Curve4"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 5.84335, 1.33817)
+material_override = SubResource("1")
+mesh = ExtResource("3")
+
+[node name="LongPipe2" type="CSGMesh3D" parent="Top/Curve4"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.80994, 0, 4.1053)
+material_override = SubResource("1")
+mesh = ExtResource("2")
+
+[node name="CurvePipe3" type="CSGMesh3D" parent="Top/Curve4"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.80994, 5.84335, 4.1053)
+material_override = SubResource("1")
+mesh = ExtResource("3")
+
+[node name="CurvePipe4" type="CSGMesh3D" parent="Top/Curve4"]
+transform = Transform3D(1.91069e-15, -4.37114e-08, -1, -1, -4.37114e-08, 0, -4.37114e-08, 1, -4.37114e-08, 0.00217628, 8.0636, 1.88722)
+material_override = SubResource("1")
+mesh = ExtResource("3")
+
+[node name="Curve2" type="CSGCombiner3D" parent="Top"]
+transform = Transform3D(-0.8, 0, -6.99382e-08, 0, 0.8, 0, 6.99382e-08, 0, -0.8, 0.510271, 2.14521, 2.21137)
+calculate_tangents = false
+
+[node name="LongPipe1" type="CSGMesh3D" parent="Top/Curve2"]
+material_override = SubResource("1")
+mesh = ExtResource("2")
+
+[node name="CurvePipe2" type="CSGMesh3D" parent="Top/Curve2"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 5.84335, 0)
+material_override = SubResource("1")
+mesh = ExtResource("3")
+
+[node name="LongPipe2" type="CSGMesh3D" parent="Top/Curve2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.17671, 0, 4.1053)
+material_override = SubResource("1")
+mesh = ExtResource("2")
+
+[node name="CurvePipe3" type="CSGMesh3D" parent="Top/Curve2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.17671, 5.84335, 4.1053)
+material_override = SubResource("1")
+mesh = ExtResource("3")
+
+[node name="CurvePipe4" type="CSGMesh3D" parent="Top/Curve2"]
+transform = Transform3D(1.91069e-15, -4.37114e-08, -1, -1, -4.37114e-08, 0, -4.37114e-08, 1, -4.37114e-08, 0.00217628, 8.0636, 1.88722)
+material_override = SubResource("1")
+mesh = ExtResource("3")
+
+[node name="Arch1" type="CSGCombiner3D" parent="Top"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.544311, -2.42612, -0.00962666)
+calculate_tangents = false
+
+[node name="LongPipe1" type="CSGMesh3D" parent="Top/Arch1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.35519, -2.22333)
+material_override = SubResource("1")
+mesh = ExtResource("2")
+
+[node name="LongPipe2" type="CSGMesh3D" parent="Top/Arch1"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -3.33786e-06, 5.35519, 1.9441)
+material_override = SubResource("1")
+mesh = ExtResource("2")
+
+[node name="LongPipe3" type="CSGMesh3D" parent="Top/Arch1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.476904, -2.22333)
+material_override = SubResource("1")
+mesh = ExtResource("2")
+
+[node name="LongPipe4" type="CSGMesh3D" parent="Top/Arch1"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -5.24521e-06, -0.476904, 1.9441)
+material_override = SubResource("1")
+mesh = ExtResource("2")
+
+[node name="CurvePipe2" type="CSGMesh3D" parent="Top/Arch1"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 11.1985, -2.22333)
+material_override = SubResource("1")
+mesh = ExtResource("3")
+
+[node name="CurvePipe3" type="CSGMesh3D" parent="Top/Arch1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.33786e-06, 11.1985, 1.9441)
+material_override = SubResource("1")
+mesh = ExtResource("3")
+
+[node name="Arch4" type="CSGCombiner3D" parent="Top"]
+transform = Transform3D(-0.613132, 0, 0.513877, 0, 0.8, 0, -0.513877, 0, -0.613132, -1.79431, -3.25278, 0.849817)
+calculate_tangents = false
+
+[node name="LongPipe1" type="CSGMesh3D" parent="Top/Arch4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.35519, -2.22333)
+material_override = SubResource("1")
+mesh = ExtResource("2")
+
+[node name="LongPipe2" type="CSGMesh3D" parent="Top/Arch4"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -3.33786e-06, 5.35519, 1.9441)
+material_override = SubResource("1")
+mesh = ExtResource("2")
+
+[node name="LongPipe3" type="CSGMesh3D" parent="Top/Arch4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.476904, -2.22333)
+material_override = SubResource("1")
+mesh = ExtResource("2")
+
+[node name="LongPipe4" type="CSGMesh3D" parent="Top/Arch4"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -5.24521e-06, -0.476904, 1.9441)
+material_override = SubResource("1")
+mesh = ExtResource("2")
+
+[node name="CurvePipe2" type="CSGMesh3D" parent="Top/Arch4"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 11.1985, -2.22333)
+material_override = SubResource("1")
+mesh = ExtResource("3")
+
+[node name="CurvePipe3" type="CSGMesh3D" parent="Top/Arch4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.33786e-06, 11.1985, 1.9441)
+material_override = SubResource("1")
+mesh = ExtResource("3")
+
+[node name="Arch2" type="CSGCombiner3D" parent="Top"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 1.5921, 1.01173, -0.427975)
+calculate_tangents = false
+
+[node name="LongPipe1" type="CSGMesh3D" parent="Top/Arch2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.35519, -2.22333)
+material_override = SubResource("1")
+mesh = ExtResource("2")
+
+[node name="LongPipe2" type="CSGMesh3D" parent="Top/Arch2"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -3.33786e-06, 5.35519, 1.9441)
+material_override = SubResource("1")
+mesh = ExtResource("2")
+
+[node name="LongPipe3" type="CSGMesh3D" parent="Top/Arch2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.476904, -2.22333)
+material_override = SubResource("1")
+mesh = ExtResource("2")
+
+[node name="LongPipe4" type="CSGMesh3D" parent="Top/Arch2"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -5.24521e-06, -0.476904, 1.9441)
+material_override = SubResource("1")
+mesh = ExtResource("2")
+
+[node name="CurvePipe2" type="CSGMesh3D" parent="Top/Arch2"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 11.1985, -2.22333)
+material_override = SubResource("1")
+mesh = ExtResource("3")
+
+[node name="CurvePipe3" type="CSGMesh3D" parent="Top/Arch2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.33786e-06, 11.1985, 1.9441)
+material_override = SubResource("1")
+mesh = ExtResource("3")
+
+[node name="Arch3" type="CSGCombiner3D" parent="Top"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -0.0525705, -3.55155, -0.427975)
+calculate_tangents = false
+
+[node name="LongPipe1" type="CSGMesh3D" parent="Top/Arch3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.35519, -2.22333)
+material_override = SubResource("1")
+mesh = ExtResource("2")
+
+[node name="LongPipe2" type="CSGMesh3D" parent="Top/Arch3"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -3.33786e-06, 5.35519, 1.9441)
+material_override = SubResource("1")
+mesh = ExtResource("2")
+
+[node name="LongPipe3" type="CSGMesh3D" parent="Top/Arch3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.476904, -2.22333)
+material_override = SubResource("1")
+mesh = ExtResource("2")
+
+[node name="LongPipe4" type="CSGMesh3D" parent="Top/Arch3"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -5.24521e-06, -0.476904, 1.9441)
+material_override = SubResource("1")
+mesh = ExtResource("2")
+
+[node name="CurvePipe2" type="CSGMesh3D" parent="Top/Arch3"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 11.1985, -2.22333)
+material_override = SubResource("1")
+mesh = ExtResource("3")
+
+[node name="CurvePipe3" type="CSGMesh3D" parent="Top/Arch3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.33786e-06, 11.1985, 1.9441)
+material_override = SubResource("1")
+mesh = ExtResource("3")
+
+[node name="Mid" type="CSGCombiner3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7, 0)
+
+[node name="CurveLong1" type="CSGCombiner3D" parent="Mid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.785799, 0, -0.424193)
+calculate_tangents = false
+
+[node name="LongPipe1" type="CSGMesh3D" parent="Mid/CurveLong1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.25418, 1.55598, -1.5105)
+material_override = SubResource("1")
+mesh = ExtResource("2")
+
+[node name="CurvePipe2" type="CSGMesh3D" parent="Mid/CurveLong1"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.25418, 7.39933, -1.5105)
+material_override = SubResource("1")
+mesh = ExtResource("3")
+
+[node name="LongPipe2" type="CSGMesh3D" parent="Mid/CurveLong1"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.92253, 1.55598, 2.5948)
+material_override = SubResource("1")
+mesh = ExtResource("2")
+
+[node name="CurvePipe3" type="CSGMesh3D" parent="Mid/CurveLong1"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.92253, 7.39933, 2.5948)
+material_override = SubResource("1")
+mesh = ExtResource("3")
+
+[node name="CurvePipe4" type="CSGMesh3D" parent="Mid/CurveLong1"]
+transform = Transform3D(1.91069e-15, -4.37114e-08, -1, -1, -4.37114e-08, 0, -4.37114e-08, 1, -4.37114e-08, -2.252, 9.61958, 0.37672)
+material_override = SubResource("1")
+mesh = ExtResource("3")
+
+[node name="Curve3" type="CSGCombiner3D" parent="Mid"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.69534, 1.55598, -1.35782)
+calculate_tangents = false
+
+[node name="LongPipe1" type="CSGMesh3D" parent="Mid/Curve3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.33817)
+material_override = SubResource("1")
+mesh = ExtResource("2")
+
+[node name="CurvePipe2" type="CSGMesh3D" parent="Mid/Curve3"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 5.84335, 1.33817)
+material_override = SubResource("1")
+mesh = ExtResource("3")
+
+[node name="LongPipe2" type="CSGMesh3D" parent="Mid/Curve3"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.80994, 0, 4.1053)
+material_override = SubResource("1")
+mesh = ExtResource("2")
+
+[node name="CurvePipe3" type="CSGMesh3D" parent="Mid/Curve3"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.80994, 5.84335, 4.1053)
+material_override = SubResource("1")
+mesh = ExtResource("3")
+
+[node name="CurvePipe4" type="CSGMesh3D" parent="Mid/Curve3"]
+transform = Transform3D(1.91069e-15, -4.37114e-08, -1, -1, -4.37114e-08, 0, -4.37114e-08, 1, -4.37114e-08, 0.00217628, 8.0636, 1.88722)
+material_override = SubResource("1")
+mesh = ExtResource("3")
+
+[node name="Curve4" type="CSGCombiner3D" parent="Mid"]
+transform = Transform3D(-3.49691e-08, 0, -0.8, 0, 0.8, 0, 0.8, 0, -3.49691e-08, 1.77761, -0.31583, -1.18197)
+calculate_tangents = false
+
+[node name="LongPipe1" type="CSGMesh3D" parent="Mid/Curve4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.33817)
+material_override = SubResource("1")
+mesh = ExtResource("2")
+
+[node name="CurvePipe2" type="CSGMesh3D" parent="Mid/Curve4"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 5.84335, 1.33817)
+material_override = SubResource("1")
+mesh = ExtResource("3")
+
+[node name="LongPipe2" type="CSGMesh3D" parent="Mid/Curve4"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.80994, 0, 4.1053)
+material_override = SubResource("1")
+mesh = ExtResource("2")
+
+[node name="CurvePipe3" type="CSGMesh3D" parent="Mid/Curve4"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.80994, 5.84335, 4.1053)
+material_override = SubResource("1")
+mesh = ExtResource("3")
+
+[node name="CurvePipe4" type="CSGMesh3D" parent="Mid/Curve4"]
+transform = Transform3D(1.91069e-15, -4.37114e-08, -1, -1, -4.37114e-08, 0, -4.37114e-08, 1, -4.37114e-08, 0.00217628, 8.0636, 1.88722)
+material_override = SubResource("1")
+mesh = ExtResource("3")
+
+[node name="Curve2" type="CSGCombiner3D" parent="Mid"]
+transform = Transform3D(-0.8, 0, -6.99382e-08, 0, 0.8, 0, 6.99382e-08, 0, -0.8, 0.510271, 2.14521, 2.21137)
+calculate_tangents = false
+
+[node name="LongPipe1" type="CSGMesh3D" parent="Mid/Curve2"]
+material_override = SubResource("1")
+mesh = ExtResource("2")
+
+[node name="CurvePipe2" type="CSGMesh3D" parent="Mid/Curve2"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 5.84335, 0)
+material_override = SubResource("1")
+mesh = ExtResource("3")
+
+[node name="LongPipe2" type="CSGMesh3D" parent="Mid/Curve2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.17671, 0, 4.1053)
+material_override = SubResource("1")
+mesh = ExtResource("2")
+
+[node name="CurvePipe3" type="CSGMesh3D" parent="Mid/Curve2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.17671, 5.84335, 4.1053)
+material_override = SubResource("1")
+mesh = ExtResource("3")
+
+[node name="CurvePipe4" type="CSGMesh3D" parent="Mid/Curve2"]
+transform = Transform3D(1.91069e-15, -4.37114e-08, -1, -1, -4.37114e-08, 0, -4.37114e-08, 1, -4.37114e-08, 0.00217628, 8.0636, 1.88722)
+material_override = SubResource("1")
+mesh = ExtResource("3")
+
+[node name="Arch1" type="CSGCombiner3D" parent="Mid"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.544311, -2.42612, -0.00962666)
+calculate_tangents = false
+
+[node name="LongPipe1" type="CSGMesh3D" parent="Mid/Arch1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.35519, -2.22333)
+material_override = SubResource("1")
+mesh = ExtResource("2")
+
+[node name="LongPipe2" type="CSGMesh3D" parent="Mid/Arch1"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -3.33786e-06, 5.35519, 1.9441)
+material_override = SubResource("1")
+mesh = ExtResource("2")
+
+[node name="LongPipe3" type="CSGMesh3D" parent="Mid/Arch1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.476904, -2.22333)
+material_override = SubResource("1")
+mesh = ExtResource("2")
+
+[node name="LongPipe4" type="CSGMesh3D" parent="Mid/Arch1"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -5.24521e-06, -0.476904, 1.9441)
+material_override = SubResource("1")
+mesh = ExtResource("2")
+
+[node name="CurvePipe2" type="CSGMesh3D" parent="Mid/Arch1"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 11.1985, -2.22333)
+material_override = SubResource("1")
+mesh = ExtResource("3")
+
+[node name="CurvePipe3" type="CSGMesh3D" parent="Mid/Arch1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.33786e-06, 11.1985, 1.9441)
+material_override = SubResource("1")
+mesh = ExtResource("3")
+
+[node name="Arch4" type="CSGCombiner3D" parent="Mid"]
+transform = Transform3D(-0.613132, 0, 0.513877, 0, 0.8, 0, -0.513877, 0, -0.613132, -1.79431, -3.25278, 0.849817)
+calculate_tangents = false
+
+[node name="LongPipe1" type="CSGMesh3D" parent="Mid/Arch4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.35519, -2.22333)
+material_override = SubResource("1")
+mesh = ExtResource("2")
+
+[node name="LongPipe2" type="CSGMesh3D" parent="Mid/Arch4"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -3.33786e-06, 5.35519, 1.9441)
+material_override = SubResource("1")
+mesh = ExtResource("2")
+
+[node name="LongPipe3" type="CSGMesh3D" parent="Mid/Arch4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.476904, -2.22333)
+material_override = SubResource("1")
+mesh = ExtResource("2")
+
+[node name="LongPipe4" type="CSGMesh3D" parent="Mid/Arch4"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -5.24521e-06, -0.476904, 1.9441)
+material_override = SubResource("1")
+mesh = ExtResource("2")
+
+[node name="CurvePipe2" type="CSGMesh3D" parent="Mid/Arch4"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 11.1985, -2.22333)
+material_override = SubResource("1")
+mesh = ExtResource("3")
+
+[node name="CurvePipe3" type="CSGMesh3D" parent="Mid/Arch4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.33786e-06, 11.1985, 1.9441)
+material_override = SubResource("1")
+mesh = ExtResource("3")
+
+[node name="Arch2" type="CSGCombiner3D" parent="Mid"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 1.5921, 1.01173, -0.427975)
+calculate_tangents = false
+
+[node name="LongPipe1" type="CSGMesh3D" parent="Mid/Arch2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.35519, -2.22333)
+material_override = SubResource("1")
+mesh = ExtResource("2")
+
+[node name="LongPipe2" type="CSGMesh3D" parent="Mid/Arch2"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -3.33786e-06, 5.35519, 1.9441)
+material_override = SubResource("1")
+mesh = ExtResource("2")
+
+[node name="LongPipe3" type="CSGMesh3D" parent="Mid/Arch2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.476904, -2.22333)
+material_override = SubResource("1")
+mesh = ExtResource("2")
+
+[node name="LongPipe4" type="CSGMesh3D" parent="Mid/Arch2"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -5.24521e-06, -0.476904, 1.9441)
+material_override = SubResource("1")
+mesh = ExtResource("2")
+
+[node name="CurvePipe2" type="CSGMesh3D" parent="Mid/Arch2"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 11.1985, -2.22333)
+material_override = SubResource("1")
+mesh = ExtResource("3")
+
+[node name="CurvePipe3" type="CSGMesh3D" parent="Mid/Arch2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.33786e-06, 11.1985, 1.9441)
+material_override = SubResource("1")
+mesh = ExtResource("3")
+
+[node name="Arch3" type="CSGCombiner3D" parent="Mid"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -0.0525705, -3.55155, -0.427975)
+calculate_tangents = false
+
+[node name="LongPipe1" type="CSGMesh3D" parent="Mid/Arch3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.35519, -2.22333)
+material_override = SubResource("1")
+mesh = ExtResource("2")
+
+[node name="LongPipe2" type="CSGMesh3D" parent="Mid/Arch3"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -3.33786e-06, 5.35519, 1.9441)
+material_override = SubResource("1")
+mesh = ExtResource("2")
+
+[node name="LongPipe3" type="CSGMesh3D" parent="Mid/Arch3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.476904, -2.22333)
+material_override = SubResource("1")
+mesh = ExtResource("2")
+
+[node name="LongPipe4" type="CSGMesh3D" parent="Mid/Arch3"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -5.24521e-06, -0.476904, 1.9441)
+material_override = SubResource("1")
+mesh = ExtResource("2")
+
+[node name="CurvePipe2" type="CSGMesh3D" parent="Mid/Arch3"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 11.1985, -2.22333)
+material_override = SubResource("1")
+mesh = ExtResource("3")
+
+[node name="CurvePipe3" type="CSGMesh3D" parent="Mid/Arch3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.33786e-06, 11.1985, 1.9441)
+material_override = SubResource("1")
+mesh = ExtResource("3")
+
+[node name="Bot" type="CSGCombiner3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -14, 0)
+
+[node name="CurveLong1" type="CSGCombiner3D" parent="Bot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.785799, 0, -0.424193)
+calculate_tangents = false
+
+[node name="LongPipe1" type="CSGMesh3D" parent="Bot/CurveLong1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.25418, 1.55598, -1.5105)
+material_override = SubResource("1")
+mesh = ExtResource("2")
+
+[node name="CurvePipe2" type="CSGMesh3D" parent="Bot/CurveLong1"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.25418, 7.39933, -1.5105)
+material_override = SubResource("1")
+mesh = ExtResource("3")
+
+[node name="LongPipe2" type="CSGMesh3D" parent="Bot/CurveLong1"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.92253, 1.55598, 2.5948)
+material_override = SubResource("1")
+mesh = ExtResource("2")
+
+[node name="CurvePipe3" type="CSGMesh3D" parent="Bot/CurveLong1"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.92253, 7.39933, 2.5948)
+material_override = SubResource("1")
+mesh = ExtResource("3")
+
+[node name="CurvePipe4" type="CSGMesh3D" parent="Bot/CurveLong1"]
+transform = Transform3D(1.91069e-15, -4.37114e-08, -1, -1, -4.37114e-08, 0, -4.37114e-08, 1, -4.37114e-08, -2.252, 9.61958, 0.37672)
+material_override = SubResource("1")
+mesh = ExtResource("3")
+
+[node name="Curve3" type="CSGCombiner3D" parent="Bot"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.69534, 1.55598, -1.35782)
+calculate_tangents = false
+
+[node name="LongPipe1" type="CSGMesh3D" parent="Bot/Curve3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.33817)
+material_override = SubResource("1")
+mesh = ExtResource("2")
+
+[node name="CurvePipe2" type="CSGMesh3D" parent="Bot/Curve3"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 5.84335, 1.33817)
+material_override = SubResource("1")
+mesh = ExtResource("3")
+
+[node name="LongPipe2" type="CSGMesh3D" parent="Bot/Curve3"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.80994, 0, 4.1053)
+material_override = SubResource("1")
+mesh = ExtResource("2")
+
+[node name="CurvePipe3" type="CSGMesh3D" parent="Bot/Curve3"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.80994, 5.84335, 4.1053)
+material_override = SubResource("1")
+mesh = ExtResource("3")
+
+[node name="CurvePipe4" type="CSGMesh3D" parent="Bot/Curve3"]
+transform = Transform3D(1.91069e-15, -4.37114e-08, -1, -1, -4.37114e-08, 0, -4.37114e-08, 1, -4.37114e-08, 0.00217628, 8.0636, 1.88722)
+material_override = SubResource("1")
+mesh = ExtResource("3")
+
+[node name="Curve4" type="CSGCombiner3D" parent="Bot"]
+transform = Transform3D(-3.49691e-08, 0, -0.8, 0, 0.8, 0, 0.8, 0, -3.49691e-08, 1.77761, -0.31583, -1.18197)
+calculate_tangents = false
+
+[node name="LongPipe1" type="CSGMesh3D" parent="Bot/Curve4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.33817)
+material_override = SubResource("1")
+mesh = ExtResource("2")
+
+[node name="CurvePipe2" type="CSGMesh3D" parent="Bot/Curve4"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 5.84335, 1.33817)
+material_override = SubResource("1")
+mesh = ExtResource("3")
+
+[node name="LongPipe2" type="CSGMesh3D" parent="Bot/Curve4"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.80994, 0, 4.1053)
+material_override = SubResource("1")
+mesh = ExtResource("2")
+
+[node name="CurvePipe3" type="CSGMesh3D" parent="Bot/Curve4"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.80994, 5.84335, 4.1053)
+material_override = SubResource("1")
+mesh = ExtResource("3")
+
+[node name="CurvePipe4" type="CSGMesh3D" parent="Bot/Curve4"]
+transform = Transform3D(1.91069e-15, -4.37114e-08, -1, -1, -4.37114e-08, 0, -4.37114e-08, 1, -4.37114e-08, 0.00217628, 8.0636, 1.88722)
+material_override = SubResource("1")
+mesh = ExtResource("3")
+
+[node name="Curve2" type="CSGCombiner3D" parent="Bot"]
+transform = Transform3D(-0.8, 0, -6.99382e-08, 0, 0.8, 0, 6.99382e-08, 0, -0.8, 0.510271, 2.14521, 2.21137)
+calculate_tangents = false
+
+[node name="LongPipe1" type="CSGMesh3D" parent="Bot/Curve2"]
+material_override = SubResource("1")
+mesh = ExtResource("2")
+
+[node name="CurvePipe2" type="CSGMesh3D" parent="Bot/Curve2"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 5.84335, 0)
+material_override = SubResource("1")
+mesh = ExtResource("3")
+
+[node name="LongPipe2" type="CSGMesh3D" parent="Bot/Curve2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.17671, 0, 4.1053)
+material_override = SubResource("1")
+mesh = ExtResource("2")
+
+[node name="CurvePipe3" type="CSGMesh3D" parent="Bot/Curve2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.17671, 5.84335, 4.1053)
+material_override = SubResource("1")
+mesh = ExtResource("3")
+
+[node name="CurvePipe4" type="CSGMesh3D" parent="Bot/Curve2"]
+transform = Transform3D(1.91069e-15, -4.37114e-08, -1, -1, -4.37114e-08, 0, -4.37114e-08, 1, -4.37114e-08, 0.00217628, 8.0636, 1.88722)
+material_override = SubResource("1")
+mesh = ExtResource("3")
+
+[node name="Arch1" type="CSGCombiner3D" parent="Bot"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.544311, -2.42612, -0.00962666)
+calculate_tangents = false
+
+[node name="LongPipe1" type="CSGMesh3D" parent="Bot/Arch1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.35519, -2.22333)
+material_override = SubResource("1")
+mesh = ExtResource("2")
+
+[node name="LongPipe2" type="CSGMesh3D" parent="Bot/Arch1"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -3.33786e-06, 5.35519, 1.9441)
+material_override = SubResource("1")
+mesh = ExtResource("2")
+
+[node name="LongPipe3" type="CSGMesh3D" parent="Bot/Arch1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.476904, -2.22333)
+material_override = SubResource("1")
+mesh = ExtResource("2")
+
+[node name="LongPipe4" type="CSGMesh3D" parent="Bot/Arch1"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -5.24521e-06, -0.476904, 1.9441)
+material_override = SubResource("1")
+mesh = ExtResource("2")
+
+[node name="CurvePipe2" type="CSGMesh3D" parent="Bot/Arch1"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 11.1985, -2.22333)
+material_override = SubResource("1")
+mesh = ExtResource("3")
+
+[node name="CurvePipe3" type="CSGMesh3D" parent="Bot/Arch1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.33786e-06, 11.1985, 1.9441)
+material_override = SubResource("1")
+mesh = ExtResource("3")
+
+[node name="Arch4" type="CSGCombiner3D" parent="Bot"]
+transform = Transform3D(-0.613132, 0, 0.513877, 0, 0.8, 0, -0.513877, 0, -0.613132, -1.79431, -3.25278, 0.849817)
+calculate_tangents = false
+
+[node name="LongPipe1" type="CSGMesh3D" parent="Bot/Arch4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.35519, -2.22333)
+material_override = SubResource("1")
+mesh = ExtResource("2")
+
+[node name="LongPipe2" type="CSGMesh3D" parent="Bot/Arch4"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -3.33786e-06, 5.35519, 1.9441)
+material_override = SubResource("1")
+mesh = ExtResource("2")
+
+[node name="LongPipe3" type="CSGMesh3D" parent="Bot/Arch4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.476904, -2.22333)
+material_override = SubResource("1")
+mesh = ExtResource("2")
+
+[node name="LongPipe4" type="CSGMesh3D" parent="Bot/Arch4"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -5.24521e-06, -0.476904, 1.9441)
+material_override = SubResource("1")
+mesh = ExtResource("2")
+
+[node name="CurvePipe2" type="CSGMesh3D" parent="Bot/Arch4"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 11.1985, -2.22333)
+material_override = SubResource("1")
+mesh = ExtResource("3")
+
+[node name="CurvePipe3" type="CSGMesh3D" parent="Bot/Arch4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.33786e-06, 11.1985, 1.9441)
+material_override = SubResource("1")
+mesh = ExtResource("3")
+
+[node name="Arch2" type="CSGCombiner3D" parent="Bot"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 1.5921, 1.01173, -0.427975)
+calculate_tangents = false
+
+[node name="LongPipe1" type="CSGMesh3D" parent="Bot/Arch2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.35519, -2.22333)
+material_override = SubResource("1")
+mesh = ExtResource("2")
+
+[node name="LongPipe2" type="CSGMesh3D" parent="Bot/Arch2"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -3.33786e-06, 5.35519, 1.9441)
+material_override = SubResource("1")
+mesh = ExtResource("2")
+
+[node name="LongPipe3" type="CSGMesh3D" parent="Bot/Arch2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.476904, -2.22333)
+material_override = SubResource("1")
+mesh = ExtResource("2")
+
+[node name="LongPipe4" type="CSGMesh3D" parent="Bot/Arch2"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -5.24521e-06, -0.476904, 1.9441)
+material_override = SubResource("1")
+mesh = ExtResource("2")
+
+[node name="CurvePipe2" type="CSGMesh3D" parent="Bot/Arch2"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 11.1985, -2.22333)
+material_override = SubResource("1")
+mesh = ExtResource("3")
+
+[node name="CurvePipe3" type="CSGMesh3D" parent="Bot/Arch2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.33786e-06, 11.1985, 1.9441)
+material_override = SubResource("1")
+mesh = ExtResource("3")
+
+[node name="Arch3" type="CSGCombiner3D" parent="Bot"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -0.0525705, -3.55155, -0.427975)
+calculate_tangents = false
+
+[node name="LongPipe1" type="CSGMesh3D" parent="Bot/Arch3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.35519, -2.22333)
+material_override = SubResource("1")
+mesh = ExtResource("2")
+
+[node name="LongPipe2" type="CSGMesh3D" parent="Bot/Arch3"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -3.33786e-06, 5.35519, 1.9441)
+material_override = SubResource("1")
+mesh = ExtResource("2")
+
+[node name="LongPipe3" type="CSGMesh3D" parent="Bot/Arch3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.476904, -2.22333)
+material_override = SubResource("1")
+mesh = ExtResource("2")
+
+[node name="LongPipe4" type="CSGMesh3D" parent="Bot/Arch3"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -5.24521e-06, -0.476904, 1.9441)
+material_override = SubResource("1")
+mesh = ExtResource("2")
+
+[node name="CurvePipe2" type="CSGMesh3D" parent="Bot/Arch3"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 11.1985, -2.22333)
+material_override = SubResource("1")
+mesh = ExtResource("3")
+
+[node name="CurvePipe3" type="CSGMesh3D" parent="Bot/Arch3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.33786e-06, 11.1985, 1.9441)
+material_override = SubResource("1")
+mesh = ExtResource("3")

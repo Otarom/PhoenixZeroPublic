@@ -1,0 +1,16 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cqiab2o0emouc"
+path="res://.godot/imported/Recharge.wav-53818f7cba6855977c9a9f109774acb9.sample"
+
+[deps]
+
+source_file="res://Player/SFX/Recharge.wav"
+dest_files=PackedStringArray("res://.godot/imported/Recharge.wav-53818f7cba6855977c9a9f109774acb9.sample")
+
+[params]
+
+dummy_value_ignore_me=0
+compress/mode=0

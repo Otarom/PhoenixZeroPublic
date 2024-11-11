@@ -1,0 +1,71 @@
+[gd_scene load_steps=37 format=3 uid="uid://cs8g3qul0avxw"]
+
+[ext_resource type="Script" path="res://Enemies/StateMachine.gd" id="1_bswr0"]
+[ext_resource type="Script" path="res://Enemies/Boss/Boss.gd" id="1_rdbr6"]
+[ext_resource type="Script" path="res://Components/HealthComponent.gd" id="2_2c65f"]
+[ext_resource type="Script" path="res://Enemies/EnemyUI.gd" id="2_bmgq4"]
+[ext_resource type="Script" path="res://Components/StatHandler.gd" id="3_21014"]
+[ext_resource type="Script" path="res://Enemies/Boss/States/Phase1/BossIdle1.gd" id="3_ehosy"]
+[ext_resource type="Script" path="res://Enemies/Boss/States/Phase1/BossInvState.gd" id="4_y8fqe"]
+[ext_resource type="Script" path="res://Enemies/Boss/States/Phase1/BossSpawn.gd" id="5_wb2qs"]
+[ext_resource type="Script" path="res://Enemies/Boss/States/Phase1/BossLaser.gd" id="6_ajp34"]
+[ext_resource type="PackedScene" uid="uid://xydv7nsxuccv" path="res://Enemies/Boss/ModelTest/TestModel.tscn" id="6_cfiyx"]
+[ext_resource type="Material" uid="uid://c2cmqeo81opx0" path="res://Enemies/EnemyInvMaterial.tres" id="6_xy823"]
+[ext_resource type="Script" path="res://Enemies/NukeState.gd" id="8_dnypa"]
+[ext_resource type="Script" path="res://Components/BaseStats.gd" id="9_laf4q"]
+[ext_resource type="Script" path="res://Enemies/Boss/Weapon1.gd" id="12_dapcb"]
+[ext_resource type="PackedScene" uid="uid://dedsmboebdnrg" path="res://Enemies/Projectiles/BulletShuriken1/enemy_bullet_shuriken_1.tscn" id="14_3im13"]
+[ext_resource type="Script" path="res://Enemies/Spawner1.gd" id="14_76omq"]
+[ext_resource type="Script" path="res://Enemies/Weapons2.gd" id="14_t6qqb"]
+[ext_resource type="PackedScene" uid="uid://1v2konerhfn2" path="res://Enemies/Projectiles/BulletSaw1/enemy_bullet_saw_1.tscn" id="15_8dmbu"]
+[ext_resource type="PackedScene" uid="uid://08mk22ujmq3u" path="res://Enemies/Boss/Minions/Peashooter/enemy_peashooter.tscn" id="15_0217v"]
+[ext_resource type="AudioStream" uid="uid://b1ojuasi16k1h" path="res://Music/Battle1.wav" id="18_fyox1"]
+[ext_resource type="Script" path="res://Enemies/Laser.gd" id="19_6d2ue"]
+[ext_resource type="PackedScene" uid="uid://tygxsbp2ogxb" path="res://Enemies/enemy_health_bar.tscn" id="19_71656"]
+[ext_resource type="Texture2D" uid="uid://c2xf64lvmga6e" path="res://Enemies/Boss/Sprites/Laser/Rect1_Yellow.png" id="19_oepg8"]
+[ext_resource type="Texture2D" uid="uid://cjkkv7pekjwvv" path="res://Enemies/Boss/Sprites/Laser/Rect1_Orange.png" id="20_stlqi"]
+[ext_resource type="Script" path="res://Enemies/Weapons3.gd" id="20_tbuxv"]
+[ext_resource type="PackedScene" uid="uid://bjvahwg085uov" path="res://Enemies/Projectiles/BulletStar1/enemy_bullet_star_1.tscn" id="21_erln5"]
+[ext_resource type="Texture2D" uid="uid://cx4bslkr6wo45" path="res://Enemies/Boss/Sprites/Laser/Rect1_Red.png" id="21_iynwt"]
+[ext_resource type="Texture2D" uid="uid://c5rxfbjuj2ibv" path="res://Enemies/Projectiles/BulletRound1/enemBullet1.png" id="23_8vge8"]
+[ext_resource type="Script" path="res://Enemies/InsideDamageOrb.gd" id="25_pbev5"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_poeug"]
+viewport_path = NodePath("HealthbarView/SubViewport")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t4tdu"]
+size = Vector3(110, 10, 110)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uvgj6"]
+albedo_color = Color(0.396078, 0.392157, 0.360784, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_5hm0m"]
+radius = 7.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0265a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("21_iynwt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_stlqi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_oepg8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_prvni"]
+size = Vector3(9.13623, 13.1148, 57.0023)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_qeqc3"]
+radius = 5.0
+
+[node name="Boss" type="CharacterBody3D" node_paths=PackedStringArray("StatHandler", "HealthComponent", "StateMachine") groups=["Enemies"]]
+collision_layer = 2
+collision_mask = 0
+script = ExtResour

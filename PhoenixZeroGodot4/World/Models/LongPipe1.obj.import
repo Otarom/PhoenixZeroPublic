@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://b3ofpsex75y0u"
+path="res://.godot/imported/LongPipe1.obj-0d88a8f1327c566ba2fe6fb378fb5c1d.mesh"
+
+[deps]
+
+files=["res://.godot/imported/LongPipe1.obj-0d88a8f1327c566ba2fe6fb378fb5c1d.mesh"]
+
+source_file="res://World/Models/LongPipe1.obj"
+dest_files=["res://.godot/imported/LongPipe1.obj-0d88a8f1327c566ba2fe6fb378fb5c1d.mesh", "res://.godot/imported/LongPipe1.obj-0d88a8f1327c566ba2fe6fb378fb5c1d.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

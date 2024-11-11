@@ -1,0 +1,16 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://brou0erf6d8ak"
+path="res://.godot/imported/EnemExplosion5.wav-960084838577a8f57693098ce630e1a9.sample"
+
+[deps]
+
+source_file="res://Misc/VFX/3D_Explosion/EnemExplosion5.wav"
+dest_files=PackedStringArray("res://.godot/imported/EnemExplosion5.wav-960084838577a8f57693098ce630e1a9.sample")
+
+[params]
+
+dummy_value_ignore_me=0
+compress/mode=0

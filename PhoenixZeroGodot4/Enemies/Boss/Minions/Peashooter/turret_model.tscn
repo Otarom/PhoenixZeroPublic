@@ -1,0 +1,212 @@
+[gd_scene load_steps=16 format=3 uid="uid://bsmwab4fidg3a"]
+
+[ext_resource type="ArrayMesh" uid="uid://dfjn3pkc77jte" path="res://Enemies/Boss/Minions/Peashooter/rotor.obj" id="1"]
+[ext_resource type="ArrayMesh" uid="uid://ckx6w0hnn1ucj" path="res://Enemies/Boss/Minions/Peashooter/torretzinha.obj" id="2"]
+[ext_resource type="ArrayMesh" path="res://Enemies/Boss/Minions/Peashooter/turbininha.obj" id="3"]
+[ext_resource type="PackedScene" path="res://Misc/teleport.tscn" id="4"]
+
+[sub_resource type="StandardMaterial3D" id="1"]
+cull_mode = 2
+albedo_color = Color(0.533333, 0.533333, 0.533333, 1)
+
+[sub_resource type="Animation" id="2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rotor:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="3"]
+resource_name = "Rotor"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rotor:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 3.14159, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="4"]
+_data = {
+"RESET": SubResource("2"),
+"Rotor": SubResource("3")
+}
+
+[sub_resource type="StandardMaterial3D" id="5"]
+albedo_color = Color(0.756863, 0.152941, 0.133333, 1)
+
+[sub_resource type="StandardMaterial3D" id="6"]
+albedo_color = Color(0.192157, 0.301961, 0.388235, 1)
+
+[sub_resource type="StandardMaterial3D" id="7"]
+albedo_color = Color(0.317647, 0.388235, 0.498039, 1)
+
+[sub_resource type="StandardMaterial3D" id="8"]
+cull_mode = 2
+albedo_color = Color(0.0941176, 0.156863, 0.215686, 1)
+
+[sub_resource type="Animation" id="9"]
+resource_name = "Float"
+length = 1.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.3, 0.5, 1.2, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.6, 0), Vector3(0, 0.6, 0), Vector3(0, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.6, 0.7, 1.5, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.1309, 0, 0), Vector3(-0.1309, 0, 0), Vector3(0.1309, 0, 0), Vector3(0.1309, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Turbinas:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.6, 0.7, 1.5, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.261799, 0, 0), Vector3(0.261799, 0, 0), Vector3(-0.261799, 0, 0), Vector3(-0.261799, 0, 0)]
+}
+
+[sub_resource type="Animation" id="10"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.137218, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Turbinas:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="11"]
+_data = {
+"Float": SubResource("9"),
+"RESET": SubResource("10")
+}
+
+[node name="TurretModel" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 0.9906, -0.136788, 0, 0.136788, 0.9906, 0, 0, 0)
+
+[node name="Rotor" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1")
+surface_material_override/0 = SubResource("1")
+
+[node name="Animation" type="AnimationPlayer" parent="Rotor"]
+root_node = NodePath("../..")
+autoplay = "Rotor"
+speed_scale = 2.0
+libraries = {
+"": SubResource("4")
+}
+
+[node name="Rotor" type="MeshInstance3D" parent="Rotor"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0)
+mesh = ExtResource("1")
+surface_material_override/0 = SubResource("1")
+
+[node name="Torretzinha" type="MeshInstance3D" parent="."]
+mesh = ExtResource("2")
+surface_material_override/0 = SubResource("5")
+surface_material_override/1 = SubResource("6")
+surface_material_override/2 = SubResource("6")
+surface_material_override/3 = SubResource("7")
+surface_material_override/4 = SubResource("8")
+surface_material_override/5 = SubResource("6")
+
+[node name="FloatAnim" type="AnimationPlayer" parent="."]
+autoplay = "Float"
+libraries = {
+"": SubResource("11")
+}
+
+[node name="Turbinas" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="Turbininha" type="MeshInstance3D" parent="Turbinas"]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, -3.72529e-09, 0, 3.72529e-09, 0.4, 1.8, 0, 0)
+mesh = ExtResource("3")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("5")
+
+[node name="Turbininha2" type="MeshInstance3D" parent="Turbinas"]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, -3.72529e-09, 0, 3.72529e-09, 0.4, -1.8, 0, 0)
+mesh = ExtResource("3")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("5")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Turbinas"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 4.44089e-16, 1, 0, 0.0392022, 0.00516106)
+radius = 0.112172
+height = 4.0649
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Turbinas"]
+transform = Transform3D(1, 0, 0, 0, 0.956848, 0.290589, 0, -0.290589, 0.956848, 1.8, -0.4, 0)
+visible = false
+radius = 0.4
+
+[node name="Teleport" parent="Turbinas" instance=ExtResource("4")]
+transform = Transform3D(0.2, 0, 0, 0, 0.5, 0, 0, 0, 0.2, 1.8, -0.698, 0)
+
+[node name="Teleport2" parent="Turbinas" instance=ExtResource("4")]
+transform = Transform3D(0.2, 0, 0, 0, 0.5, 0, 0, 0, 0.2, -1.8, -0.698, 0)

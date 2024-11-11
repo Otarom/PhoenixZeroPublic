@@ -1,0 +1,16 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c3rv5csc8c6pt"
+path="res://.godot/imported/EnemExplosion.wav-abb0b6662aca586349d27f8b15acf2c5.sample"
+
+[deps]
+
+source_file="res://Enemies/SFX/EnemExplosion.wav"
+dest_files=PackedStringArray("res://.godot/imported/EnemExplosion.wav-abb0b6662aca586349d27f8b15acf2c5.sample")
+
+[params]
+
+dummy_value_ignore_me=0
+compress/mode=0

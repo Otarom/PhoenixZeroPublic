@@ -1,0 +1,18 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://ofmglaeqgywy"
+path="res://.godot/imported/MachinegunPortrait.png-d7b2b5bdf5d57977dda8ad73a696a85e.ctex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://Misc/UI/Portraits/MachinegunPortrait.png"
+dest_files=PackedStringArray("res://.godot/imported/MachinegunPortrait.png-d7b2b5bdf5d57977dda8ad73a696a85e.ctex")
+
+[params]
+
+dummy_value_ignore_me=0

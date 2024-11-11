@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="ArrayMesh" uid="uid://7vpjohxncpdi" path="res://World/Models/PipeWallBlock1.obj" id="1"]
+[ext_resource type="Material" uid="uid://qkjwchp58au3" path="res://World/Models/PipeTexture1.tres" id="2"]
+
+[node name="WallBlock" type="Node3D"]
+
+[node name="PipeWallBlock1" type="MeshInstance3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+cast_shadow = 0
+visibility_range_end = 100.0
+mesh = ExtResource("1")
+surface_material_override/0 = ExtResource("2")

@@ -1,0 +1,15 @@
+[remap]
+
+importer="font_data_dynamic"
+type="FontFile"
+uid="uid://dyoqjv20kbqpk"
+path="res://.godot/imported/ethnocentric rg.otf-6f9aecf073ea9136945d909a6e10a525.fontdata"
+
+[deps]
+
+source_file="res://Misc/Fonts/ethnocentric rg.otf"
+dest_files=PackedStringArray("res://.godot/imported/ethnocentric rg.otf-6f9aecf073ea9136945d909a6e10a525.fontdata")
+
+[params]
+
+dummy_value_ignore_me=0

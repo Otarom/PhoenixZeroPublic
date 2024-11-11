@@ -1,0 +1,202 @@
+[gd_scene load_steps=26 format=3]
+
+[ext_resource type="Script" path="res://Enemies/Boss/Minions/Fighter/enemy_fighter_1.gd" id="1"]
+[ext_resource type="Script" path="res://Enemies/EnemyUI.gd" id="2"]
+[ext_resource type="Script" path="res://Components/HealthComponent.gd" id="3"]
+[ext_resource type="Script" path="res://Enemies/StateMachine.gd" id="4"]
+[ext_resource type="Script" path="res://Enemies/Boss/Minions/Fighter/Spawn.gd" id="5"]
+[ext_resource type="Script" path="res://Enemies/Boss/Minions/Fighter/Main.gd" id="6"]
+[ext_resource type="Script" path="res://Enemies/Boss/Minions/Fighter/Attack.gd" id="7"]
+[ext_resource type="Script" path="res://Components/StatHandler.gd" id="8"]
+[ext_resource type="Script" path="res://Components/BaseStats.gd" id="9"]
+[ext_resource type="Script" path="res://Enemies/Boss/Sound.gd" id="10"]
+[ext_resource type="AudioStream" uid="uid://bkrh4xouq63ul" path="res://Enemies/SFX/EnemHitSound2.wav" id="11"]
+[ext_resource type="AudioStream" uid="uid://c3rv5csc8c6pt" path="res://Enemies/SFX/EnemExplosion.wav" id="12"]
+[ext_resource type="Script" path="res://Enemies/ModelHandler.gd" id="13"]
+[ext_resource type="PackedScene" uid="uid://tygxsbp2ogxb" path="res://Enemies/enemy_health_bar.tscn" id="14"]
+[ext_resource type="PackedScene" uid="uid://ds28cjss1id1j" path="res://Enemies/Boss/Minions/Fighter/FighterModel2.tscn" id="15"]
+[ext_resource type="PackedScene" uid="uid://b6c1sh7grw1ey" path="res://Enemies/Boss/Minions/Fighter/EnemyFighterModel.tscn" id="16"]
+[ext_resource type="Script" path="res://Enemies/Boss/Minions/Fighter/Weapon1.gd" id="17"]
+[ext_resource type="PackedScene" uid="uid://h2q3hew4qlks" path="res://Enemies/Projectiles/BulletSemiLong1/enemy_bullet_semi_long_1.tscn" id="18"]
+[ext_resource type="Script" path="res://Enemies/Boss/Minions/Fighter/Weapon2.gd" id="19"]
+
+[sub_resource type="ViewportTexture" id="1"]
+viewport_path = NodePath("ModelHandler/HealthbarView/SubViewport")
+script = null
+
+[sub_resource type="SphereShape3D" id="2"]
+radius = 1.75
+script = null
+
+[sub_resource type="PrismMesh" id="3"]
+script = null
+
+[sub_resource type="StandardMaterial3D" id="4"]
+albedo_color = Color(0.843137, 0.0862745, 0.0745098, 1)
+script = null
+
+[sub_resource type="SphereShape3D" id="5"]
+radius = 1.10778
+script = null
+
+[sub_resource type="CylinderShape3D" id="6"]
+height = 0.798457
+radius = 598.398
+script = null
+
+[node name="enemy_fighter_1" type="CharacterBody3D" node_paths=PackedStringArray("StatHandler", "HealthComponent", "StateMachine", "Sound") groups=[
+"Enemies",
+"Minions",
+]]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1")
+StatHandler = NodePath("StatHandler")
+HealthComponent = NodePath("HealthComponent")
+StateMachine = NodePath("StateMachine")
+Sound = NodePath("Sound")
+
+[node name="EnemyUI" type="Control" parent="." node_paths=PackedStringArray("MainNode", "HealthComponent")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2")
+MainNode = NodePath("..")
+HealthComponent = NodePath("../HealthComponent")
+font_size = 12
+
+[node name="HealthComponent" type="Node3D" parent="." node_paths=PackedStringArray("StatHandler")]
+script = ExtResource("3")
+StatHandler = NodePath("../StatHandler")
+
+[node name="StateMachine" type="Node3D" parent="." node_paths=PackedStringArray("initial_state", "model", "MainNode")]
+script = ExtResource("4")
+initial_state = NodePath("Spawn")
+model = NodePath("../ModelRig/FighterModel")
+MainNode = NodePath("..")
+
+[node name="Spawn" type="Node3D" parent="StateMachine" node_paths=PackedStringArray("HealthComponent")]
+script = ExtResource("5")
+HealthComponent = NodePath("../../HealthComponent")
+
+[node name="Main" type="Node3D" parent="StateMachine"]
+script = ExtResource("6")
+
+[node name="Attack" type="Node3D" parent="StateMachine"]
+script = ExtResource("7")
+
+[node name="StatHandler" type="Node" parent="." node_paths=PackedStringArray("BaseStats", "MainNode")]
+script = ExtResource("8")
+BaseStats = NodePath("../BaseStats")
+MainNode = NodePath("..")
+
+[node name="BaseStats" type="Node" parent="."]
+script = ExtResource("9")
+speed = 15
+max_health = 1000.0
+
+[node name="Sound" type="Node" parent="." node_paths=PackedStringArray("HealthComponent")]
+script = ExtResource("10")
+HealthComponent = NodePath("../HealthComponent")
+
+[node name="HitSound" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource("11")
+volume_db = -10.0
+pitch_scale = 0.8
+bus = &"EnemSFX"
+
+[node name="Death" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource("12")
+pitch_scale = 1.2
+
+[node name="ModelHandler" type="Area3D" parent="." node_paths=PackedStringArray("ModelRig")]
+script = ExtResource("13")
+ModelRig = NodePath("../ModelRig")
+
+[node name="HealthbarView" type="Sprite3D" parent="ModelHandler"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.64786, 0)
+billboard = 1
+texture = SubResource("1")
+
+[node name="SubViewport" type="SubViewport" parent="ModelHandler/HealthbarView"]
+disable_3d = true
+transparent_bg = true
+
+[node name="EnemyHealthBar" parent="ModelHandler/HealthbarView/SubViewport" node_paths=PackedStringArray("MainNode", "HealthComponent", "StatHandler") instance=ExtResource("14")]
+MainNode = NodePath("../../../..")
+HealthComponent = NodePath("../../../../HealthComponent")
+StatHandler = NodePath("../../../../StatHandler")
+ShowValue = false
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="ModelHandler"]
+shape = SubResource("2")
+
+[node name="ModelRig" type="Marker3D" parent="."]
+
+[node name="FighterModel2" parent="ModelRig" instance=ExtResource("15")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, -0.204652, 0.183676)
+visible = false
+
+[node name="FighterModel" parent="ModelRig" instance=ExtResource("16")]
+transform = Transform3D(-8.74228e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.74228e-09, 0, 0, 0.299811)
+
+[node name="PlaceHolder" type="Node3D" parent="ModelRig"]
+visible = false
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="ModelRig/PlaceHolder"]
+transform = Transform3D(1.5, 0, 0, 0, -8.74228e-08, -0.2, 0, 2, -8.74228e-09, 0, 0, 0.163759)
+mesh = SubResource("3")
+material = SubResource("4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("5")
+
+[node name="Weapon1" type="Marker3D" parent="."]
+script = ExtResource("17")
+Bullet = ExtResource("18")
+damage = 300.0
+range = 100.0
+speed = 15.0
+shots = 3
+cooldown = 0.4
+
+[node name="Mount1" type="CSGSphere3D" parent="Weapon1"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 1.36575)
+visible = false
+
+[node name="Marker3D" type="Marker3D" parent="Weapon1/Mount1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="Weapon2" type="Marker3D" parent="."]
+script = ExtResource("19")
+
+[node name="Mount1" type="CSGSphere3D" parent="Weapon2"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+
+[node name="Marker3D" type="Marker3D" parent="Weapon2/Mount1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="Mount2" type="CSGSphere3D" parent="Weapon2"]
+transform = Transform3D(-0.05, 0, 0.0866025, 0, 0.1, 0, -0.0866025, 0, -0.05, 0, 0, 0)
+
+[node name="Marker3D" type="Marker3D" parent="Weapon2/Mount2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="Mount3" type="CSGSphere3D" parent="Weapon2"]
+transform = Transform3D(-0.05, 0, -0.0866025, 0, 0.1, 0, 0.0866025, 0, -0.05, 0, 0, 0)
+
+[node name="Marker3D" type="Marker3D" parent="Weapon2/Mount3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("6")
+
+[connection signal="on_death" from="HealthComponent" to="." method="_on_health_component_on_death" flags=18]
+[connection signal="on_hit" from="HealthComponent" to="." method="_on_health_component_on_hit" flags=18]
+[connection signal="on_invulnerability_change" from="HealthComponent" to="." method="_on_health_component_on_invulnerability_change" flags=18]
+[connection signal="body_entered" from="ModelHandler" to="ModelHandler" method="_on_body_entered" flags=18]
+[connection signal="body_exited" from="ModelHandler" to="ModelHandler" method="_on_body_exited" flags=18]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered" flags=18]

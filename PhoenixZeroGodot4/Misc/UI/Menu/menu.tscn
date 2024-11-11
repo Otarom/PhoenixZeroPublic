@@ -1,0 +1,1376 @@
+[gd_scene load_steps=28 format=3 uid="uid://bxkviq0m87xhy"]
+
+[ext_resource type="Theme" uid="uid://bqh50oohg1smw" path="res://Misc/UI/Menu/BaseUITheme.tres" id="1"]
+[ext_resource type="Script" path="res://Misc/UI/Menu/CharSelect.gd" id="2"]
+[ext_resource type="FontFile" uid="uid://dyoqjv20kbqpk" path="res://Misc/Fonts/ethnocentric rg.otf" id="3"]
+[ext_resource type="Texture2D" uid="uid://6n27e282ti2y" path="res://Misc/UI/Portraits/Waddles.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://bnb45hhw3poib" path="res://Misc/UI/Portraits/Robin.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://omu3njxg0k0m" path="res://Misc/UI/Portraits/BlueJay.png" id="6"]
+[ext_resource type="Script" path="res://Misc/UI/Menu/WeapSelect.gd" id="7"]
+[ext_resource type="Texture2D" uid="uid://cgqt467cgwjwf" path="res://Misc/UI/Portraits/MachineGun.png" id="8_nqlwe"]
+[ext_resource type="Texture2D" uid="uid://db1uu7mej4su3" path="res://Misc/UI/Menu/PhoenixZero.png" id="9"]
+[ext_resource type="Texture2D" uid="uid://bgmy3c8lqn3ys" path="res://Misc/UI/Portraits/EnergySword.png" id="9_5fbuv"]
+[ext_resource type="Script" path="res://Misc/UI/Menu/Menu.gd" id="10"]
+[ext_resource type="Texture2D" uid="uid://pp3cwp2uy2sr" path="res://Misc/UI/Portraits/DeplSaw.png" id="10_fwkpn"]
+[ext_resource type="Texture2D" uid="uid://utkv0ngnuix5" path="res://Misc/UI/Portraits/Sniper.png" id="10_ro66p"]
+[ext_resource type="Texture2D" uid="uid://d2i4x0x2t3076" path="res://Misc/UI/Menu/MiniLogo1.png" id="11"]
+[ext_resource type="Script" path="res://Misc/SplashAnimations.gd" id="12"]
+[ext_resource type="Texture2D" uid="uid://bscchmwp7o51p" path="res://Misc/UI/Portraits/Laser.png" id="12_da2qg"]
+[ext_resource type="VideoStream" path="res://Misc/UI/Menu/OtaromStudios.ogv" id="13"]
+[ext_resource type="Texture2D" uid="uid://bq12e2ohomrqg" path="res://Misc/UI/Portraits/Cluster.png" id="13_n15qb"]
+[ext_resource type="Texture2D" uid="uid://dyldco25iujpn" path="res://Misc/UI/Menu/OtaromStudios.png" id="14"]
+[ext_resource type="AudioStream" uid="uid://bnoub0oc7g5e4" path="res://Music/CityTheme.mp3" id="15"]
+[ext_resource type="Texture2D" uid="uid://b8ml7bm7beglx" path="res://Misc/UI/Menu/GodotSplash.png" id="16"]
+
+[sub_resource type="LabelSettings" id="1"]
+font = ExtResource("3")
+font_size = 30
+
+[sub_resource type="StyleBoxFlat" id="2"]
+bg_color = Color(0.0627451, 0.0627451, 0.0627451, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="Animation" id="3"]
+resource_name = "Menu"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("Menu/Control/PhoenixZero:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Menu/Control:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Menu/ColorRect:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = false
+tracks/3/path = NodePath("SplashAnimations/Music:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SplashAnimations/Music")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SplashAnimations:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SplashAnimations/Fade:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SplashAnimations/GodotSplash:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("Menu/Control/PhoenixZero:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Menu/Control:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Menu/ColorRect:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SplashAnimations/Music:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SplashAnimations:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SplashAnimations/Fade:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="5"]
+resource_name = "Start"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SplashAnimations/GodotSplash:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="6"]
+_data = {
+"Menu": SubResource("3"),
+"RESET": SubResource("4"),
+"Start": SubResource("5")
+}
+
+[node name="Menu" type="Node2D"]
+
+[node name="CharacterSelect" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CharacterSelect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="CharSelect" type="Control" parent="CharacterSelect"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1")
+script = ExtResource("2")
+
+[node name="Title" type="Label" parent="CharacterSelect/CharSelect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -531.0
+offset_top = 15.0
+offset_right = 531.0
+offset_bottom = 55.0
+grow_horizontal = 2
+text = "Select Your Character"
+label_settings = SubResource("1")
+horizontal_alignment = 1
+
+[node name="Waddles" type="Panel" parent="CharacterSelect/CharSelect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.672
+anchor_top = 0.122
+anchor_right = 0.954
+anchor_bottom = 0.917
+offset_left = 0.0360718
+offset_top = -0.174004
+offset_right = -0.537964
+offset_bottom = 0.0609131
+
+[node name="Name" type="Label" parent="CharacterSelect/CharSelect/Waddles"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -42.5
+offset_top = 10.0
+offset_right = 42.5
+offset_bottom = 34.0
+grow_horizontal = 2
+text = "Waddles
+"
+horizontal_alignment = 1
+
+[node name="Title" type="Label" parent="CharacterSelect/CharSelect/Waddles"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.173
+anchor_top = 0.407
+anchor_right = 0.827
+anchor_bottom = 0.454
+offset_left = 51.5428
+offset_top = 0.234253
+offset_right = -51.5428
+offset_bottom = 0.0106812
+grow_horizontal = 2
+text = "Survival Expert
+"
+horizontal_alignment = 1
+
+[node name="Desc" type="Label" parent="CharacterSelect/CharSelect/Waddles"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.083
+anchor_top = 0.47
+anchor_right = 0.9
+anchor_bottom = 0.912
+offset_left = -0.0961838
+offset_top = -0.11763
+offset_right = -0.0411072
+offset_bottom = 0.0777893
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 12
+text = "Movement type: Lock-Stick
+Skill: Bomb
+
+Difficulty: ▮▮▯▯▯
+Aim: ▮▮▮▯▯
+Maneuverability: ▮▮▮▮▮
+Defense: ▮▮▯▯▯
+Speed: ▮▮▮▮▮
+
+Weapon Specialty:
+- Laser Beam
+- Cluster Shotgun
+
+"
+
+[node name="TextureRect" type="TextureRect" parent="CharacterSelect/CharSelect/Waddles"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.268
+anchor_top = 0.086
+anchor_right = 0.73
+anchor_bottom = 0.377
+offset_left = -0.0898285
+offset_top = -0.205963
+offset_right = 0.0881958
+offset_bottom = -0.185883
+grow_horizontal = 2
+texture = ExtResource("4")
+expand_mode = 2
+
+[node name="WaddlesSelect" type="Button" parent="CharacterSelect/CharSelect/Waddles"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -57.0
+offset_top = -42.0
+offset_right = 57.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 20
+text = "Select
+"
+flat = true
+
+[node name="Robin" type="Panel" parent="CharacterSelect/CharSelect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.362
+anchor_top = 0.122
+anchor_right = 0.644
+anchor_bottom = 0.917
+offset_left = 0.156097
+offset_top = -0.174011
+offset_right = -0.417969
+offset_bottom = 0.0609131
+
+[node name="Name" type="Label" parent="CharacterSelect/CharSelect/Robin"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -42.5
+offset_top = 10.0
+offset_right = 42.5
+offset_bottom = 34.0
+grow_horizontal = 2
+text = "Robin
+"
+horizontal_alignment = 1
+
+[node name="Title" type="Label" parent="CharacterSelect/CharSelect/Robin"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.173
+anchor_top = 0.407
+anchor_right = 0.827
+anchor_bottom = 0.454
+offset_left = 51.5428
+offset_top = 0.234253
+offset_right = -51.5428
+offset_bottom = 0.0106812
+grow_horizontal = 2
+text = "Medical Specialist
+"
+horizontal_alignment = 1
+
+[node name="Desc" type="Label" parent="CharacterSelect/CharSelect/Robin"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.083
+anchor_top = 0.47
+anchor_right = 0.9
+anchor_bottom = 0.912
+offset_left = -0.0961838
+offset_top = -0.11763
+offset_right = -0.0411072
+offset_bottom = 0.0777893
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 12
+text = "Movement type: Single-Stick
+Skill: Heal
+
+Difficulty: ▮▮▮▮▮
+Aim: ▮▮▯▯▯
+Maneuverability: ▮▮▯▯▯
+Defense: ▮▮▮▮▮
+Speed: ▮▮▮▯▯
+
+Weapon Specialty:
+- Deployable Saw
+- Sniper Rifle
+
+"
+
+[node name="TextureRect" type="TextureRect" parent="CharacterSelect/CharSelect/Robin"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.268
+anchor_top = 0.086
+anchor_right = 0.73
+anchor_bottom = 0.377
+offset_left = -0.0898285
+offset_top = -0.205963
+offset_right = 0.0881958
+offset_bottom = -0.185883
+grow_horizontal = 2
+texture = ExtResource("5")
+expand_mode = 3
+
+[node name="RobinSelect" type="Button" parent="CharacterSelect/CharSelect/Robin"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -57.0
+offset_top = -42.0
+offset_right = 57.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 20
+text = "Select
+"
+flat = true
+
+[node name="BluJay" type="Panel" parent="CharacterSelect/CharSelect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.054
+anchor_top = 0.122
+anchor_right = 0.335
+anchor_bottom = 0.917
+offset_left = -0.0278854
+offset_top = -0.174011
+offset_right = 0.550079
+offset_bottom = 0.0609131
+
+[node name="Name" type="Label" parent="CharacterSelect/CharSelect/BluJay"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -42.5
+offset_top = 10.0
+offset_right = 42.5
+offset_bottom = 34.0
+grow_horizontal = 2
+text = "Blu Jay
+"
+horizontal_alignment = 1
+
+[node name="Title" type="Label" parent="CharacterSelect/CharSelect/BluJay"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.173
+anchor_top = 0.407
+anchor_right = 0.827
+anchor_bottom = 0.454
+offset_left = 51.5428
+offset_top = 0.234253
+offset_right = -51.5428
+offset_bottom = 0.0106812
+grow_horizontal = 2
+text = "Combat Expert
+"
+horizontal_alignment = 1
+
+[node name="Desc" type="Label" parent="CharacterSelect/CharSelect/BluJay"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.083
+anchor_top = 0.47
+anchor_right = 0.9
+anchor_bottom = 0.912
+offset_left = -0.0961838
+offset_top = -0.11763
+offset_right = -0.0411072
+offset_bottom = 0.0777893
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 12
+text = "Movement type: Double-Stick
+Skill: Shield
+
+Difficulty: ▮▮▮▯▯
+Aim: ▮▮▮▮▮
+Maneuverability: ▮▮▮▮▯
+Defense: ▮▮▮▯▯
+Speed: ▮▮▮▯▯
+
+Weapon Specialty:
+- Machinegun
+- Energy Sword
+
+"
+
+[node name="TextureRect" type="TextureRect" parent="CharacterSelect/CharSelect/BluJay"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.268
+anchor_top = 0.086
+anchor_right = 0.73
+anchor_bottom = 0.377
+offset_left = -0.0898285
+offset_top = -0.205963
+offset_right = 0.0881958
+offset_bottom = -0.185883
+grow_horizontal = 2
+texture = ExtResource("6")
+expand_mode = 2
+
+[node name="BluJaySelect" type="Button" parent="CharacterSelect/CharSelect/BluJay"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -57.0
+offset_top = -42.0
+offset_right = 57.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 20
+text = "Select
+"
+flat = true
+
+[node name="WeapSelect" type="Panel" parent="CharacterSelect/CharSelect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 253.0
+offset_top = 133.0
+offset_right = -251.0
+offset_bottom = -103.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(120, 75)
+theme_override_styles/panel = SubResource("2")
+script = ExtResource("7")
+
+[node name="ColorRect" type="ColorRect" parent="CharacterSelect/CharSelect/WeapSelect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -1.931
+anchor_top = -1.767
+anchor_right = 2.931
+anchor_bottom = 2.587
+offset_left = -276.712
+offset_top = -143.996
+offset_right = -275.592
+offset_bottom = -138.096
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.0980392)
+
+[node name="Title" type="Label" parent="CharacterSelect/CharSelect/WeapSelect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.262
+anchor_top = 0.047
+anchor_right = 0.738
+anchor_bottom = 0.187
+offset_left = 0.119965
+offset_top = -0.0500002
+offset_right = -0.11998
+offset_bottom = -0.0500011
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 20
+text = "Select Weapon"
+horizontal_alignment = 1
+
+[node name="Machinegun" type="Panel" parent="CharacterSelect/CharSelect/WeapSelect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.054
+anchor_top = 0.121
+anchor_right = 0.463
+anchor_bottom = 0.879
+offset_left = 0.00799942
+offset_top = 0.147999
+offset_right = -0.0239868
+offset_bottom = -0.148041
+
+[node name="Name" type="Label" parent="CharacterSelect/CharSelect/WeapSelect/Machinegun"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.225
+anchor_top = 0.032
+anchor_right = 0.775
+anchor_bottom = 0.109
+offset_left = 30.375
+offset_top = 0.0159998
+offset_right = -30.375
+offset_bottom = -0.00800323
+grow_horizontal = 2
+text = "Machinegun
+"
+horizontal_alignment = 1
+
+[node name="Desc" type="Label" parent="CharacterSelect/CharSelect/WeapSelect/Machinegun"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.049
+anchor_top = 0.485
+anchor_right = 0.947
+anchor_bottom = 0.799
+offset_left = 19.015
+offset_top = -0.320007
+offset_right = -23.955
+offset_bottom = -0.28801
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 12
+text = "Damage: ▮▯▯▯▯
+Ammo: ▮▮▮▯▯
+Reload Rate: ▮▮▮▯▯
+Range: ▮▮▮▯▯
+Piercing: no"
+
+[node name="TextureRect" type="TextureRect" parent="CharacterSelect/CharSelect/WeapSelect/Machinegun"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.238
+anchor_top = 0.128
+anchor_right = 0.76
+anchor_bottom = 0.419
+offset_left = -0.0262833
+offset_top = 0.0274925
+offset_right = 0.0246582
+offset_bottom = 0.0475616
+grow_horizontal = 2
+texture = ExtResource("8_nqlwe")
+expand_mode = 2
+
+[node name="MGSelect" type="Button" parent="CharacterSelect/CharSelect/WeapSelect/Machinegun"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.188
+anchor_top = 0.832
+anchor_right = 0.812
+anchor_bottom = 0.933
+offset_left = -0.00822067
+offset_top = 0.0661926
+offset_right = 0.00820923
+offset_bottom = -0.039093
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 15
+text = "Select
+"
+flat = true
+
+[node name="EnergySword" type="Panel" parent="CharacterSelect/CharSelect/WeapSelect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.528
+anchor_top = 0.121
+anchor_right = 0.937
+anchor_bottom = 0.879
+offset_left = -0.144012
+offset_top = 0.147999
+offset_right = -0.175964
+offset_bottom = -0.148041
+
+[node name="Name" type="Label" parent="CharacterSelect/CharSelect/WeapSelect/EnergySword"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.16
+anchor_top = 0.032
+anchor_right = 0.84
+anchor_bottom = 0.109
+offset_left = 47.6
+offset_top = 0.0159998
+offset_right = -47.6
+offset_bottom = -0.00800323
+grow_horizontal = 2
+text = "Energy Sword
+"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CharacterSelect/CharSelect/WeapSelect/EnergySword"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.238
+anchor_top = 0.128
+anchor_right = 0.76
+anchor_bottom = 0.419
+offset_left = -0.0262833
+offset_top = 0.0274925
+offset_right = 0.0246582
+offset_bottom = 0.0475616
+grow_horizontal = 2
+texture = ExtResource("9_5fbuv")
+expand_mode = 2
+
+[node name="Desc" type="Label" parent="CharacterSelect/CharSelect/WeapSelect/EnergySword"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.049
+anchor_top = 0.485
+anchor_right = 0.947
+anchor_bottom = 0.799
+offset_left = 19.015
+offset_top = -0.319992
+offset_right = -23.955
+offset_bottom = -0.287994
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 12
+text = "Damage: ▮▮▮▯▯
+Ammo: ▮▮▯▯▯
+Reload Rate: ▮▮▮▮▯
+Range: ▮▯▯▯▯
+Piercing: yes"
+
+[node name="ESSelect" type="Button" parent="CharacterSelect/CharSelect/WeapSelect/EnergySword"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.188
+anchor_top = 0.832
+anchor_right = 0.812
+anchor_bottom = 0.933
+offset_left = -0.00822067
+offset_top = 0.0661926
+offset_right = 0.00820923
+offset_bottom = -0.039093
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 15
+text = "Select
+"
+flat = true
+
+[node name="Saw" type="Panel" parent="CharacterSelect/CharSelect/WeapSelect"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.054
+anchor_top = 0.121
+anchor_right = 0.463
+anchor_bottom = 0.879
+offset_left = 0.00799942
+offset_top = 0.147999
+offset_right = -0.0239868
+offset_bottom = -0.148041
+
+[node name="Name" type="Label" parent="CharacterSelect/CharSelect/WeapSelect/Saw"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.225
+anchor_top = 0.032
+anchor_right = 0.775
+anchor_bottom = 0.109
+offset_left = 30.375
+offset_top = 0.0159998
+offset_right = -30.375
+offset_bottom = -0.00800323
+grow_horizontal = 2
+text = "Deployable Saw"
+horizontal_alignment = 1
+
+[node name="Desc" type="Label" parent="CharacterSelect/CharSelect/WeapSelect/Saw"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.049
+anchor_top = 0.485
+anchor_right = 0.947
+anchor_bottom = 0.799
+offset_left = 19.015
+offset_top = -0.320007
+offset_right = -23.955
+offset_bottom = -0.28801
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 12
+text = "Damage: ▮▮▯▯▯
+Ammo: ▮▯▯▯▯
+Reload Rate: ▮▮▮▮▮
+Range: ▮▮▯▯▯
+Piercing: yes"
+
+[node name="TextureRect" type="TextureRect" parent="CharacterSelect/CharSelect/WeapSelect/Saw"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.238
+anchor_top = 0.128
+anchor_right = 0.76
+anchor_bottom = 0.419
+offset_left = -0.0262833
+offset_top = 0.0274925
+offset_right = 0.0246582
+offset_bottom = 0.0475616
+grow_horizontal = 2
+texture = ExtResource("10_fwkpn")
+expand_mode = 2
+
+[node name="DSSelect" type="Button" parent="CharacterSelect/CharSelect/WeapSelect/Saw"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.188
+anchor_top = 0.832
+anchor_right = 0.812
+anchor_bottom = 0.933
+offset_left = -0.00822067
+offset_top = 0.0661926
+offset_right = 0.00820923
+offset_bottom = -0.039093
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 15
+text = "Select
+"
+flat = true
+
+[node name="Sniper" type="Panel" parent="CharacterSelect/CharSelect/WeapSelect"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.528
+anchor_top = 0.121
+anchor_right = 0.937
+anchor_bottom = 0.879
+offset_left = -0.144012
+offset_top = 0.147999
+offset_right = -0.175964
+offset_bottom = -0.148041
+
+[node name="Name" type="Label" parent="CharacterSelect/CharSelect/WeapSelect/Sniper"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.16
+anchor_top = 0.032
+anchor_right = 0.84
+anchor_bottom = 0.109
+offset_left = 47.6
+offset_top = 0.0159998
+offset_right = -47.6
+offset_bottom = -0.00800323
+grow_horizontal = 2
+text = "Sniper Rifle
+"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CharacterSelect/CharSelect/WeapSelect/Sniper"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.238
+anchor_top = 0.128
+anchor_right = 0.76
+anchor_bottom = 0.419
+offset_left = -0.0262833
+offset_top = 0.0274925
+offset_right = 0.0246582
+offset_bottom = 0.0475616
+grow_horizontal = 2
+texture = ExtResource("10_ro66p")
+expand_mode = 2
+
+[node name="Desc" type="Label" parent="CharacterSelect/CharSelect/WeapSelect/Sniper"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.049
+anchor_top = 0.485
+anchor_right = 0.947
+anchor_bottom = 0.799
+offset_left = 19.015
+offset_top = -0.319992
+offset_right = -23.955
+offset_bottom = -0.287994
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 12
+text = "Damage: ▮▮▮▮▮
+Ammo: ▮▯▯▯▯
+Reload Rate: ▮▮▯▯▯
+Range: ▮▮▮▮▮
+Piercing: yes"
+
+[node name="SRSelect" type="Button" parent="CharacterSelect/CharSelect/WeapSelect/Sniper"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.188
+anchor_top = 0.832
+anchor_right = 0.812
+anchor_bottom = 0.933
+offset_left = -0.00822067
+offset_top = 0.0661926
+offset_right = 0.00820923
+offset_bottom = -0.039093
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 15
+text = "Select
+"
+flat = true
+
+[node name="Laser" type="Panel" parent="CharacterSelect/CharSelect/WeapSelect"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.054
+anchor_top = 0.121
+anchor_right = 0.463
+anchor_bottom = 0.879
+offset_left = 0.00799942
+offset_top = 0.147999
+offset_right = -0.0239868
+offset_bottom = -0.148041
+
+[node name="Name" type="Label" parent="CharacterSelect/CharSelect/WeapSelect/Laser"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.225
+anchor_top = 0.032
+anchor_right = 0.775
+anchor_bottom = 0.109
+offset_left = 30.375
+offset_top = 0.0159998
+offset_right = -30.375
+offset_bottom = -0.00800323
+grow_horizontal = 2
+text = "Laser Beam
+"
+horizontal_alignment = 1
+
+[node name="Desc" type="Label" parent="CharacterSelect/CharSelect/WeapSelect/Laser"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.049
+anchor_top = 0.485
+anchor_right = 0.947
+anchor_bottom = 0.799
+offset_left = 19.015
+offset_top = -0.320007
+offset_right = -23.955
+offset_bottom = -0.28801
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 12
+text = "Damage: ▮▮▯▯▯
+Ammo: ▮▮▮▮▮
+Reload Rate: ▮▯▯▯▯
+Range: ▮▮▮▮▮
+Piercing: yes"
+
+[node name="TextureRect" type="TextureRect" parent="CharacterSelect/CharSelect/WeapSelect/Laser"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.238
+anchor_top = 0.128
+anchor_right = 0.76
+anchor_bottom = 0.419
+offset_left = -0.0262833
+offset_top = 0.0274925
+offset_right = 0.0246582
+offset_bottom = 0.0475616
+grow_horizontal = 2
+texture = ExtResource("12_da2qg")
+expand_mode = 2
+
+[node name="LBSelect" type="Button" parent="CharacterSelect/CharSelect/WeapSelect/Laser"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.188
+anchor_top = 0.832
+anchor_right = 0.812
+anchor_bottom = 0.933
+offset_left = -0.00822067
+offset_top = 0.0661926
+offset_right = 0.00820923
+offset_bottom = -0.039093
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 15
+text = "Select
+"
+flat = true
+
+[node name="Cluster" type="Panel" parent="CharacterSelect/CharSelect/WeapSelect"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.528
+anchor_top = 0.121
+anchor_right = 0.937
+anchor_bottom = 0.879
+offset_left = -0.144012
+offset_top = 0.147999
+offset_right = -0.175964
+offset_bottom = -0.148041
+
+[node name="Name" type="Label" parent="CharacterSelect/CharSelect/WeapSelect/Cluster"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.16
+anchor_top = 0.032
+anchor_right = 0.84
+anchor_bottom = 0.109
+offset_left = 47.6
+offset_top = 0.0159998
+offset_right = -47.6
+offset_bottom = -0.00800323
+grow_horizontal = 2
+text = "Cluster Shotgun
+"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CharacterSelect/CharSelect/WeapSelect/Cluster"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.238
+anchor_top = 0.128
+anchor_right = 0.76
+anchor_bottom = 0.419
+offset_left = -0.0262833
+offset_top = 0.0274925
+offset_right = 0.0246582
+offset_bottom = 0.0475616
+grow_horizontal = 2
+texture = ExtResource("13_n15qb")
+expand_mode = 2
+
+[node name="Desc" type="Label" parent="CharacterSelect/CharSelect/WeapSelect/Cluster"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.049
+anchor_top = 0.485
+anchor_right = 0.947
+anchor_bottom = 0.799
+offset_left = 19.015
+offset_top = -0.319992
+offset_right = -23.955
+offset_bottom = -0.287994
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 12
+text = "Damage: ▮▮▮▮▯
+Ammo: ▮▯▯▯▯
+Reload Rate: ▮▮▯▯▯
+Range: ▮▮▮▯▯
+Piercing: yes"
+
+[node name="CSSelect" type="Button" parent="CharacterSelect/CharSelect/WeapSelect/Cluster"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.188
+anchor_top = 0.832
+anchor_right = 0.812
+anchor_bottom = 0.933
+offset_left = 0.18
+offset_top = 0.416016
+offset_right = -0.179993
+offset_bottom = -0.0959778
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 15
+text = "Select
+"
+flat = true
+
+[node name="Cancel" type="Button" parent="CharacterSelect/CharSelect/WeapSelect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.367
+anchor_top = 0.905
+anchor_right = 0.634
+anchor_bottom = 0.99
+offset_left = 0.18399
+offset_top = 0.139984
+offset_right = 0.167999
+offset_bottom = 0.119965
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 16
+text = "cancel"
+flat = true
+
+[node name="Back" type="Button" parent="CharacterSelect/CharSelect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.024
+anchor_top = 0.924
+anchor_right = 0.145
+anchor_bottom = 0.993
+offset_left = 0.512003
+offset_top = 0.09198
+offset_right = 0.0100098
+offset_bottom = -0.0310059
+grow_vertical = 0
+theme_override_font_sizes/font_size = 25
+text = "< Back
+"
+flat = true
+
+[node name="Loading" type="ColorRect" parent="CharacterSelect/CharSelect"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="PhoenixZero" type="TextureRect" parent="CharacterSelect/CharSelect/Loading"]
+modulate = Color(1, 1, 1, 0.298039)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.4, 0.4)
+pivot_offset = Vector2(750, 750)
+texture = ExtResource("9")
+
+[node name="Label" type="Label" parent="CharacterSelect/CharSelect/Loading"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -154.0
+offset_top = -42.0
+offset_right = -42.0
+offset_bottom = -18.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("3")
+theme_override_font_sizes/font_size = 40
+text = "Loading..."
+
+[node name="Menu" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+script = ExtResource("10")
+
+[node name="ColorRect" type="ColorRect" parent="Menu"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Control" type="Control" parent="Menu"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PhoenixZero" type="TextureRect" parent="Menu/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -750.0
+offset_top = -942.0
+offset_right = 750.0
+offset_bottom = 558.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+pivot_offset = Vector2(750, 750)
+texture = ExtResource("9")
+
+[node name="MenuItems" type="VBoxContainer" parent="Menu/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -6.0
+offset_right = 100.0
+offset_bottom = 294.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(100, 150)
+
+[node name="Start" type="Button" parent="Menu/Control/MenuItems"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3")
+theme_override_font_sizes/font_size = 30
+text = "Start
+"
+flat = true
+
+[node name="Options" type="Button" parent="Menu/Control/MenuItems"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3")
+theme_override_font_sizes/font_size = 30
+text = "Options
+"
+flat = true
+
+[node name="Quit" type="Button" parent="Menu/Control/MenuItems"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3")
+theme_override_font_sizes/font_size = 30
+text = "Quit
+"
+flat = true
+
+[node name="TextureRect" type="TextureRect" parent="Menu/Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -122.0
+offset_top = -112.0
+offset_right = 328.0
+offset_bottom = 338.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("11")
+
+[node name="SplashAnimations" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+script = ExtResource("12")
+
+[node name="ColorRect" type="ColorRect" parent="SplashAnimations"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SplashAnimations"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("6")
+}
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="SplashAnimations"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(750, 750)
+stream = ExtResource("13")
+
+[node name="OtaromStudios" type="TextureRect" parent="SplashAnimations"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -752.0
+offset_top = -752.0
+offset_right = 748.0
+offset_bottom = 748.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(750, 750)
+texture = ExtResource("14")
+
+[node name="Music" type="AudioStreamPlayer" parent="SplashAnimations"]
+stream = ExtResource("15")
+volume_db = -10.0
+bus = &"Music"
+
+[node name="GodotSplash" type="TextureRect" parent="SplashAnimations"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -546.0
+offset_top = -293.0
+offset_right = 820.0
+offset_bottom = 427.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("16")
+
+[node name="Fade" type="ColorRect" parent="SplashAnimations"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 30.0
+offset_top = 31.0
+offset_right = 30.0
+offset_bottom = 31.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[connection signal="pressed" from="CharacterSelect/CharSelect/Waddles/WaddlesSelect" to="CharacterSelect/CharSelect" method="_on_waddles_select_pressed" flags=18]
+[connection signal="pressed" from="CharacterSelect/CharSelect/Robin/RobinSelect" to="CharacterSelect/CharSelect" method="_on_robin_select_pressed" flags=18]
+[connection signal="pressed" from="CharacterSelect/CharSelect/BluJay/BluJaySelect" to="CharacterSelect/CharSelect" method="_on_blu_jay_select_pressed" flags=18]
+[connection signal="pressed" from="CharacterSelect/CharSelect/WeapSelect/Machinegun/MGSelect" to="CharacterSelect/CharSelect/WeapSelect" method="_on_mg_select_pressed" flags=18]
+[connection signal="pressed" from="CharacterSelect/CharSelect/WeapSelect/EnergySword/ESSelect" to="CharacterSelect/CharSelect/WeapSelect" method="_on_es_select_pressed" flags=18]
+[connection signal="pressed" from="CharacterSelect/CharSelect/WeapSelect/Saw/DSSelect" to="CharacterSelect/CharSelect/WeapSelect" method="_on_ds_select_pressed" flags=18]
+[connection signal="pressed" from="CharacterSelect/CharSelect/WeapSelect/Sniper/SRSelect" to="CharacterSelect/CharSelect/WeapSelect" method="_on_sr_select_pressed" flags=18]
+[connection signal="pressed" from="CharacterSelect/CharSelect/WeapSelect/Laser/LBSelect" to="CharacterSelect/CharSelect/WeapSelect" method="_on_lb_select_pressed" flags=18]
+[connection signal="pressed" from="CharacterSelect/CharSelect/WeapSelect/Cluster/CSSelect" to="CharacterSelect/CharSelect/WeapSelect" method="_on_cs_select_pressed" flags=18]
+[connection signal="pressed" from="CharacterSelect/CharSelect/WeapSelect/Cancel" to="CharacterSelect/CharSelect/WeapSelect" method="_on_cancel_pressed" flags=18]
+[connection signal="pressed" from="CharacterSelect/CharSelect/Back" to="CharacterSelect/CharSelect" method="_on_back_pressed" flags=18]
+[connection signal="pressed" from="Menu/Control/MenuItems/Start" to="Menu" method="_on_start_pressed" flags=18]
+[connection signal="pressed" from="Menu/Control/MenuItems/Options" to="Menu" method="_on_options_pressed" flags=18]
+[connection signal="pressed" from="Menu/Control/MenuItems/Quit" to="Menu" method="_on_quit_pressed" flags=18]
+[connection signal="animation_finished" from="SplashAnimations/AnimationPlayer" to="SplashAnimations" method="_on_animation_player_animation_finished" flags=18]
+[connection signal="finished" from="SplashAnimations/VideoStreamPlayer" to="SplashAnimations" method="_on_video_stream_player_finished" flags=18]
+[connection signal="finished" from="SplashAnimations/Music" to="SplashAnimations" method="_on_music_finished" flags=18]

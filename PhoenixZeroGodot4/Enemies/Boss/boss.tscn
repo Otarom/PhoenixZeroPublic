@@ -1,0 +1,612 @@
+[gd_scene load_steps=50 format=3 uid="uid://dxcenc5o6jfso"]
+
+[ext_resource type="Script" path="res://Enemies/Boss/Boss.gd" id="1"]
+[ext_resource type="Script" path="res://Enemies/EnemyUI.gd" id="2"]
+[ext_resource type="PackedScene" path="res://Enemies/enemy_health_bar.tscn" id="3"]
+[ext_resource type="Script" path="res://Enemies/StateMachine.gd" id="4"]
+[ext_resource type="Script" path="res://Enemies/Boss/States/BossIdle1.gd" id="5"]
+[ext_resource type="Script" path="res://Enemies/Boss/States/BossInvState.gd" id="6"]
+[ext_resource type="Script" path="res://Enemies/Boss/States/BossSpawn.gd" id="7"]
+[ext_resource type="Script" path="res://Enemies/Boss/States/BossLaser.gd" id="8"]
+[ext_resource type="Script" path="res://Enemies/Boss/States/NukeState.gd" id="9"]
+[ext_resource type="Script" path="res://Enemies/Boss/States/InvLaser.gd" id="10"]
+[ext_resource type="Script" path="res://Enemies/Boss/States/NukeSpawn.gd" id="11"]
+[ext_resource type="Script" path="res://Components/HealthComponent.gd" id="12"]
+[ext_resource type="Script" path="res://Components/StatHandler.gd" id="13"]
+[ext_resource type="Script" path="res://Components/BaseStats.gd" id="14"]
+[ext_resource type="Script" path="res://Enemies/Boss/Sound.gd" id="15"]
+[ext_resource type="AudioStream" uid="uid://bkrh4xouq63ul" path="res://Enemies/SFX/EnemHitSound2.wav" id="16"]
+[ext_resource type="AudioStream" uid="uid://c3rv5csc8c6pt" path="res://Enemies/SFX/EnemExplosion.wav" id="17"]
+[ext_resource type="PackedScene" path="res://Enemies/Boss/ModelTest/TestModel.tscn" id="18"]
+[ext_resource type="PackedScene" uid="uid://cgygtsf2inwbo" path="res://Enemies/Boss/ModelTest/nerfadinho.tscn" id="18_sx2rr"]
+[ext_resource type="Material" uid="uid://53gvv5cwc80u" path="res://Enemies/EnemyInvMaterial.tres" id="19"]
+[ext_resource type="Script" path="res://Enemies/Boss/Weapon1.gd" id="20"]
+[ext_resource type="PackedScene" path="res://Enemies/Projectiles/BulletSaw1/enemy_bullet_saw_1.tscn" id="21"]
+[ext_resource type="Script" path="res://Enemies/Boss/Spawner1.gd" id="22"]
+[ext_resource type="PackedScene" path="res://Enemies/Boss/Minions/Peashooter/enemy_peashooter.tscn" id="23"]
+[ext_resource type="Script" path="res://Enemies/Boss/Weapons2.gd" id="24"]
+[ext_resource type="PackedScene" path="res://Enemies/Projectiles/BulletShuriken1/enemy_bullet_shuriken_1.tscn" id="25"]
+[ext_resource type="Script" path="res://Enemies/Boss/Weapons3.gd" id="26"]
+[ext_resource type="PackedScene" path="res://Enemies/Projectiles/BulletStar1/enemy_bullet_star_1.tscn" id="27"]
+[ext_resource type="Script" path="res://Enemies/Boss/Weapons4.gd" id="28"]
+[ext_resource type="PackedScene" path="res://Enemies/Projectiles/BulletRound1/enemy_bullet_round_1.tscn" id="29"]
+[ext_resource type="Script" path="res://Enemies/Boss/Laser.gd" id="30"]
+[ext_resource type="Texture2D" uid="uid://cx4bslkr6wo45" path="res://Enemies/Boss/Sprites/Laser/Rect1_Red.png" id="31"]
+[ext_resource type="Texture2D" uid="uid://cjkkv7pekjwvv" path="res://Enemies/Boss/Sprites/Laser/Rect1_Orange.png" id="32"]
+[ext_resource type="Texture2D" uid="uid://c2xf64lvmga6e" path="res://Enemies/Boss/Sprites/Laser/Rect1_Yellow.png" id="33"]
+[ext_resource type="Texture2D" uid="uid://c5rxfbjuj2ibv" path="res://Enemies/Projectiles/BulletRound1/enemBullet1.png" id="34"]
+[ext_resource type="AudioStream" uid="uid://b1ojuasi16k1h" path="res://Music/Battle1.wav" id="35"]
+[ext_resource type="Script" path="res://Enemies/Boss/Music.gd" id="36"]
+[ext_resource type="Script" path="res://Enemies/InsideDamageOrb.gd" id="37"]
+[ext_resource type="Texture2D" uid="uid://bvi3x4ikuiq24" path="res://Player/Movement/Aim(Locked).png" id="38"]
+
+[sub_resource type="ViewportTexture" id="1"]
+viewport_path = NodePath("HealthbarView/SubViewport")
+
+[sub_resource type="BoxShape3D" id="2"]
+size = Vector3(120, 10, 120)
+
+[sub_resource type="StandardMaterial3D" id="3"]
+albedo_color = Color(0.396078, 0.392157, 0.360784, 1)
+
+[sub_resource type="SphereShape3D" id="4"]
+radius = 7.0
+
+[sub_resource type="SpriteFrames" id="5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("31")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="BoxShape3D" id="6"]
+size = Vector3(9.13623, 13.1148, 57.0023)
+
+[sub_resource type="SphereShape3D" id="7"]
+radius = 5.0
+
+[sub_resource type="Animation" id="8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="9"]
+resource_name = "Spin"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.28319, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="10"]
+_data = {
+"RESET": SubResource("8"),
+"Spin": SubResource("9")
+}
+
+[node name="Boss" type="CharacterBody3D" node_paths=PackedStringArray("StatHandler", "HealthComponent", "StateMachine") groups=["Boss", "Enemies", "Lockable"]]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1")
+StatHandler = NodePath("EnemStats")
+HealthComponent = NodePath("HealthComponent")
+StateMachine = NodePath("StateMachine")
+
+[node name="BossUI" type="Control" parent="." node_paths=PackedStringArray("MainNode", "HealthComponent")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2")
+MainNode = NodePath("..")
+HealthComponent = NodePath("../HealthComponent")
+
+[node name="HealthbarView" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.56835, 0)
+pixel_size = 0.03
+billboard = 1
+no_depth_test = true
+texture = SubResource("1")
+
+[node name="SubViewport" type="SubViewport" parent="HealthbarView"]
+disable_3d = true
+transparent_bg = true
+
+[node name="EnemyHealthBar" parent="HealthbarView/SubViewport" node_paths=PackedStringArray("MainNode", "HealthComponent", "StatHandler") instance=ExtResource("3")]
+anchors_preset = 8
+MainNode = NodePath("../../..")
+HealthComponent = NodePath("../../../HealthComponent")
+StatHandler = NodePath("../../../EnemStats")
+AlwaysActive = true
+
+[node name="StateMachine" type="Node3D" parent="." node_paths=PackedStringArray("initial_state", "model", "MainNode")]
+script = ExtResource("4")
+initial_state = NodePath("IdleState")
+model = NodePath("../ModelRig/nerfadinho")
+MainNode = NodePath("..")
+
+[node name="IdleState" type="Node3D" parent="StateMachine"]
+script = ExtResource("5")
+
+[node name="Area3D" type="Area3D" parent="StateMachine/IdleState"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StateMachine/IdleState/Area3D"]
+shape = SubResource("2")
+
+[node name="InvState" type="Node3D" parent="StateMachine" node_paths=PackedStringArray("HealthComponent")]
+script = ExtResource("6")
+HealthComponent = NodePath("../../HealthComponent")
+
+[node name="Mount" type="CSGSphere3D" parent="StateMachine/InvState"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 12)
+visible = false
+
+[node name="Marker3D" type="Marker3D" parent="StateMachine/InvState/Mount"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="SpawnState" type="Node3D" parent="StateMachine" node_paths=PackedStringArray("HealthComponent")]
+script = ExtResource("7")
+HealthComponent = NodePath("../../HealthComponent")
+
+[node name="LaserState" type="Node3D" parent="StateMachine"]
+script = ExtResource("8")
+
+[node name="NukeState" type="Node3D" parent="StateMachine"]
+script = ExtResource("9")
+
+[node name="InvLaser" type="Node3D" parent="StateMachine" node_paths=PackedStringArray("HealthComponent")]
+script = ExtResource("10")
+ship_count = 3
+HealthComponent = NodePath("../../HealthComponent")
+
+[node name="Mount" type="CSGSphere3D" parent="StateMachine/InvLaser"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 12)
+visible = false
+
+[node name="Marker3D" type="Marker3D" parent="StateMachine/InvLaser/Mount"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="NukeSpawn" type="Node3D" parent="StateMachine"]
+script = ExtResource("11")
+
+[node name="HealthComponent" type="Node3D" parent="." node_paths=PackedStringArray("StatHandler")]
+script = ExtResource("12")
+StatHandler = NodePath("../EnemStats")
+Invulnerable = true
+
+[node name="EnemStats" type="Node" parent="." node_paths=PackedStringArray("BaseStats", "MainNode")]
+script = ExtResource("13")
+BaseStats = NodePath("../BaseStats")
+MainNode = NodePath("..")
+
+[node name="BaseStats" type="Node" parent="."]
+script = ExtResource("14")
+max_health = 50000.0
+
+[node name="Sound" type="Node" parent="." node_paths=PackedStringArray("HealthComponent")]
+script = ExtResource("15")
+HealthComponent = NodePath("../HealthComponent")
+
+[node name="HitSound" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource("16")
+volume_db = -10.0
+pitch_scale = 0.2
+bus = &"EnemSFX"
+
+[node name="Death" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource("17")
+volume_db = -6.0
+pitch_scale = 1.2
+bus = &"EnemSFX"
+
+[node name="ModelRig" type="Marker3D" parent="."]
+
+[node name="nerfadinho" parent="ModelRig" instance=ExtResource("18_sx2rr")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 2.34956, 0)
+
+[node name="godot_logo" parent="ModelRig" instance=ExtResource("18")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+visible = false
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="ModelRig"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.50553)
+visible = false
+material_overlay = ExtResource("19")
+radius = 4.114
+material = SubResource("3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.63752, 0)
+shape = SubResource("4")
+
+[node name="Minions" type="Marker3D" parent="."]
+
+[node name="Peashooters" type="Marker3D" parent="."]
+
+[node name="Weapons1" type="Marker3D" parent="."]
+script = ExtResource("20")
+Bullet = ExtResource("21")
+damage = 400.0
+range = 50.0
+piercing = true
+speed = 4.0
+shots = 36
+cooldown = 0.6
+
+[node name="Mount1" type="CSGSphere3D" parent="Weapons1"]
+radius = 0.1
+
+[node name="Marker3D" type="Marker3D" parent="Weapons1/Mount1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="Mount2" type="CSGSphere3D" parent="Weapons1"]
+transform = Transform3D(-0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, 0, 0, 0)
+radius = 0.1
+
+[node name="Marker3D" type="Marker3D" parent="Weapons1/Mount2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="Mount3" type="CSGSphere3D" parent="Weapons1"]
+transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, 0, 0, 0)
+radius = 0.1
+
+[node name="Marker3D" type="Marker3D" parent="Weapons1/Mount3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="Spawner1" type="Marker3D" parent="." node_paths=PackedStringArray("Holder")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0)
+script = ExtResource("22")
+Minion = ExtResource("23")
+Holder = NodePath("../Peashooters")
+
+[node name="Mount1" type="CSGSphere3D" parent="Spawner1"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9, 0, 0)
+radius = 0.1
+
+[node name="Marker3D" type="Marker3D" parent="Spawner1/Mount1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="Mount2" type="CSGSphere3D" parent="Spawner1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9)
+radius = 0.1
+
+[node name="Marker3D" type="Marker3D" parent="Spawner1/Mount2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="Mount3" type="CSGSphere3D" parent="Spawner1"]
+transform = Transform3D(1.19249e-08, 0, 1, 0, 1, 0, -1, 0, 1.19249e-08, 9, 0, 0)
+radius = 0.1
+
+[node name="Marker3D" type="Marker3D" parent="Spawner1/Mount3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="Mount4" type="CSGSphere3D" parent="Spawner1"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, -9)
+radius = 0.1
+
+[node name="Marker3D" type="Marker3D" parent="Spawner1/Mount4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="Spawner2" type="Marker3D" parent="." node_paths=PackedStringArray("Holder")]
+transform = Transform3D(1.06066, 0, 1.06066, 0, 1.5, 0, -1.06066, 0, 1.06066, 0, 0, 0)
+script = ExtResource("22")
+Minion = ExtResource("23")
+Holder = NodePath("../Peashooters")
+
+[node name="Mount1" type="CSGSphere3D" parent="Spawner2"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -10, 0, 0)
+radius = 0.1
+
+[node name="Marker3D" type="Marker3D" parent="Spawner2/Mount1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="Mount2" type="CSGSphere3D" parent="Spawner2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
+radius = 0.1
+
+[node name="Marker3D" type="Marker3D" parent="Spawner2/Mount2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="Mount3" type="CSGSphere3D" parent="Spawner2"]
+transform = Transform3D(1.19249e-08, 0, 1, 0, 1, 0, -1, 0, 1.19249e-08, 10, 0, 0)
+radius = 0.1
+
+[node name="Marker3D" type="Marker3D" parent="Spawner2/Mount3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="Mount4" type="CSGSphere3D" parent="Spawner2"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, -10)
+radius = 0.1
+
+[node name="Marker3D" type="Marker3D" parent="Spawner2/Mount4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="Weapons2" type="Marker3D" parent="."]
+visible = false
+script = ExtResource("24")
+Bullet = ExtResource("25")
+damage = 300.0
+range = 50.0
+piercing = true
+speed = 5.0
+shots = 3
+cooldown = 0.8
+size = 2.2
+
+[node name="Mount1" type="CSGSphere3D" parent="Weapons2"]
+radius = 0.1
+
+[node name="Marker3D" type="Marker3D" parent="Weapons2/Mount1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="Mount2" type="CSGSphere3D" parent="Weapons2"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0)
+radius = 0.1
+
+[node name="Marker3D" type="Marker3D" parent="Weapons2/Mount2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="Mount3" type="CSGSphere3D" parent="Weapons2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+radius = 0.1
+
+[node name="Marker3D" type="Marker3D" parent="Weapons2/Mount3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="Mount4" type="CSGSphere3D" parent="Weapons2"]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 0, 0, 0)
+radius = 0.1
+
+[node name="Marker3D" type="Marker3D" parent="Weapons2/Mount4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="Mount5" type="CSGSphere3D" parent="Weapons2"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+radius = 0.1
+
+[node name="Marker3D" type="Marker3D" parent="Weapons2/Mount5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="Mount6" type="CSGSphere3D" parent="Weapons2"]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 0, 0, 0)
+radius = 0.1
+
+[node name="Marker3D" type="Marker3D" parent="Weapons2/Mount6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="Mount7" type="CSGSphere3D" parent="Weapons2"]
+transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 0, 0, 0)
+radius = 0.1
+
+[node name="Marker3D" type="Marker3D" parent="Weapons2/Mount7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="Mount8" type="CSGSphere3D" parent="Weapons2"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 0, 0)
+radius = 0.1
+
+[node name="Marker3D" type="Marker3D" parent="Weapons2/Mount8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="Weapons3" type="Marker3D" parent="."]
+script = ExtResource("26")
+Bullet = ExtResource("27")
+damage = 200.0
+range = 100.0
+speed = 8.0
+shots = 4
+cooldown = 0.8
+
+[node name="Mount1" type="CSGSphere3D" parent="Weapons3"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.77136, 0, 0)
+radius = 0.1
+
+[node name="Marker3D" type="Marker3D" parent="Weapons3/Mount1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="Mount2" type="CSGSphere3D" parent="Weapons3"]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 3.02773, 0, -3.63236)
+radius = 0.1
+
+[node name="Marker3D" type="Marker3D" parent="Weapons3/Mount2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="Mount3" type="CSGSphere3D" parent="Weapons3"]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, -3.028, 0, -3.632)
+radius = 0.1
+
+[node name="Marker3D" type="Marker3D" parent="Weapons3/Mount3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="Mount4" type="CSGSphere3D" parent="Weapons3"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.771, 0, 0)
+radius = 0.1
+
+[node name="Marker3D" type="Marker3D" parent="Weapons3/Mount4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="Mount5" type="CSGSphere3D" parent="Weapons3"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -4.82801)
+radius = 0.1
+
+[node name="Marker3D" type="Marker3D" parent="Weapons3/Mount5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="Weapons4" type="Marker3D" parent="."]
+script = ExtResource("28")
+Bullet = ExtResource("29")
+damage = 400.0
+range = 100.0
+speed = 6.0
+shots = 16
+cooldown = 0.4
+
+[node name="Mount1" type="CSGSphere3D" parent="Weapons4"]
+radius = 0.1
+
+[node name="Marker3D" type="Marker3D" parent="Weapons4/Mount1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="Mount2" type="CSGSphere3D" parent="Weapons4"]
+transform = Transform3D(-1, 0, -8.74227e-08, 0, 1, 0, 8.74227e-08, 0, -1, 0, 0, 0)
+radius = 0.1
+
+[node name="Marker3D" type="Marker3D" parent="Weapons4/Mount2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="Laser" type="Marker3D" parent="." node_paths=PackedStringArray("Main")]
+script = ExtResource("30")
+Main = NodePath("..")
+
+[node name="DangerArea" type="Node3D" parent="Laser"]
+
+[node name="Area1" type="AnimatedSprite3D" parent="Laser/DangerArea"]
+transform = Transform3D(0.8, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
+visible = false
+axis = 1
+sprite_frames = SubResource("5")
+autoplay = "default"
+speed_scale = -2.0
+
+[node name="Area2" type="AnimatedSprite3D" parent="Laser/DangerArea"]
+transform = Transform3D(0.8, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16.8)
+visible = false
+axis = 1
+sprite_frames = SubResource("5")
+autoplay = "default"
+frame = 1
+speed_scale = -2.0
+
+[node name="Area3" type="AnimatedSprite3D" parent="Laser/DangerArea"]
+transform = Transform3D(0.8, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 23.5935)
+visible = false
+axis = 1
+sprite_frames = SubResource("5")
+autoplay = "default"
+frame = 2
+speed_scale = -2.0
+
+[node name="Area4" type="AnimatedSprite3D" parent="Laser/DangerArea"]
+transform = Transform3D(0.8, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 30.3809)
+visible = false
+axis = 1
+sprite_frames = SubResource("5")
+autoplay = "default"
+speed_scale = -2.0
+
+[node name="Area5" type="AnimatedSprite3D" parent="Laser/DangerArea"]
+transform = Transform3D(0.8, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 37.1541)
+visible = false
+axis = 1
+sprite_frames = SubResource("5")
+autoplay = "default"
+frame = 1
+speed_scale = -2.0
+
+[node name="Area6" type="AnimatedSprite3D" parent="Laser/DangerArea"]
+transform = Transform3D(0.8, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 43.9286)
+visible = false
+axis = 1
+sprite_frames = SubResource("5")
+autoplay = "default"
+frame = 2
+speed_scale = -2.0
+
+[node name="Area7" type="AnimatedSprite3D" parent="Laser/DangerArea"]
+transform = Transform3D(0.8, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 50.7051)
+visible = false
+axis = 1
+sprite_frames = SubResource("5")
+autoplay = "default"
+speed_scale = -2.0
+
+[node name="Area8" type="AnimatedSprite3D" parent="Laser/DangerArea"]
+transform = Transform3D(0.8, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 57.5019)
+visible = false
+axis = 1
+sprite_frames = SubResource("5")
+autoplay = "default"
+frame = 1
+speed_scale = -2.0
+
+[node name="DmgArea" type="Area3D" parent="Laser"]
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Laser/DmgArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.88166, 33.5175)
+shape = SubResource("6")
+
+[node name="Beam" type="Node3D" parent="Laser"]
+
+[node name="Beam1" type="Sprite3D" parent="Laser/Beam"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 4.39973, 0, 0, 33.0534)
+visible = false
+pixel_size = 0.08
+axis = 1
+texture = ExtResource("34")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("35")
+volume_db = -40.0
+bus = &"Music"
+script = ExtResource("36")
+
+[node name="InsideDamageOrb" type="Area3D" parent="."]
+script = ExtResource("37")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InsideDamageOrb"]
+shape = SubResource("7")
+
+[node name="LockMark" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.77018, 0)
+visible = false
+modulate = Color(1, 0, 0.270588, 1)
+pixel_size = 0.02
+axis = 1
+texture = ExtResource("38")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="LockMark"]
+autoplay = "Spin"
+speed_scale = 0.5
+libraries = {
+"": SubResource("10")
+}
+
+[connection signal="body_entered" from="StateMachine/IdleState/Area3D" to="StateMachine/IdleState" method="_on_area_3d_body_entered" flags=18]
+[connection signal="body_entered" from="StateMachine/IdleState/Area3D" to="Laser" method="_on_area_3d_body_entered" flags=18]
+[connection signal="on_death" from="HealthComponent" to="." method="_on_health_component_on_death" flags=18]
+[connection signal="on_hit" from="HealthComponent" to="." method="_on_health_component_on_hit" flags=18]
+[connection signal="on_hit" from="HealthComponent" to="Sound" method="_on_health_component_on_hit" flags=18]
+[connection signal="on_invulnerability_change" from="HealthComponent" to="." method="_on_health_component_on_invulnerability_change" flags=18]
+[connection signal="body_entered" from="Laser/DmgArea" to="Laser" method="_on_dmg_area_body_entered" flags=18]
+[connection signal="body_exited" from="Laser/DmgArea" to="Laser" method="_on_dmg_area_body_exited" flags=18]
+[connection signal="body_entered" from="InsideDamageOrb" to="InsideDamageOrb" method="_on_body_entered" flags=18]
+[connection signal="body_exited" from="InsideDamageOrb" to="InsideDamageOrb" method="_on_body_exited" flags=18]

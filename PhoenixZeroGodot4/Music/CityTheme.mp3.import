@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bnoub0oc7g5e4"
+path="res://.godot/imported/CityTheme.mp3-d00fa3177baa97a0b97762839277901a.mp3str"
+
+[deps]
+
+source_file="res://Music/CityTheme.mp3"
+dest_files=PackedStringArray("res://.godot/imported/CityTheme.mp3-d00fa3177baa97a0b97762839277901a.mp3str")
+
+[params]
+
+dummy_value_ignore_me=0

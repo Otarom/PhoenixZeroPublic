@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://6kj3cqmjxqp7"
+path="res://.godot/imported/turbininha.obj-4200e3acc7c859b45b50ef5704368eb3.mesh"
+
+[deps]
+
+files=["res://.godot/imported/turbininha.obj-4200e3acc7c859b45b50ef5704368eb3.mesh"]
+
+source_file="res://Enemies/Boss/Minions/Peashooter/turbininha.obj"
+dest_files=["res://.godot/imported/turbininha.obj-4200e3acc7c859b45b50ef5704368eb3.mesh", "res://.godot/imported/turbininha.obj-4200e3acc7c859b45b50ef5704368eb3.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

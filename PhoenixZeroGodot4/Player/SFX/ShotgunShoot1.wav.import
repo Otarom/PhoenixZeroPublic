@@ -1,0 +1,16 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://celoljcdbi6p4"
+path="res://.godot/imported/ShotgunShoot1.wav-c721d935d4631ff0902743cf1fb0260d.sample"
+
+[deps]
+
+source_file="res://Player/SFX/ShotgunShoot1.wav"
+dest_files=PackedStringArray("res://.godot/imported/ShotgunShoot1.wav-c721d935d4631ff0902743cf1fb0260d.sample")
+
+[params]
+
+dummy_value_ignore_me=0
+compress/mode=0

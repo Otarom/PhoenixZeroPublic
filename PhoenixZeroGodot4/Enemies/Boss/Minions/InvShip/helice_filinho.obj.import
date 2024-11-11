@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dpi4pduor6ukv"
+path="res://.godot/imported/helice_filinho.obj-8fa0f285daab573dd52fe54807abf061.mesh"
+
+[deps]
+
+files=["res://.godot/imported/helice_filinho.obj-8fa0f285daab573dd52fe54807abf061.mesh"]
+
+source_file="res://Enemies/Boss/Minions/InvShip/helice_filinho.obj"
+dest_files=["res://.godot/imported/helice_filinho.obj-8fa0f285daab573dd52fe54807abf061.mesh", "res://.godot/imported/helice_filinho.obj-8fa0f285daab573dd52fe54807abf061.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

@@ -1,0 +1,160 @@
+GDRE Tools v0.6.2
+Windows 10.0.19045, GeForce 710M, opengl3
+Extracted 684 files, no errors detected!
+USER WARNING: Converting lossy imports, you may lose fidelity for indicated assets when re-importing upon loading the project
+   at: ImportExporter::_export_imports (modules\gdsdecomp\utility\import_exporter.cpp:58)
+USER WARNING: Export of obj meshes currently unimplemented
+   at: ImportExporter::_export_imports (modules\gdsdecomp\utility\import_exporter.cpp:191)
+USER WARNING: Conversion for Resource of type Mesh and format obj not implemented
+   at: ImportExporter::report_unsupported_resource (modules\gdsdecomp\utility\import_exporter.cpp:1052)
+Did not convert Mesh resource res://.godot/imported/Cannoneer.obj-3983565c2f8e8b16c86e4f08026f330b.mesh
+Did not convert Mesh resource res://.godot/imported/Model2.obj-5c740d9ff946695506694d585f44ec3c.mesh
+Did not convert Mesh resource res://.godot/imported/canhao (1).obj-0e60505e34fe7f955f81f1ae77385b40.mesh
+Did not convert Mesh resource res://.godot/imported/canhao (2).obj-a973743240660c0b436dc631db3f97a4.mesh
+Did not convert Mesh resource res://.godot/imported/canhao (3).obj-0e7f84b77f8bf43a212d1f626140961c.mesh
+Did not convert Mesh resource res://.godot/imported/canhao (4).obj-9d9760ec98672574acee0fe1e20f9e70.mesh
+Did not convert Mesh resource res://.godot/imported/canhao (5).obj-5cec20dbc56b81ba63714a5070c9701f.mesh
+Did not convert Mesh resource res://.godot/imported/canhaocomasagrande.obj-316a6271eeb3099d0bbae6e17d8cee0e.mesh
+Did not convert Mesh resource res://.godot/imported/helice_filinho.obj-8fa0f285daab573dd52fe54807abf061.mesh
+Did not convert Mesh resource res://.godot/imported/helice_papai.obj-c333c0134fae1ff113862c195696bf9e.mesh
+Did not convert Mesh resource res://.godot/imported/papai_e_filinho_juntinhos.obj-5912b436029bd129b0cc63789504127a.mesh
+Did not convert Mesh resource res://.godot/imported/rotor.obj-de5cca252164d12d8dfbeaafc550da3d.mesh
+Did not convert Mesh resource res://.godot/imported/torretzinha.obj-d7edccf01af6ec34e6deb219366c94d2.mesh
+Did not convert Mesh resource res://.godot/imported/turbininha.obj-4200e3acc7c859b45b50ef5704368eb3.mesh
+Did not convert Mesh resource res://.godot/imported/asa-cego-d.obj-2630a159004836d2d2a8d0f51c69c9b7.mesh
+Did not convert Mesh resource res://.godot/imported/asa-cego-e.obj-b8ec49fb1703cfdec66b7772f39f23a1.mesh
+Did not convert Mesh resource res://.godot/imported/mur-cego.obj-1867ae838dda3b8da30d524cf26bbf16.mesh
+USER WARNING: Export of models/imported scenes currently unimplemented
+   at: ImportExporter::_export_imports (modules\gdsdecomp\utility\import_exporter.cpp:181)
+USER WARNING: Conversion for Resource of type PackedScene and format glb not implemented
+   at: ImportExporter::report_unsupported_resource (modules\gdsdecomp\utility\import_exporter.cpp:1052)
+Did not convert PackedScene resource res://.godot/imported/godot_logo.glb-70edb9fa51a012c3886417d22cb2ec33.scn
+USER WARNING: Alpha channel detected, will not be saved to jpeg...
+   at: gdreutil::save_image_as_jpeg (D:\a\gdsdecomp\gdsdecomp\modules\gdsdecomp\utility\util_functions.h:81)
+Did not convert PackedScene resource res://.godot/imported/cog.glb-a06557225b1def298d1434472f39f799.scn
+Did not convert Mesh resource res://.godot/imported/AviaoPapel.obj-9c2a9a58d3317dc5a6625bbc6dc5ff22.mesh
+Did not convert PackedScene resource res://.godot/imported/quad2fix2.glb-fb79943ca07120e3e8fa7ca4bcf23bc4.scn
+Did not convert PackedScene resource res://.godot/imported/PropPlane.glb-890de95242522705ca1e7031f77a6451.scn
+Did not convert PackedScene resource res://.godot/imported/PropPlane2,0.glb-c764145233898d1db3754ef8832a70b8.scn
+Did not convert PackedScene resource res://.godot/imported/PropforPropPlane.glb-e7cf17099b1e55ef03a17471bad3a4b6.scn
+Did not convert Mesh resource res://.godot/imported/SlashBlockyWithUV.obj-2be50cfcb89596f7e5f649d0e135ba8b.mesh
+Did not convert Mesh resource res://.godot/imported/anticubo.obj-44645f8253701c651d55c2246f83f042.mesh
+Did not convert Mesh resource res://.godot/imported/untitled.obj-54a2d229b91dd07ba674a553141d149a.mesh
+Did not convert Mesh resource res://.godot/imported/CurvePipe1.obj-67672f60f5b2e3d39c34dee305db6f3a.mesh
+Did not convert Mesh resource res://.godot/imported/LongPipe1.obj-0d88a8f1327c566ba2fe6fb378fb5c1d.mesh
+USER WARNING: Conversion for Resource of type PackedScene and format gltf not implemented
+   at: ImportExporter::report_unsupported_resource (modules\gdsdecomp\utility\import_exporter.cpp:1052)
+Did not convert PackedScene resource res://.godot/imported/PipeWall1.gltf-9143901ff20dd5b0afe5bf252d4e38ac.scn
+Did not convert Mesh resource res://.godot/imported/PipeWallBlock1.obj-dfa39bcf13e379014d74539027e11e52.mesh
+Did not rewrite import metadata for res://icon.svg
+Saved project config project.godot.
+
+
+********************************EXPORT REPORT********************************
+
+Totals:                                 
+Decompiled scripts:                     0
+Failed scripts:                         0
+Imported resources for export session:  684
+Successfully converted:                 231
+Lossy:                                  29
+Rewrote metadata:                       0
+Non-importable conversions:             1
+Not converted:                          31
+Failed conversions:                     0
+-------------
+
+
+The following files were converted from an import that was stored lossy.
+You may lose fidelity when re-importing these files upon loading the project.
+res://.godot/imported/grungescratchesrough.jpg.img.jpg-554868b5511b88f25d0c41a977307606.s3tc.ctex to res://Enemies/DPSDummy/grungescratchesrough.jpg.img.jpg
+res://.godot/imported/EnemExplosion.wav-abb0b6662aca586349d27f8b15acf2c5.sample to res://Enemies/SFX/EnemExplosion.wav
+res://.godot/imported/EnemHitSound1.wav-7106bc733d5ffe1eaf562432734c876d.sample to res://Enemies/SFX/EnemHitSound1.wav
+res://.godot/imported/EnemHitSound2.wav-38a10473153d8958093fce4ef1346893.sample to res://Enemies/SFX/EnemHitSound2.wav
+res://.godot/imported/Klank.wav-26f1007c8eb3a7efd46c1175ef5648fc.sample to res://Enemies/SFX/Klank.wav
+res://.godot/imported/ShieldHit.wav-3b207e9c8e31ce1c6ce5559d6f7636d2.sample to res://Enemies/SFX/ShieldHit.wav
+res://.godot/imported/ethnocentric rg.otf-6f9aecf073ea9136945d909a6e10a525.fontdata to res://Misc/Fonts/ethnocentric rg.otf
+res://.godot/imported/EnemExplosion.wav-48228747ca7f945d5de85bf44f93d1d8.sample to res://Misc/VFX/3D_Explosion/EnemExplosion.wav
+res://.godot/imported/EnemExplosion4.wav-4599d4a310dec26722206ec1d02609bf.sample to res://Misc/VFX/3D_Explosion/EnemExplosion4.wav
+res://.godot/imported/EnemExplosion5.wav-960084838577a8f57693098ce630e1a9.sample to res://Misc/VFX/3D_Explosion/EnemExplosion5.wav
+res://.godot/imported/Battle1.wav-7faedef104913bcf3a134cd78b805fb8.sample to res://Music/Battle1.wav
+res://.godot/imported/Engine1.wav-9b5007b8106c6cb80172f24bd9b303e9.sample to res://Player/SFX/Engine1.wav
+res://.godot/imported/HitTest.wav-88c6b319e145c16f07da513c8991d568.sample to res://Player/SFX/HitTest.wav
+res://.godot/imported/LowHealthAlarm.wav-67741072f648318d5710fdc02c834b30.sample to res://Player/SFX/LowHealthAlarm.wav
+res://.godot/imported/Machinegun1.wav-18661fe17f0ecfeaf5f7008e8b5b4fca.sample to res://Player/SFX/Machinegun1.wav
+res://.godot/imported/MachinegunShot1.wav-d566d271c0c2738312c81c0ba68b5fca.sample to res://Player/SFX/MachinegunShot1.wav
+res://.godot/imported/NoAmmo.wav-63136fa66c0fa6b6eb3790b54642cda0.sample to res://Player/SFX/NoAmmo.wav
+res://.godot/imported/PlayerDeathSFX.wav-2746b56921b1b1ad529f3d14b253da35.sample to res://Player/SFX/PlayerDeathSFX.wav
+res://.godot/imported/PlayerHit.wav-cb4283e3fc2c72766fac0d46a4bcd074.sample to res://Player/SFX/PlayerHit.wav
+res://.godot/imported/Recharge.wav-53818f7cba6855977c9a9f109774acb9.sample to res://Player/SFX/Recharge.wav
+res://.godot/imported/ReloadReady.wav-3d764e95d848924f1d8988f19b71ec33.sample to res://Player/SFX/ReloadReady.wav
+res://.godot/imported/Saw.wav-cd5a7e77cc29ad69a7c5f9032160505a.sample to res://Player/SFX/Saw.wav
+res://.godot/imported/ShotgunShoot1.wav-c721d935d4631ff0902743cf1fb0260d.sample to res://Player/SFX/ShotgunShoot1.wav
+res://.godot/imported/SniperShoot1.wav-254fc35b6561e8f406f375090779508f.sample to res://Player/SFX/SniperShoot1.wav
+res://.godot/imported/noAmmo1.wav-c48cf190785d537a982647f499aef362.sample to res://Player/SFX/noAmmo1.wav
+res://.godot/imported/Square.ttf-ff4633535c3a2d444bdbe94a8d7f72bd.fontdata to res://Player/UI/Fonts/Square.ttf
+res://.godot/imported/VanillaExtractRegular.ttf-bc5eecdea6dcaefc1076c956b4b481aa.fontdata to res://Player/UI/TopInfo/VanillaExtractRegular.ttf
+res://.godot/imported/Saber.wav-b63837a5f6cdbe05ef04c2c889a963b3.sample to res://Player/Weapons/Sword2/Saber.wav
+res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex to res://.assets/icon.png
+------
+
+The following files were converted and saved to a non-original path, but did not have their import data rewritten.
+These files will not be re-imported when loading the project.
+res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex to res://.assets/icon.png
+------
+
+The following files were not converted because support has not been implemented yet:
+res://.godot/imported/Cannoneer.obj-3983565c2f8e8b16c86e4f08026f330b.mesh
+res://.godot/imported/Model2.obj-5c740d9ff946695506694d585f44ec3c.mesh
+res://.godot/imported/canhao (1).obj-0e60505e34fe7f955f81f1ae77385b40.mesh
+res://.godot/imported/canhao (2).obj-a973743240660c0b436dc631db3f97a4.mesh
+res://.godot/imported/canhao (3).obj-0e7f84b77f8bf43a212d1f626140961c.mesh
+res://.godot/imported/canhao (4).obj-9d9760ec98672574acee0fe1e20f9e70.mesh
+res://.godot/imported/canhao (5).obj-5cec20dbc56b81ba63714a5070c9701f.mesh
+res://.godot/imported/canhaocomasagrande.obj-316a6271eeb3099d0bbae6e17d8cee0e.mesh
+res://.godot/imported/helice_filinho.obj-8fa0f285daab573dd52fe54807abf061.mesh
+res://.godot/imported/helice_papai.obj-c333c0134fae1ff113862c195696bf9e.mesh
+res://.godot/imported/papai_e_filinho_juntinhos.obj-5912b436029bd129b0cc63789504127a.mesh
+res://.godot/imported/rotor.obj-de5cca252164d12d8dfbeaafc550da3d.mesh
+res://.godot/imported/torretzinha.obj-d7edccf01af6ec34e6deb219366c94d2.mesh
+res://.godot/imported/turbininha.obj-4200e3acc7c859b45b50ef5704368eb3.mesh
+res://.godot/imported/asa-cego-d.obj-2630a159004836d2d2a8d0f51c69c9b7.mesh
+res://.godot/imported/asa-cego-e.obj-b8ec49fb1703cfdec66b7772f39f23a1.mesh
+res://.godot/imported/mur-cego.obj-1867ae838dda3b8da30d524cf26bbf16.mesh
+res://.godot/imported/godot_logo.glb-70edb9fa51a012c3886417d22cb2ec33.scn
+res://.godot/imported/cog.glb-a06557225b1def298d1434472f39f799.scn
+res://.godot/imported/AviaoPapel.obj-9c2a9a58d3317dc5a6625bbc6dc5ff22.mesh
+res://.godot/imported/quad2fix2.glb-fb79943ca07120e3e8fa7ca4bcf23bc4.scn
+res://.godot/imported/PropPlane.glb-890de95242522705ca1e7031f77a6451.scn
+res://.godot/imported/PropPlane2,0.glb-c764145233898d1db3754ef8832a70b8.scn
+res://.godot/imported/PropforPropPlane.glb-e7cf17099b1e55ef03a17471bad3a4b6.scn
+res://.godot/imported/SlashBlockyWithUV.obj-2be50cfcb89596f7e5f649d0e135ba8b.mesh
+res://.godot/imported/anticubo.obj-44645f8253701c651d55c2246f83f042.mesh
+res://.godot/imported/untitled.obj-54a2d229b91dd07ba674a553141d149a.mesh
+res://.godot/imported/CurvePipe1.obj-67672f60f5b2e3d39c34dee305db6f3a.mesh
+res://.godot/imported/LongPipe1.obj-0d88a8f1327c566ba2fe6fb378fb5c1d.mesh
+res://.godot/imported/PipeWall1.gltf-9143901ff20dd5b0afe5bf252d4e38ac.scn
+res://.godot/imported/PipeWallBlock1.obj-dfa39bcf13e379014d74539027e11e52.mesh
+
+
+
+---------------------------------IMPORTANT NOTES----------------------------------
+
+The following resource types were detected in the project that conversion is not implemented for yet:
+Type: Mesh                	Format: obj
+Type: PackedScene         	Format: glb
+Type: PackedScene         	Format: gltf
+See Export Report to see which resources were not exported.
+You will still be able to edit the project in the editor regardless.
+
+
+------------------------------------------------------------------------------------
+
+Use Godot editor version 4.1.3(steam version)  to edit the project.
+GodotSteam can be found here: https://github.com/CoaguCo-Industries/GodotSteam/releases 
+Note: the project may be using a custom version of Godot. Detection for this has not been implemented yet.
+If you find that you have many non-import errors upon opening the project 
+(i.e. scripts or shaders have many errors), use the original game's binary as the export template.
+
+*******************************************************************************
+

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://btls7ol1gissn"
+path="res://.godot/imported/asa-cego-d.obj-2630a159004836d2d2a8d0f51c69c9b7.mesh"
+
+[deps]
+
+files=["res://.godot/imported/asa-cego-d.obj-2630a159004836d2d2a8d0f51c69c9b7.mesh"]
+
+source_file="res://Enemies/Boss/Minions/Trailhunters/asa-cego-d.obj"
+dest_files=["res://.godot/imported/asa-cego-d.obj-2630a159004836d2d2a8d0f51c69c9b7.mesh", "res://.godot/imported/asa-cego-d.obj-2630a159004836d2d2a8d0f51c69c9b7.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

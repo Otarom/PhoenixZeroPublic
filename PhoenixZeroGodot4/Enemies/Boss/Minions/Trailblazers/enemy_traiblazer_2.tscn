@@ -1,0 +1,166 @@
+[gd_scene load_steps=22 format=3]
+
+[ext_resource type="Script" path="res://Enemies/Boss/Minions/Trailblazers/enemy_traiblazer_1.gd" id="1"]
+[ext_resource type="Script" path="res://Enemies/EnemyUI.gd" id="2"]
+[ext_resource type="Script" path="res://Enemies/ModelHandler.gd" id="3"]
+[ext_resource type="Script" path="res://Components/HealthComponent.gd" id="4"]
+[ext_resource type="Script" path="res://Enemies/StateMachine.gd" id="5"]
+[ext_resource type="Script" path="res://Enemies/Boss/Minions/Trailblazers/Spawn.gd" id="6"]
+[ext_resource type="Script" path="res://Enemies/Boss/Minions/Trailblazers/Main2.gd" id="7"]
+[ext_resource type="Script" path="res://Components/StatHandler.gd" id="8"]
+[ext_resource type="Script" path="res://Components/BaseStats.gd" id="9"]
+[ext_resource type="PackedScene" uid="uid://tygxsbp2ogxb" path="res://Enemies/enemy_health_bar.tscn" id="10"]
+[ext_resource type="PackedScene" uid="uid://5bo3gljhsfpw" path="res://Enemies/Boss/Minions/Trailblazers/Enemyoldone.tscn" id="11"]
+[ext_resource type="Script" path="res://Enemies/Boss/Minions/Trailblazers/Weapon2.gd" id="12"]
+[ext_resource type="PackedScene" uid="uid://dtke0j56t375n" path="res://Enemies/Projectiles/BulletRound1/enemy_bullet_round_1.tscn" id="13"]
+[ext_resource type="Script" path="res://Enemies/Boss/Sound.gd" id="14"]
+[ext_resource type="AudioStream" uid="uid://bkrh4xouq63ul" path="res://Enemies/SFX/EnemHitSound2.wav" id="15"]
+[ext_resource type="AudioStream" uid="uid://c3rv5csc8c6pt" path="res://Enemies/SFX/EnemExplosion.wav" id="16"]
+
+[sub_resource type="SphereShape3D" id="1"]
+radius = 1.75
+script = null
+
+[sub_resource type="ViewportTexture" id="2"]
+viewport_path = NodePath("ModelRig/HealthbarView/SubViewport")
+script = null
+
+[sub_resource type="PrismMesh" id="3"]
+script = null
+
+[sub_resource type="StandardMaterial3D" id="4"]
+albedo_color = Color(0.843137, 0.0862745, 0.0745098, 1)
+script = null
+
+[sub_resource type="SphereShape3D" id="5"]
+radius = 0.956018
+script = null
+
+[node name="enemy_traiblazer_1" type="CharacterBody3D" node_paths=PackedStringArray("StatHandler", "HealthComponent", "StateMachine") groups=[
+"Enemies",
+"Minions",
+]]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1")
+StatHandler = NodePath("StatHandler")
+HealthComponent = NodePath("HealthComponent")
+StateMachine = NodePath("StateMachine")
+
+[node name="EnemyUI" type="Control" parent="." node_paths=PackedStringArray("MainNode", "HealthComponent")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2")
+MainNode = NodePath("..")
+HealthComponent = NodePath("../HealthComponent")
+font_size = 12
+
+[node name="ModelHandler" type="Area3D" parent="." node_paths=PackedStringArray("ModelRig")]
+script = ExtResource("3")
+ModelRig = NodePath("../ModelRig")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="ModelHandler"]
+shape = SubResource("1")
+
+[node name="HealthComponent" type="Node3D" parent="." node_paths=PackedStringArray("StatHandler")]
+script = ExtResource("4")
+StatHandler = NodePath("../StatHandler")
+
+[node name="StateMachine" type="Node3D" parent="." node_paths=PackedStringArray("initial_state", "model", "MainNode")]
+script = ExtResource("5")
+initial_state = NodePath("Spawn")
+model = NodePath("../ModelRig/TrustyOldOne")
+MainNode = NodePath("..")
+
+[node name="Spawn" type="Node3D" parent="StateMachine" node_paths=PackedStringArray("HealthComponent")]
+script = ExtResource("6")
+HealthComponent = NodePath("../../HealthComponent")
+
+[node name="Main" type="Node3D" parent="StateMachine" node_paths=PackedStringArray("gun1")]
+script = ExtResource("7")
+gun1 = NodePath("../../Weapon1")
+
+[node name="StatHandler" type="Node" parent="." node_paths=PackedStringArray("BaseStats", "MainNode")]
+script = ExtResource("8")
+BaseStats = NodePath("../BaseStats")
+MainNode = NodePath("..")
+
+[node name="BaseStats" type="Node" parent="."]
+script = ExtResource("9")
+speed = 10
+max_health = 3000.0
+
+[node name="ModelRig" type="Marker3D" parent="."]
+
+[node name="HealthbarView" type="Sprite3D" parent="ModelRig"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+pixel_size = 0.02
+billboard = 1
+texture = SubResource("2")
+
+[node name="SubViewport" type="SubViewport" parent="ModelRig/HealthbarView"]
+disable_3d = true
+transparent_bg = true
+
+[node name="EnemyHealthBar" parent="ModelRig/HealthbarView/SubViewport" node_paths=PackedStringArray("MainNode", "HealthComponent", "StatHandler") instance=ExtResource("10")]
+MainNode = NodePath("../../../..")
+HealthComponent = NodePath("../../../../HealthComponent")
+StatHandler = NodePath("../../../../StatHandler")
+
+[node name="PlaceHolder" type="Node3D" parent="ModelRig"]
+visible = false
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="ModelRig/PlaceHolder"]
+transform = Transform3D(1.5, 0, 0, 0, -8.74228e-08, -0.2, 0, 2, -8.74228e-09, 0, 0, 0.163759)
+mesh = SubResource("3")
+material = SubResource("4")
+
+[node name="TrustyOldOne" parent="ModelRig" instance=ExtResource("11")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0.117107, 0.149179)
+
+[node name="Weapon1" type="Marker3D" parent="."]
+visible = false
+script = ExtResource("12")
+Bullet = ExtResource("13")
+damage = 100.0
+range = 500.0
+speed = 8.0
+shots = 1
+
+[node name="Mount1" type="CSGSphere3D" parent="Weapon1"]
+transform = Transform3D(-0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866025, 0, 0, -1.81876)
+
+[node name="Marker3D" type="Marker3D" parent="Weapon1/Mount1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="Mount2" type="CSGSphere3D" parent="Weapon1"]
+transform = Transform3D(-0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, 0, 0, -1.81876)
+
+[node name="Marker3D" type="Marker3D" parent="Weapon1/Mount2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("5")
+
+[node name="Sound" type="Node" parent="." node_paths=PackedStringArray("HealthComponent")]
+script = ExtResource("14")
+HealthComponent = NodePath("../HealthComponent")
+
+[node name="HitSound" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource("15")
+volume_db = -10.0
+bus = &"EnemSFX"
+
+[node name="Death" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource("16")
+volume_db = -6.0
+pitch_scale = 1.2
+
+[connection signal="body_entered" from="ModelHandler" to="ModelHandler" method="_on_body_entered" flags=18]
+[connection signal="body_exited" from="ModelHandler" to="ModelHandler" method="_on_body_exited" flags=18]
+[connection signal="on_death" from="HealthComponent" to="." method="_on_health_component_on_death" flags=18]
+[connection signal="on_hit" from="HealthComponent" to="." method="_on_health_component_on_hit" flags=18]
+[connection signal="on_hit" from="HealthComponent" to="Sound" method="_on_health_component_on_hit" flags=18]
+[connection signal="on_invulnerability_change" from="HealthComponent" to="." method="_on_health_component_on_invulnerability_change" flags=18]

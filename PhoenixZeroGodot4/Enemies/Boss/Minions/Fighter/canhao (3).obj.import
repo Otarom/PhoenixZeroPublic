@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cglxnj87u32go"
+path="res://.godot/imported/canhao (3).obj-0e7f84b77f8bf43a212d1f626140961c.mesh"
+
+[deps]
+
+files=["res://.godot/imported/canhao (3).obj-0e7f84b77f8bf43a212d1f626140961c.mesh"]
+
+source_file="res://Enemies/Boss/Minions/Fighter/canhao (3).obj"
+dest_files=["res://.godot/imported/canhao (3).obj-0e7f84b77f8bf43a212d1f626140961c.mesh", "res://.godot/imported/canhao (3).obj-0e7f84b77f8bf43a212d1f626140961c.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

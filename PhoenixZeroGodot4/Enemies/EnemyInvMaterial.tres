@@ -1,0 +1,17 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://53gvv5cwc80u"]
+
+[ext_resource type="Shader" path="res://Enemies/InvShader.gdshader" id="1"]
+
+[sub_resource type="StandardMaterial3D" id="1"]
+transparency = 1
+cull_mode = 2
+albedo_color = Color(0.917647, 0, 0.92549, 0.376471)
+
+[resource]
+render_priority = 2
+next_pass = SubResource("1")
+shader = ExtResource("1")
+shader_parameter/color_gap = Color(0.980392, 0.25098, 1, 0.670588)
+shader_parameter/color_stripe = Color(1, 0.945098, 0.996078, 1)
+shader_parameter/divisions = 0.5
+shader_parameter/stripe_bias = 1.05

@@ -1,0 +1,16 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://clj2scigi32v3"
+path="res://.godot/imported/SniperShoot1.wav-254fc35b6561e8f406f375090779508f.sample"
+
+[deps]
+
+source_file="res://Player/SFX/SniperShoot1.wav"
+dest_files=PackedStringArray("res://.godot/imported/SniperShoot1.wav-254fc35b6561e8f406f375090779508f.sample")
+
+[params]
+
+dummy_value_ignore_me=0
+compress/mode=0

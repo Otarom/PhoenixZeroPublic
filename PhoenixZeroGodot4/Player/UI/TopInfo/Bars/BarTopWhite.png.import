@@ -1,0 +1,18 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://ch7222unud0p1"
+path="res://.godot/imported/BarTopWhite.png-731d9d3b403ac709a4abcc78bc8e41af.ctex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://Player/UI/TopInfo/Bars/BarTopWhite.png"
+dest_files=PackedStringArray("res://.godot/imported/BarTopWhite.png-731d9d3b403ac709a4abcc78bc8e41af.ctex")
+
+[params]
+
+dummy_value_ignore_me=0

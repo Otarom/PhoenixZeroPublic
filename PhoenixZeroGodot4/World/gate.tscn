@@ -1,0 +1,213 @@
+[gd_scene load_steps=12 format=3]
+
+[ext_resource type="Texture2D" uid="uid://dhe38jwb1sfi2" path="res://World/Models/texture.png" id="1"]
+[ext_resource type="Script" path="res://World/Gate.gd" id="2"]
+
+[sub_resource type="StandardMaterial3D" id="1"]
+albedo_color = Color(0.498039, 0.313726, 0.345098, 1)
+albedo_texture = ExtResource("1")
+script = null
+
+[sub_resource type="StandardMaterial3D" id="2"]
+albedo_color = Color(0.384314, 0.196078, 0.203922, 1)
+albedo_texture = ExtResource("1")
+script = null
+
+[sub_resource type="BoxShape3D" id="3"]
+size = Vector3(5, 22, 0.8)
+script = null
+
+[sub_resource type="StandardMaterial3D" id="4"]
+albedo_color = Color(0.211765, 0.211765, 0.211765, 1)
+script = null
+
+[sub_resource type="BoxShape3D" id="5"]
+size = Vector3(8, 12, 0.517168)
+script = null
+
+[sub_resource type="PrismMesh" id="6"]
+left_to_right = 1.0
+size = Vector3(3, 24, 1)
+script = null
+
+[sub_resource type="Animation" id="7"]
+resource_name = "DoorClose"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Opening:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(6, 22, 1), Vector3(0, 22, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DoorJunction:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(2.85621, 0, 0), Vector3(0.2, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DoorJunction2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-2.856, 0, 0), Vector3(-0.2, 0, 0)]
+}
+script = null
+
+[sub_resource type="Animation" id="8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Opening:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(6, 22, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DoorJunction:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(2.85621, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DoorJunction2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-2.856, 0, 0)]
+}
+script = null
+
+[sub_resource type="AnimationLibrary" id="9"]
+_data = {
+"DoorClose": SubResource("7"),
+"RESET": SubResource("8")
+}
+script = null
+
+[node name="Gate" type="CSGBox3D"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, -10, 0)
+visibility_range_end = 110.0
+size = Vector3(7.2, 22, 0.8)
+material = SubResource("1")
+script = ExtResource("2")
+
+[node name="Opening" type="CSGBox3D" parent="."]
+operation = 2
+size = Vector3(6, 22, 1)
+
+[node name="DoorJunction" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.85621, 0, 0)
+size = Vector3(0.510882, 22.5, 1)
+material = SubResource("2")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="DoorJunction"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.85621, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DoorJunction/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.15617, 0, 0)
+shape = SubResource("3")
+
+[node name="DoorJunction2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.856, 0, 0)
+material_override = SubResource("4")
+size = Vector3(0.511, 22.5, 1)
+material = SubResource("2")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="DoorJunction2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.85621, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DoorJunction2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.594941, 0, 0)
+shape = SubResource("3")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.32583, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0735538)
+shape = SubResource("5")
+
+[node name="Pillar1" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+material_override = SubResource("1")
+size = Vector3(3, 24, 2)
+material = SubResource("1")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Pillar1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.9968, 0)
+operation = 2
+size = Vector3(2.8, 0.2, 1.8)
+material = SubResource("1")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="Pillar1"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1, 0, -2.5)
+mesh = SubResource("6")
+material = SubResource("1")
+
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="Pillar1"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1, 0, -2.5)
+mesh = SubResource("6")
+material = SubResource("1")
+
+[node name="Pillar2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
+material_override = SubResource("1")
+size = Vector3(3, 24, 2)
+material = SubResource("1")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Pillar2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.9968, 0)
+operation = 2
+size = Vector3(2.8, 0.2, 1.8)
+material = SubResource("1")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="Pillar2"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1, 0, -2.5)
+mesh = SubResource("6")
+material = SubResource("1")
+
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="Pillar2"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1, 0, -2.5)
+mesh = SubResource("6")
+material = SubResource("1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("9")
+}
+
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited" flags=18]

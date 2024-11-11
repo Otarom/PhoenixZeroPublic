@@ -1,0 +1,18 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://esyoiostsiij"
+path="res://.godot/imported/PlayerHealthBar.png-e7bd3f2da163dbab96b5ce268972f68e.ctex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://Player/UI/CenterInfo/Bars/PlayerHealthBar.png"
+dest_files=PackedStringArray("res://.godot/imported/PlayerHealthBar.png-e7bd3f2da163dbab96b5ce268972f68e.ctex")
+
+[params]
+
+dummy_value_ignore_me=0

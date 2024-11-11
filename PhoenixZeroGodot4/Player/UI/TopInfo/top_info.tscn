@@ -1,0 +1,236 @@
+[gd_scene load_steps=12 format=3]
+
+[ext_resource type="Script" path="res://Player/UI/TopInfo/top_info.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://b0bxkfociceaa" path="res://Player/UI/TopInfo/Bg.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://djiowg2ulkt4p" path="res://Player/UI/TopInfo/BlueJay.png" id="3"]
+[ext_resource type="Script" path="res://Player/UI/TopInfo/PlayerIcon.gd" id="4"]
+[ext_resource type="Texture2D" uid="uid://ba0rpyd4jxe42" path="res://Player/UI/TopInfo/TestBorder2.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://ob8cxldskyty" path="res://Player/UI/TopInfo/Bars/BarTopUnder.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://b8gasodfixt8o" path="res://Player/UI/TopInfo/Bars/BarTopRed.png" id="7"]
+[ext_resource type="Script" path="res://Player/UI/TopInfo/UnderBarCode.gd" id="8"]
+[ext_resource type="Texture2D" uid="uid://cmgo7qqlu17pk" path="res://Player/UI/TopInfo/Bars/BarTopGreen.png" id="9"]
+[ext_resource type="FontFile" uid="uid://cgmf48y5qhjg2" path="res://Player/UI/TopInfo/VanillaExtractRegular.ttf" id="10"]
+[ext_resource type="Texture2D" uid="uid://ch7222unud0p1" path="res://Player/UI/TopInfo/Bars/BarTopWhite.png" id="11"]
+
+[node name="TopInfo" type="Control" node_paths=PackedStringArray("HealthBar", "HealthBarUnder", "HealthBarText", "EnergyBar", "EnergyBarUnder", "EnergyBarText")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 185.0
+offset_bottom = 51.0
+script = ExtResource("1")
+HealthBar = NodePath("HBoxContainer/ColorRect/ColorRect2/VBoxContainer/HealthBarUnder/HealthBar")
+HealthBarUnder = NodePath("HBoxContainer/ColorRect/ColorRect2/VBoxContainer/HealthBarUnder")
+HealthBarText = NodePath("HBoxContainer/ColorRect/ColorRect2/VBoxContainer/HealthBarUnder/LifeValue")
+EnergyBar = NodePath("HBoxContainer/ColorRect/ColorRect2/VBoxContainer/EnergyBarUnder/EnergyBar")
+EnergyBarUnder = NodePath("HBoxContainer/ColorRect/ColorRect2/VBoxContainer/EnergyBarUnder")
+EnergyBarText = NodePath("HBoxContainer/ColorRect/ColorRect2/VBoxContainer/EnergyBarUnder/EnergyValue")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_direction = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.897
+anchor_bottom = 1.059
+offset_right = 76.055
+offset_bottom = 24.991
+
+[node name="IconHolder" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="PlayerIcon" type="TextureRect" parent="HBoxContainer/IconHolder"]
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource("3")
+expand_mode = 3
+stretch_mode = 4
+script = ExtResource("4")
+
+[node name="ProfileBorder" type="TextureRect" parent="HBoxContainer/IconHolder"]
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource("5")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(129, 75)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+size_flags_stretch_ratio = 2.0
+color = Color(0.231373, 0.231373, 0.258824, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="HBoxContainer/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.176471, 0.156863, 0.180392, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/ColorRect/ColorRect2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = -4.0
+
+[node name="HealthBarUnder" type="TextureProgressBar" parent="HBoxContainer/ColorRect/ColorRect2/VBoxContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(129, 15)
+layout_mode = 2
+value = 60.0
+nine_patch_stretch = true
+texture_under = ExtResource("6")
+texture_progress = ExtResource("7")
+tint_under = Color(0.192157, 0.164706, 0.811765, 1)
+tint_progress = Color(0.835294, 0.560784, 0.74902, 1)
+script = ExtResource("8")
+
+[node name="HealthBar" type="TextureProgressBar" parent="HBoxContainer/ColorRect/ColorRect2/VBoxContainer/HealthBarUnder"]
+clip_contents = true
+custom_minimum_size = Vector2(129, 15)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+value = 100.0
+nine_patch_stretch = true
+texture_progress = ExtResource("9")
+tint_under = Color(0.192157, 0.164706, 0.811765, 1)
+
+[node name="Text" type="RichTextLabel" parent="HBoxContainer/ColorRect/ColorRect2/VBoxContainer/HealthBarUnder"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.978
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = 2.0
+offset_right = 4.01399
+theme_override_fonts/normal_font = ExtResource("10")
+theme_override_font_sizes/normal_font_size = 10
+text = "Health"
+autowrap_mode = 0
+
+[node name="LifeValue" type="RichTextLabel" parent="HBoxContainer/ColorRect/ColorRect2/VBoxContainer/HealthBarUnder"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.978
+anchor_bottom = 1.0
+offset_top = 2.0
+offset_right = -4.98601
+theme_override_fonts/normal_font = ExtResource("10")
+theme_override_font_sizes/normal_font_size = 10
+text = "100"
+scroll_active = false
+autowrap_mode = 0
+text_direction = 2
+
+[node name="EnergyBarUnder" type="TextureProgressBar" parent="HBoxContainer/ColorRect/ColorRect2/VBoxContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(129, 15)
+layout_mode = 2
+value = 60.0
+nine_patch_stretch = true
+texture_under = ExtResource("6")
+texture_progress = ExtResource("7")
+tint_under = Color(0.192157, 0.164706, 0.811765, 1)
+tint_progress = Color(0.835294, 0.560784, 0.74902, 1)
+script = ExtResource("8")
+
+[node name="EnergyBar" type="TextureProgressBar" parent="HBoxContainer/ColorRect/ColorRect2/VBoxContainer/EnergyBarUnder"]
+clip_contents = true
+custom_minimum_size = Vector2(129, 15)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+value = 100.0
+nine_patch_stretch = true
+texture_progress = ExtResource("11")
+tint_under = Color(0.192157, 0.164706, 0.811765, 1)
+tint_progress = Color(0.185256, 0.515088, 0.829992, 1)
+
+[node name="Text" type="RichTextLabel" parent="HBoxContainer/ColorRect/ColorRect2/VBoxContainer/EnergyBarUnder"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.978
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = 2.0
+offset_right = 4.01399
+theme_override_fonts/normal_font = ExtResource("10")
+theme_override_font_sizes/normal_font_size = 10
+text = "Steam"
+autowrap_mode = 0
+
+[node name="EnergyValue" type="RichTextLabel" parent="HBoxContainer/ColorRect/ColorRect2/VBoxContainer/EnergyBarUnder"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.978
+anchor_bottom = 1.0
+offset_top = 2.0
+offset_right = -4.98601
+theme_override_fonts/normal_font = ExtResource("10")
+theme_override_font_sizes/normal_font_size = 10
+text = "100"
+scroll_active = false
+autowrap_mode = 0
+text_direction = 2
+
+[node name="ExpBar" type="TextureProgressBar" parent="HBoxContainer/ColorRect/ColorRect2/VBoxContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(129, 15)
+layout_mode = 2
+value = 60.0
+nine_patch_stretch = true
+texture_under = ExtResource("6")
+texture_progress = ExtResource("7")
+tint_under = Color(0.192157, 0.164706, 0.811765, 1)
+tint_progress = Color(0.835294, 0.560784, 0.74902, 1)
+
+[node name="Text" type="RichTextLabel" parent="HBoxContainer/ColorRect/ColorRect2/VBoxContainer/ExpBar"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.978
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = 2.0
+offset_right = 4.01399
+theme_override_fonts/normal_font = ExtResource("10")
+theme_override_font_sizes/normal_font_size = 10
+text = "Exp"
+autowrap_mode = 0
+
+[node name="EnergyValue" type="RichTextLabel" parent="HBoxContainer/ColorRect/ColorRect2/VBoxContainer/ExpBar"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.978
+anchor_bottom = 1.0
+offset_top = 2.0
+offset_right = -4.98601
+theme_override_fonts/normal_font = ExtResource("10")
+theme_override_font_sizes/normal_font_size = 10
+text = "100"
+scroll_active = false
+autowrap_mode = 0
+text_direction = 2

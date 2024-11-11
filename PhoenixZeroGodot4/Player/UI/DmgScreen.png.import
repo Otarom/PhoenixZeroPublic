@@ -1,0 +1,18 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://kvs1unrer134"
+path="res://.godot/imported/DmgScreen.png-1b89fb19559f0ee080741bc44f6b78b8.ctex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://Player/UI/DmgScreen.png"
+dest_files=PackedStringArray("res://.godot/imported/DmgScreen.png-1b89fb19559f0ee080741bc44f6b78b8.ctex")
+
+[params]
+
+dummy_value_ignore_me=0

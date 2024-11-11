@@ -1,0 +1,18 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://cmgo7qqlu17pk"
+path="res://.godot/imported/BarTopGreen.png-5bb105639f6d9d5164799151546fc2a8.ctex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://Player/UI/TopInfo/Bars/BarTopGreen.png"
+dest_files=PackedStringArray("res://.godot/imported/BarTopGreen.png-5bb105639f6d9d5164799151546fc2a8.ctex")
+
+[params]
+
+dummy_value_ignore_me=0

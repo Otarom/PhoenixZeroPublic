@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://Player/Skills/Skill.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://otqeryv5yfff" path="res://Player/Skills/Bomb/bomb.tscn" id="2"]
+[ext_resource type="Script" path="res://Player/Skills/Bomb/Spawner.gd" id="3"]
+
+[node name="bomb_skill" type="Node3D" node_paths=PackedStringArray("Spawner")]
+script = ExtResource("1")
+duration = 2
+cost = 60
+amount = 2500.0
+size = 3
+skill_object = ExtResource("2")
+Spawner = NodePath("Spawner")
+
+[node name="Spawner" type="Node3D" parent="." node_paths=PackedStringArray("Skill")]
+script = ExtResource("3")
+Skill = NodePath("..")
+
+[node name="Mount" type="CSGSphere3D" parent="Spawner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5)
+visible = false
+radius = 0.1
+
+[node name="Marker3D" type="Marker3D" parent="Spawner/Mount"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)

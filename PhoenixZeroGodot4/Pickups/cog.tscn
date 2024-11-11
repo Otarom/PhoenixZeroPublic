@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" uid="uid://djgcid1amv6a" path="res://Pickups/cog.glb" id="1"]
+
+[sub_resource type="StandardMaterial3D" id="1"]
+albedo_color = Color(0.65098, 0.392157, 0.0941176, 1)
+script = null
+
+[node name="cog" instance=ExtResource("1")]
+
+[node name="cog2" parent="." index="0"]
+transform = Transform3D(0.016, 0, 0, 0, -6.99382e-10, -0.016, 0, 0.016, -6.99382e-10, -1.76, 0, -1.76)
+surface_material_override/0 = SubResource("1")

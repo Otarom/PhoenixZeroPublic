@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bt1vivirhlxbj"
+path="res://.godot/imported/helice_papai.obj-c333c0134fae1ff113862c195696bf9e.mesh"
+
+[deps]
+
+files=["res://.godot/imported/helice_papai.obj-c333c0134fae1ff113862c195696bf9e.mesh"]
+
+source_file="res://Enemies/Boss/Minions/InvShip/helice_papai.obj"
+dest_files=["res://.godot/imported/helice_papai.obj-c333c0134fae1ff113862c195696bf9e.mesh", "res://.godot/imported/helice_papai.obj-c333c0134fae1ff113862c195696bf9e.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

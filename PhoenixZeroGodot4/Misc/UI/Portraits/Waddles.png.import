@@ -1,0 +1,18 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://6n27e282ti2y"
+path="res://.godot/imported/Waddles.png-e9dc0ec232c197fe4db22c620634919c.ctex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://Misc/UI/Portraits/Waddles.png"
+dest_files=PackedStringArray("res://.godot/imported/Waddles.png-e9dc0ec232c197fe4db22c620634919c.ctex")
+
+[params]
+
+dummy_value_ignore_me=0

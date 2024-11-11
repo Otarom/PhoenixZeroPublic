@@ -1,0 +1,16 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c71cj3wrfihy7"
+path="res://.godot/imported/Saber.wav-b63837a5f6cdbe05ef04c2c889a963b3.sample"
+
+[deps]
+
+source_file="res://Player/Weapons/Sword2/Saber.wav"
+dest_files=PackedStringArray("res://.godot/imported/Saber.wav-b63837a5f6cdbe05ef04c2c889a963b3.sample")
+
+[params]
+
+dummy_value_ignore_me=0
+compress/mode=0

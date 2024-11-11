@@ -1,0 +1,18 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://b1n4hmrxae0ve"
+path="res://.godot/imported/fire1_64.png-2001d3b61d9414b98c2aae62ab7a9d76.ctex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://Misc/VFX/Fire/fire1_64.png"
+dest_files=PackedStringArray("res://.godot/imported/fire1_64.png-2001d3b61d9414b98c2aae62ab7a9d76.ctex")
+
+[params]
+
+dummy_value_ignore_me=0

@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://Player/Weapons/Weapon.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://d3tolugbxlsa8" path="res://Player/Weapons/Machinegun/MachineGunBullet.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://csx5ouah0v4wn" path="res://Player/Weapons/Machinegun/MachineGunMuzzle.tscn" id="3"]
+[ext_resource type="Script" path="res://Player/Weapons/Machinegun/Spawner.gd" id="4"]
+[ext_resource type="AudioStream" uid="uid://trccpcwopd1a" path="res://Player/SFX/MachinegunShot1.wav" id="5"]
+[ext_resource type="Script" path="res://Player/Weapons/Machinegun/Sound.gd" id="6"]
+
+[node name="Machinegun" type="Node3D" node_paths=PackedStringArray("Spawner")]
+script = ExtResource("1")
+shots = 2
+max_ammo = 30
+damage = 20
+piercing = false
+bullet_speed = 20
+reload_speed = 1.0
+cooldown = 0.1
+Bullet = ExtResource("2")
+Muzzle_Flash = ExtResource("3")
+Spawner = NodePath("Spawner")
+
+[node name="Spawner" type="Marker3D" parent="." node_paths=PackedStringArray("Weapon", "Sound")]
+script = ExtResource("4")
+Weapon = NodePath("..")
+Sound = NodePath("../Sound")
+
+[node name="Mount1" type="CSGSphere3D" parent="Spawner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 2.5)
+visible = false
+radius = 0.1
+
+[node name="Direction" type="Marker3D" parent="Spawner/Mount1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.2)
+
+[node name="Mount2" type="CSGSphere3D" parent="Spawner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 2.5)
+visible = false
+radius = 0.1
+
+[node name="Direction" type="Marker3D" parent="Spawner/Mount2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.2)
+
+[node name="Sound" type="AudioStreamPlayer" parent="." node_paths=PackedStringArray("WeaponNode")]
+stream = ExtResource("5")
+volume_db = -18.0
+pitch_scale = 1.2
+bus = &"PlayerSFX"
+script = ExtResource("6")
+WeaponNode = NodePath("..")

@@ -1,0 +1,16 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bkrh4xouq63ul"
+path="res://.godot/imported/EnemHitSound2.wav-38a10473153d8958093fce4ef1346893.sample"
+
+[deps]
+
+source_file="res://Enemies/SFX/EnemHitSound2.wav"
+dest_files=PackedStringArray("res://.godot/imported/EnemHitSound2.wav-38a10473153d8958093fce4ef1346893.sample")
+
+[params]
+
+dummy_value_ignore_me=0
+compress/mode=0

@@ -1,0 +1,77 @@
+[gd_scene load_steps=12 format=3]
+
+[ext_resource type="Script" path="res://Player/Weapons/Weapon.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://c6cn8yfahlvat" path="res://Player/Weapons/Sword/SwordHitbox.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://b0yuuhc0jf0l0" path="res://Player/Weapons/Sword/SwordSprite.tscn" id="3"]
+[ext_resource type="Texture2D" uid="uid://nlfgthrig2sq" path="res://Player/Weapons/Sword/Saw.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://g4n2u72pjgec" path="res://Player/Weapons/Sword/Saw1.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://w1eoxd2y3k76" path="res://Player/Weapons/Sword/Saw2.png" id="6"]
+[ext_resource type="Script" path="res://Player/Weapons/Sword/SwordSprite.gd" id="7"]
+[ext_resource type="Script" path="res://Player/Weapons/Sword/Spawner.gd" id="8"]
+[ext_resource type="AudioStream" uid="uid://cm37cmmoeuo31" path="res://Player/SFX/Saw.wav" id="9"]
+[ext_resource type="Script" path="res://Player/Weapons/Sword/Sound.gd" id="10"]
+
+[sub_resource type="SpriteFrames" id="1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+script = null
+
+[node name="Sword" type="Node3D" node_paths=PackedStringArray("Spawner")]
+script = ExtResource("1")
+max_ammo = 200
+bullet_speed = 30
+range = 10
+reload_speed = 1.5
+cooldown = 0.0
+Bullet = ExtResource("2")
+Muzzle_Flash = ExtResource("3")
+Spawner = NodePath("Spawner")
+
+[node name="Sprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(0.9, 0, 0, 0, 0.5, 0, 0, 0, 1.8, 0, 0, 8.63853)
+flip_v = true
+axis = 1
+sprite_frames = SubResource("1")
+frame_progress = 0.302386
+script = ExtResource("7")
+
+[node name="Spawner" type="Marker3D" parent="." node_paths=PackedStringArray("Weapon", "Sound")]
+script = ExtResource("8")
+Weapon = NodePath("..")
+Sound = NodePath("../Sound")
+
+[node name="Mount1" type="CSGSphere3D" parent="Spawner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.5)
+visible = false
+radius = 0.1
+
+[node name="Direction" type="Marker3D" parent="Spawner/Mount1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.2)
+
+[node name="Mount2" type="CSGSphere3D" parent="Spawner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.10338)
+visible = false
+radius = 0.1
+
+[node name="Direction" type="Marker3D" parent="Spawner/Mount2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.2)
+
+[node name="Sound" type="AudioStreamPlayer" parent="." node_paths=PackedStringArray("WeaponNode")]
+stream = ExtResource("9")
+volume_db = -10.0
+bus = &"PlayerSFX"
+script = ExtResource("10")
+WeaponNode = NodePath("..")

@@ -1,0 +1,144 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="ArrayMesh" uid="uid://cubsoofhrt5a0" path="res://Enemies/Boss/Minions/Fighter/Model2.obj" id="1"]
+
+[sub_resource type="StandardMaterial3D" id="1"]
+albedo_color = Color(0.843137, 0.0862745, 0.0745098, 1)
+script = null
+
+[sub_resource type="StandardMaterial3D" id="2"]
+albedo_color = Color(0.0470588, 0.25098, 0.368627, 1)
+script = null
+
+[sub_resource type="CapsuleMesh" id="3"]
+material = SubResource("2")
+script = null
+
+[sub_resource type="StandardMaterial3D" id="4"]
+script = null
+
+[sub_resource type="SphereMesh" id="5"]
+material = SubResource("4")
+height = 0.5
+is_hemisphere = true
+script = null
+
+[sub_resource type="SphereMesh" id="6"]
+material = SubResource("2")
+height = 0.5
+is_hemisphere = true
+script = null
+
+[node name="FastFighter" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 0.7, 0, 0, 0, 1, 0, -0.360187, 0.873583)
+
+[node name="Model2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.3, 0, 0, 0, 1, 0.643577, 0.18752, -0.332574)
+visible = false
+mesh = ExtResource("1")
+surface_material_override/0 = SubResource("1")
+
+[node name="Model12" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.3, 0, 0, 0, 1, -0.644, 0.188, -0.333)
+visible = false
+mesh = ExtResource("1")
+surface_material_override/0 = SubResource("1")
+
+[node name="Model9" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.6, 0, 0, 0, 0.8, 0, -0.221991, -0.452352)
+visible = false
+mesh = ExtResource("1")
+surface_material_override/0 = SubResource("1")
+
+[node name="Model10" type="MeshInstance3D" parent="."]
+transform = Transform3D(-2.62268e-08, -0.36, 0, 0.6, -1.57361e-08, 0, 0, 0, 0.36, 2.36567, 0.421697, -2.32987)
+visible = false
+mesh = ExtResource("1")
+surface_material_override/0 = SubResource("1")
+
+[node name="Gun1" type="MeshInstance3D" parent="."]
+transform = Transform3D(8.74228e-09, 0.36, -5.43585e-08, 0.2, -1.57361e-08, 0, -1.32005e-15, -5.43585e-08, -0.36, 1.67485, 0.457281, 0.14984)
+visible = false
+mesh = ExtResource("1")
+surface_material_override/0 = SubResource("1")
+
+[node name="Model11" type="MeshInstance3D" parent="."]
+transform = Transform3D(-2.62268e-08, -0.36, 0, 0.6, -1.57361e-08, 0, 0, 0, 0.36, -2.366, 0.422, -2.33)
+visible = false
+mesh = ExtResource("1")
+surface_material_override/0 = SubResource("1")
+
+[node name="Gun2" type="MeshInstance3D" parent="."]
+transform = Transform3D(8.74228e-09, 0.36, -5.43585e-08, 0.2, -1.57361e-08, 0, -1.32005e-15, -5.43585e-08, -0.36, -1.675, 0.457, 0.15)
+visible = false
+mesh = ExtResource("1")
+surface_material_override/0 = SubResource("1")
+
+[node name="Gun3" type="MeshInstance3D" parent="."]
+transform = Transform3D(5.73206e-16, 2.62268e-08, 0.36, 0.3, -2.62268e-08, 0, 1.31134e-08, 0.6, -1.57361e-08, -0.850577, 0.725356, -0.985824)
+mesh = ExtResource("1")
+surface_material_override/0 = SubResource("1")
+
+[node name="Gun4" type="MeshInstance3D" parent="."]
+transform = Transform3D(5.73206e-16, 2.62268e-08, -0.36, 0.3, -2.62268e-08, 0, -1.31134e-08, -0.6, -1.57361e-08, 0.851, 0.725, -0.986)
+mesh = ExtResource("1")
+surface_material_override/0 = SubResource("1")
+
+[node name="Model3" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 0.8, 0, 1.50996e-07, 0, -1, 0, 0.397408, -1.12215)
+mesh = ExtResource("1")
+surface_material_override/0 = SubResource("1")
+
+[node name="Model13" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 0, -1.20797e-07, 0, 0.8, 0, 1.50996e-07, 0, -0.8, 0, 0.927126, -1.68865)
+mesh = ExtResource("1")
+surface_material_override/0 = SubResource("1")
+
+[node name="Model14" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.07867e-07, 0.14, -2.44784e-08, -0.340221, 5.1372e-09, -0.489407, -0.611759, 2.18283e-08, 0.272177, 0, 1.91246, -3.14934)
+mesh = ExtResource("1")
+surface_material_override/0 = SubResource("1")
+
+[node name="Model4" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 0, -2.26494e-07, 0, 0.8, 0, 1.50996e-07, 0, -1.5, 0, 0.54655, -1.05206)
+mesh = ExtResource("1")
+surface_material_override/0 = SubResource("1")
+
+[node name="Model5" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 0.8, 0, 1.50996e-07, 0, -1, 0, 0.54655, 0.483127)
+mesh = ExtResource("1")
+surface_material_override/0 = SubResource("1")
+
+[node name="Model6" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 0.8, 0, 1.50996e-07, 0, -1, 0, 0.54655, -0.481566)
+mesh = ExtResource("1")
+surface_material_override/0 = SubResource("1")
+
+[node name="Model7" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0.866025, 0, 0.3, 0, -0.866025, 0, 0.5, -1.55974, 0.54655, -0.9595)
+mesh = ExtResource("1")
+surface_material_override/0 = SubResource("1")
+
+[node name="Model8" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, -0.866025, 0, 0.3, 0, 0.866025, 0, 0.5, 1.56, 0.547, -0.959)
+mesh = ExtResource("1")
+surface_material_override/0 = SubResource("1")
+
+[node name="CockpitPlaceholder" type="Node3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0.765846, -0.178264)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CockpitPlaceholder"]
+transform = Transform3D(0.455036, 0, 0, 0, -1.34751e-08, -0.506047, 0, 0.308274, -2.212e-08, 1.59144e-05, 0.0706806, -0.261673)
+mesh = SubResource("3")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="CockpitPlaceholder"]
+transform = Transform3D(0.46426, 0, 0, 0, -2.81773e-08, 0.5, 0, -0.644621, -2.18557e-08, 0, 0.0787716, -0.389068)
+material_override = SubResource("1")
+mesh = SubResource("5")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="CockpitPlaceholder"]
+transform = Transform3D(0.454793, 0, 0, 0, -3.13423e-08, -0.485629, 0, 0.717029, -2.12275e-08, 0, 0.0787716, -0.117057)
+mesh = SubResource("6")
+skeleton = NodePath("../..")

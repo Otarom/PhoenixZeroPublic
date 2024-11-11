@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://com1hwn4g1dw6"]
+
+[ext_resource type="Script" path="res://Player/Weapons/Weapon.gd" id="1"]
+[ext_resource type="PackedScene" path="res://Player/Weapons/Sniper/SniperBullet.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://83kyco7c6pbe" path="res://Player/Weapons/Sniper/SniperMuzzle.tscn" id="3"]
+[ext_resource type="Script" path="res://Player/Weapons/Sniper/Spawner.gd" id="4"]
+[ext_resource type="AudioStream" uid="uid://clj2scigi32v3" path="res://Player/SFX/SniperShoot1.wav" id="5"]
+
+[node name="Sniper" type="Node3D" node_paths=PackedStringArray("Sound", "Spawner")]
+script = ExtResource("1")
+max_ammo = 1
+damage = 2000
+bullet_speed = 30
+range = 50
+reload_speed = 2.0
+cooldown = 0.0
+Sound = NodePath("Sound")
+Bullet = ExtResource("2")
+Muzzle_Flash = ExtResource("3")
+Spawner = NodePath("Spawner")
+
+[node name="Spawner" type="Marker3D" parent="." node_paths=PackedStringArray("Weapon")]
+script = ExtResource("4")
+Weapon = NodePath("..")
+
+[node name="Mount1" type="CSGSphere3D" parent="Spawner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.5)
+visible = false
+radius = 0.1
+
+[node name="Direction" type="Marker3D" parent="Spawner/Mount1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.2)
+
+[node name="Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5")
+volume_db = -12.0
+pitch_scale = 1.5
+bus = &"PlayerSFX"

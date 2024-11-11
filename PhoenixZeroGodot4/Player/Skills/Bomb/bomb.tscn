@@ -1,0 +1,164 @@
+[gd_scene load_steps=12 format=3]
+
+[ext_resource type="Script" path="res://Player/Skills/Bomb/bomb.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://dtevsn16a53sh" path="res://Player/Skills/Bomb/player_bullet_shuriken_1.tscn" id="2"]
+[ext_resource type="Material" uid="uid://c54fcyf7ndsej" path="res://Player/Skills/Bomb/bombcolor1.tres" id="3"]
+[ext_resource type="Material" uid="uid://dxf5otptqdavl" path="res://Player/Skills/Bomb/bombcolor2.tres" id="4"]
+
+[sub_resource type="StandardMaterial3D" id="1"]
+transparency = 1
+blend_mode = 1
+albedo_color = Color(0.705882, 0.290196, 0, 0)
+emission_enabled = true
+emission = Color(0.517647, 0, 0.027451, 1)
+emission_energy_multiplier = 0.2
+script = null
+
+[sub_resource type="CylinderMesh" id="2"]
+material = ExtResource("3")
+bottom_radius = 0.2
+height = 0.8
+radial_segments = 8
+cap_top = false
+script = null
+
+[sub_resource type="PrismMesh" id="3"]
+material = ExtResource("4")
+left_to_right = 1.0
+size = Vector3(0.5, 0.5, 0.1)
+script = null
+
+[sub_resource type="CylinderShape3D" id="4"]
+height = 1.82994
+radius = 0.229597
+script = null
+
+[sub_resource type="Animation" id="5"]
+resource_name = "Blink"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"explode"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BombModel:material_overlay:albedo_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.705882, 0.290196, 0, 0), Color(0.705882, 0.290196, 0, 1), Color(0.705882, 0.290196, 0, 0), Color(0.756863, 0.215686, 0.0745098, 1), Color(0.705882, 0.290196, 0, 0), Color(0.517647, 0.0431373, 0.0156863, 1)]
+}
+script = null
+
+[sub_resource type="Animation" id="6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BombModel:material_overlay:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.705882, 0.290196, 0, 0)]
+}
+script = null
+
+[sub_resource type="AnimationLibrary" id="7"]
+_data = {
+"Blink": SubResource("5"),
+"RESET": SubResource("6")
+}
+script = null
+
+[node name="bomb" type="CharacterBody3D"]
+script = ExtResource("1")
+Bullet = ExtResource("2")
+
+[node name="BombModel" type="CSGCombiner3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+material_overlay = SubResource("1")
+
+[node name="Head" type="CSGSphere3D" parent="BombModel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.552548)
+radius = 0.48
+radial_segments = 8
+rings = 8
+smooth_faces = false
+material = ExtResource("3")
+
+[node name="Ring1" type="CSGTorus3D" parent="BombModel"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.515736)
+inner_radius = 0.4
+outer_radius = 0.55
+material = ExtResource("4")
+
+[node name="Ring2" type="CSGTorus3D" parent="BombModel"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.349308)
+inner_radius = 0.4
+outer_radius = 0.55
+material = ExtResource("4")
+
+[node name="Body" type="CSGCylinder3D" parent="BombModel"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.0576162)
+height = 0.84249
+smooth_faces = false
+material = ExtResource("3")
+
+[node name="Tail" type="CSGMesh3D" parent="BombModel"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.762545)
+mesh = SubResource("2")
+
+[node name="TopWing" type="CSGMesh3D" parent="BombModel/Tail"]
+transform = Transform3D(-4.37114e-08, 0, 1, -0.93892, -0.344135, -4.10415e-08, 0.344135, -0.93892, 1.50426e-08, 0, -0.136759, -0.493912)
+mesh = SubResource("3")
+
+[node name="BottomWing" type="CSGMesh3D" parent="BombModel/Tail"]
+transform = Transform3D(-4.0981e-09, 1.11986e-08, -1, -0.939094, -0.34366, 0, -0.34366, 0.939094, 1.19249e-08, 0, -0.137, 0.494)
+mesh = SubResource("3")
+
+[node name="LeftWing" type="CSGMesh3D" parent="BombModel/Tail"]
+transform = Transform3D(0.34366, -0.939094, -8.74228e-08, -0.939094, -0.34366, 0, -3.00437e-08, 8.20982e-08, -1, -0.545972, -0.134651, 0.025)
+mesh = SubResource("3")
+
+[node name="RightWing" type="CSGMesh3D" parent="BombModel/Tail"]
+transform = Transform3D(-0.34366, 0.939094, 1.74846e-07, -0.939094, -0.34366, 0, 6.00874e-08, -1.64196e-07, 1, 0.546, -0.135, 0.025)
+mesh = SubResource("3")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("4")
+
+[node name="ExplosionHandle" type="Marker3D" parent="."]
+
+[node name="Mount1" type="CSGSphere3D" parent="ExplosionHandle"]
+radius = 0.1
+
+[node name="Marker3D" type="Marker3D" parent="ExplosionHandle/Mount1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+
+[node name="Anim" type="AnimationPlayer" parent="."]
+speed_scale = 2.0
+libraries = {
+"": SubResource("7")
+}
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered" flags=18]

@@ -1,0 +1,15 @@
+[remap]
+
+importer="font_data_dynamic"
+type="FontFile"
+uid="uid://bd8e4nuoxjfxj"
+path="res://.godot/imported/Square.ttf-ff4633535c3a2d444bdbe94a8d7f72bd.fontdata"
+
+[deps]
+
+source_file="res://Player/UI/Fonts/Square.ttf"
+dest_files=PackedStringArray("res://.godot/imported/Square.ttf-ff4633535c3a2d444bdbe94a8d7f72bd.fontdata")
+
+[params]
+
+dummy_value_ignore_me=0

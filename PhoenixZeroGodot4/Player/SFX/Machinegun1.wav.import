@@ -1,0 +1,16 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cw4ocnsylrvml"
+path="res://.godot/imported/Machinegun1.wav-18661fe17f0ecfeaf5f7008e8b5b4fca.sample"
+
+[deps]
+
+source_file="res://Player/SFX/Machinegun1.wav"
+dest_files=PackedStringArray("res://.godot/imported/Machinegun1.wav-18661fe17f0ecfeaf5f7008e8b5b4fca.sample")
+
+[params]
+
+dummy_value_ignore_me=0
+compress/mode=0
